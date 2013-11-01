@@ -1,5 +1,4 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1265
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-}
+Escape the School!
+------------------
+Welcome to the souce code for Hanover High School's March Intensive Independent Study Programming class.
+More to come as commits come rolling in.
