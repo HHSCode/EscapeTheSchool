@@ -1,0 +1,491 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		98AD41EE185A99AE0005E257 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD41ED185A99AE0005E257 /* Foundation.framework */; };
+		98AD41F0185A99AE0005E257 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD41EF185A99AE0005E257 /* CoreGraphics.framework */; };
+		98AD41F2185A99AE0005E257 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD41F1185A99AE0005E257 /* UIKit.framework */; };
+		98AD41F4185A99AE0005E257 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD41F3185A99AE0005E257 /* SpriteKit.framework */; };
+		98AD41FA185A99AE0005E257 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98AD41F8185A99AE0005E257 /* InfoPlist.strings */; };
+		98AD41FC185A99AE0005E257 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD41FB185A99AE0005E257 /* main.m */; };
+		98AD4200185A99AE0005E257 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD41FF185A99AE0005E257 /* AppDelegate.m */; };
+		98AD4203185A99AE0005E257 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98AD4201185A99AE0005E257 /* Main.storyboard */; };
+		98AD4206185A99AE0005E257 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD4205185A99AE0005E257 /* ViewController.m */; };
+		98AD4209185A99AE0005E257 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD4208185A99AE0005E257 /* MyScene.m */; };
+		98AD420B185A99AE0005E257 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AD420A185A99AE0005E257 /* Spaceship.png */; };
+		98AD420D185A99AE0005E257 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98AD420C185A99AE0005E257 /* Images.xcassets */; };
+		98AD4214185A99AE0005E257 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD4213185A99AE0005E257 /* XCTest.framework */; };
+		98AD4215185A99AE0005E257 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD41ED185A99AE0005E257 /* Foundation.framework */; };
+		98AD4216185A99AE0005E257 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AD41F1185A99AE0005E257 /* UIKit.framework */; };
+		98AD421E185A99AE0005E257 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98AD421C185A99AE0005E257 /* InfoPlist.strings */; };
+		98AD4220185A99AE0005E257 /* Escape_the_SchoolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD421F185A99AE0005E257 /* Escape_the_SchoolTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		98AD4217185A99AE0005E257 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98AD41E2185A99AD0005E257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98AD41E9185A99AD0005E257;
+			remoteInfo = "Escape the School";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		98AD41EA185A99AD0005E257 /* Escape the School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Escape the School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		98AD41ED185A99AE0005E257 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		98AD41EF185A99AE0005E257 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		98AD41F1185A99AE0005E257 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		98AD41F3185A99AE0005E257 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		98AD41F7185A99AE0005E257 /* Escape the School-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Escape the School-Info.plist"; sourceTree = "<group>"; };
+		98AD41F9185A99AE0005E257 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		98AD41FB185A99AE0005E257 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		98AD41FD185A99AE0005E257 /* Escape the School-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Escape the School-Prefix.pch"; sourceTree = "<group>"; };
+		98AD41FE185A99AE0005E257 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		98AD41FF185A99AE0005E257 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		98AD4202185A99AE0005E257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		98AD4204185A99AE0005E257 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		98AD4205185A99AE0005E257 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		98AD4207185A99AE0005E257 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		98AD4208185A99AE0005E257 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		98AD420A185A99AE0005E257 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		98AD420C185A99AE0005E257 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		98AD4212185A99AE0005E257 /* Escape the SchoolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Escape the SchoolTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		98AD4213185A99AE0005E257 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		98AD421B185A99AE0005E257 /* Escape the SchoolTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Escape the SchoolTests-Info.plist"; sourceTree = "<group>"; };
+		98AD421D185A99AE0005E257 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		98AD421F185A99AE0005E257 /* Escape_the_SchoolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Escape_the_SchoolTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		98AD41E7185A99AD0005E257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98AD41F0185A99AE0005E257 /* CoreGraphics.framework in Frameworks */,
+				98AD41F2185A99AE0005E257 /* UIKit.framework in Frameworks */,
+				98AD41F4185A99AE0005E257 /* SpriteKit.framework in Frameworks */,
+				98AD41EE185A99AE0005E257 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98AD420F185A99AE0005E257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98AD4214185A99AE0005E257 /* XCTest.framework in Frameworks */,
+				98AD4216185A99AE0005E257 /* UIKit.framework in Frameworks */,
+				98AD4215185A99AE0005E257 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		98AD41E1185A99AD0005E257 = {
+			isa = PBXGroup;
+			children = (
+				98AD41F5185A99AE0005E257 /* Escape the School */,
+				98AD4219185A99AE0005E257 /* Escape the SchoolTests */,
+				98AD41EC185A99AD0005E257 /* Frameworks */,
+				98AD41EB185A99AD0005E257 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		98AD41EB185A99AD0005E257 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				98AD41EA185A99AD0005E257 /* Escape the School.app */,
+				98AD4212185A99AE0005E257 /* Escape the SchoolTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		98AD41EC185A99AD0005E257 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98AD41ED185A99AE0005E257 /* Foundation.framework */,
+				98AD41EF185A99AE0005E257 /* CoreGraphics.framework */,
+				98AD41F1185A99AE0005E257 /* UIKit.framework */,
+				98AD41F3185A99AE0005E257 /* SpriteKit.framework */,
+				98AD4213185A99AE0005E257 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		98AD41F5185A99AE0005E257 /* Escape the School */ = {
+			isa = PBXGroup;
+			children = (
+				98AD41FE185A99AE0005E257 /* AppDelegate.h */,
+				98AD41FF185A99AE0005E257 /* AppDelegate.m */,
+				98AD4201185A99AE0005E257 /* Main.storyboard */,
+				98AD4204185A99AE0005E257 /* ViewController.h */,
+				98AD4205185A99AE0005E257 /* ViewController.m */,
+				98AD4207185A99AE0005E257 /* MyScene.h */,
+				98AD4208185A99AE0005E257 /* MyScene.m */,
+				98AD420A185A99AE0005E257 /* Spaceship.png */,
+				98AD420C185A99AE0005E257 /* Images.xcassets */,
+				98AD41F6185A99AE0005E257 /* Supporting Files */,
+			);
+			path = "Escape the School";
+			sourceTree = "<group>";
+		};
+		98AD41F6185A99AE0005E257 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98AD41F7185A99AE0005E257 /* Escape the School-Info.plist */,
+				98AD41F8185A99AE0005E257 /* InfoPlist.strings */,
+				98AD41FB185A99AE0005E257 /* main.m */,
+				98AD41FD185A99AE0005E257 /* Escape the School-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98AD4219185A99AE0005E257 /* Escape the SchoolTests */ = {
+			isa = PBXGroup;
+			children = (
+				98AD421F185A99AE0005E257 /* Escape_the_SchoolTests.m */,
+				98AD421A185A99AE0005E257 /* Supporting Files */,
+			);
+			path = "Escape the SchoolTests";
+			sourceTree = "<group>";
+		};
+		98AD421A185A99AE0005E257 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98AD421B185A99AE0005E257 /* Escape the SchoolTests-Info.plist */,
+				98AD421C185A99AE0005E257 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		98AD41E9185A99AD0005E257 /* Escape the School */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98AD4223185A99AE0005E257 /* Build configuration list for PBXNativeTarget "Escape the School" */;
+			buildPhases = (
+				98AD41E6185A99AD0005E257 /* Sources */,
+				98AD41E7185A99AD0005E257 /* Frameworks */,
+				98AD41E8185A99AD0005E257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Escape the School";
+			productName = "Escape the School";
+			productReference = 98AD41EA185A99AD0005E257 /* Escape the School.app */;
+			productType = "com.apple.product-type.application";
+		};
+		98AD4211185A99AE0005E257 /* Escape the SchoolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98AD4226185A99AE0005E257 /* Build configuration list for PBXNativeTarget "Escape the SchoolTests" */;
+			buildPhases = (
+				98AD420E185A99AE0005E257 /* Sources */,
+				98AD420F185A99AE0005E257 /* Frameworks */,
+				98AD4210185A99AE0005E257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98AD4218185A99AE0005E257 /* PBXTargetDependency */,
+			);
+			name = "Escape the SchoolTests";
+			productName = "Escape the SchoolTests";
+			productReference = 98AD4212185A99AE0005E257 /* Escape the SchoolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98AD41E2185A99AD0005E257 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Max Greenwald";
+				TargetAttributes = {
+					98AD4211185A99AE0005E257 = {
+						TestTargetID = 98AD41E9185A99AD0005E257;
+					};
+				};
+			};
+			buildConfigurationList = 98AD41E5185A99AD0005E257 /* Build configuration list for PBXProject "Escape the School" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 98AD41E1185A99AD0005E257;
+			productRefGroup = 98AD41EB185A99AD0005E257 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				98AD41E9185A99AD0005E257 /* Escape the School */,
+				98AD4211185A99AE0005E257 /* Escape the SchoolTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		98AD41E8185A99AD0005E257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98AD41FA185A99AE0005E257 /* InfoPlist.strings in Resources */,
+				98AD420D185A99AE0005E257 /* Images.xcassets in Resources */,
+				98AD420B185A99AE0005E257 /* Spaceship.png in Resources */,
+				98AD4203185A99AE0005E257 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98AD4210185A99AE0005E257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98AD421E185A99AE0005E257 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		98AD41E6185A99AD0005E257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98AD4209185A99AE0005E257 /* MyScene.m in Sources */,
+				98AD4206185A99AE0005E257 /* ViewController.m in Sources */,
+				98AD4200185A99AE0005E257 /* AppDelegate.m in Sources */,
+				98AD41FC185A99AE0005E257 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98AD420E185A99AE0005E257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98AD4220185A99AE0005E257 /* Escape_the_SchoolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98AD4218185A99AE0005E257 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98AD41E9185A99AD0005E257 /* Escape the School */;
+			targetProxy = 98AD4217185A99AE0005E257 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		98AD41F8185A99AE0005E257 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98AD41F9185A99AE0005E257 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		98AD4201185A99AE0005E257 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98AD4202185A99AE0005E257 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		98AD421C185A99AE0005E257 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98AD421D185A99AE0005E257 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		98AD4221185A99AE0005E257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		98AD4222185A99AE0005E257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		98AD4224185A99AE0005E257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Escape the School/Escape the School-Prefix.pch";
+				INFOPLIST_FILE = "Escape the School/Escape the School-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		98AD4225185A99AE0005E257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Escape the School/Escape the School-Prefix.pch";
+				INFOPLIST_FILE = "Escape the School/Escape the School-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		98AD4227185A99AE0005E257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Escape the School.app/Escape the School";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Escape the School/Escape the School-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Escape the SchoolTests/Escape the SchoolTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		98AD4228185A99AE0005E257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Escape the School.app/Escape the School";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Escape the School/Escape the School-Prefix.pch";
+				INFOPLIST_FILE = "Escape the SchoolTests/Escape the SchoolTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		98AD41E5185A99AD0005E257 /* Build configuration list for PBXProject "Escape the School" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98AD4221185A99AE0005E257 /* Debug */,
+				98AD4222185A99AE0005E257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98AD4223185A99AE0005E257 /* Build configuration list for PBXNativeTarget "Escape the School" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98AD4224185A99AE0005E257 /* Debug */,
+				98AD4225185A99AE0005E257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		98AD4226185A99AE0005E257 /* Build configuration list for PBXNativeTarget "Escape the SchoolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98AD4227185A99AE0005E257 /* Debug */,
+				98AD4228185A99AE0005E257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98AD41E2185A99AD0005E257 /* Project object */;
+}
