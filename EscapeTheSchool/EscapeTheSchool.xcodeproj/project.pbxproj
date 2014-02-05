@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98C74506187E506100DF74E2 /* tiledmap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 98C74505187E506100DF74E2 /* tiledmap.tmx */; };
+		98C7450A187E528F00DF74E2 /* tile.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 98C74509187E528F00DF74E2 /* tile.tmx */; };
 		DC042A83178C5A06009FDBF8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC042A82178C5A06009FDBF8 /* SystemConfiguration.framework */; };
 		DC042A84178C5A12009FDBF8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC95BA771786DF8600E31DA6 /* SystemConfiguration.framework */; };
 		DC09DB8E178C84C6000E0B61 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC09DB8D178C84C6000E0B61 /* MainMenu.xib */; };
@@ -72,8 +74,6 @@
 		DCEF830E17CFDAAB00157387 /* ATTRIBUTIONS in Resources */ = {isa = PBXBuildFile; fileRef = DCEF830C17CFDAAB00157387 /* ATTRIBUTIONS */; };
 		DCEF831017CFDBF300157387 /* die.wav in Resources */ = {isa = PBXBuildFile; fileRef = DCEF830F17CFDBF300157387 /* die.wav */; };
 		DCEF831117CFDBF300157387 /* die.wav in Resources */ = {isa = PBXBuildFile; fileRef = DCEF830F17CFDBF300157387 /* die.wav */; };
-		DCEF831817CFDE9500157387 /* RemoveSpaceshipBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEF831717CFDE9500157387 /* RemoveSpaceshipBehavior.m */; };
-		DCEF831917CFDE9500157387 /* RemoveSpaceshipBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEF831717CFDE9500157387 /* RemoveSpaceshipBehavior.m */; };
 		DCEFA529180C3059009B0300 /* OpenGW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEFA528180C3059009B0300 /* OpenGW.framework */; };
 		DCEFA52D180C3061009B0300 /* KoboldKitCommunity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEFA52A180C3061009B0300 /* KoboldKitCommunity.framework */; };
 		DCEFA52E180C3061009B0300 /* KoboldKitExternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEFA52B180C3061009B0300 /* KoboldKitExternal.framework */; };
@@ -117,6 +117,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		98C74505187E506100DF74E2 /* tiledmap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = tiledmap.tmx; path = ../tiledmap.tmx; sourceTree = "<group>"; };
+		98C74509187E528F00DF74E2 /* tile.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = tile.tmx; path = ../tile.tmx; sourceTree = "<group>"; };
 		DC042A82178C5A06009FDBF8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		DC09DB8D178C84C6000E0B61 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		DC0C220517CF9C97007FE7B8 /* MyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
@@ -194,8 +196,6 @@
 		DCEF82D417CFD4AC00157387 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 		DCEF830C17CFDAAB00157387 /* ATTRIBUTIONS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATTRIBUTIONS; sourceTree = "<group>"; };
 		DCEF830F17CFDBF300157387 /* die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = die.wav; sourceTree = "<group>"; };
-		DCEF831617CFDE9500157387 /* RemoveSpaceshipBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveSpaceshipBehavior.h; sourceTree = "<group>"; };
-		DCEF831717CFDE9500157387 /* RemoveSpaceshipBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveSpaceshipBehavior.m; sourceTree = "<group>"; };
 		DCEFA528180C3059009B0300 /* OpenGW.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGW.framework; path = "../../depot/_buildoutput/EscapeTheSchool-emodnxkxbvcspwbwreiywephofcm/Build/Products/Debug/OpenGW.framework"; sourceTree = "<group>"; };
 		DCEFA52A180C3061009B0300 /* KoboldKitCommunity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KoboldKitCommunity.framework; path = "../../depot/_buildoutput/EscapeTheSchool-emodnxkxbvcspwbwreiywephofcm/Build/Products/Debug/KoboldKitCommunity.framework"; sourceTree = "<group>"; };
 		DCEFA52B180C3061009B0300 /* KoboldKitExternal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KoboldKitExternal.framework; path = "../../depot/_buildoutput/EscapeTheSchool-emodnxkxbvcspwbwreiywephofcm/Build/Products/Debug/KoboldKitExternal.framework"; sourceTree = "<group>"; };
@@ -376,8 +376,8 @@
 				DCD7EC49178C573500BBAFB0 /* ViewController.m */,
 				DC0C220517CF9C97007FE7B8 /* MyScene.h */,
 				DC0C220617CF9C97007FE7B8 /* MyScene.m */,
-				DCEF831617CFDE9500157387 /* RemoveSpaceshipBehavior.h */,
-				DCEF831717CFDE9500157387 /* RemoveSpaceshipBehavior.m */,
+				98C74509187E528F00DF74E2 /* tile.tmx */,
+				98C74505187E506100DF74E2 /* tiledmap.tmx */,
 				DCCC6198178C5574009EC802 /* Resources */,
 				DC5BCD9617CF88E400A5CB01 /* KoboldKitResources */,
 				DCD11E3A178C522300FBC406 /* Supporting Files */,
@@ -596,6 +596,7 @@
 				DC5BCDB917CF88E500A5CB01 /* Default@2x.png in Resources */,
 				DCEF82D017CFD35B00157387 /* Icon-72@2x.png in Resources */,
 				DC18B128178C7EA000641A6D /* Main_iPad.storyboard in Resources */,
+				98C7450A187E528F00DF74E2 /* tile.tmx in Resources */,
 				DC5BCDB517CF88E500A5CB01 /* Default-Landscape~ipad.png in Resources */,
 				DC5BCDAA17CF88E500A5CB01 /* Icon~ipad.png in Resources */,
 				DC9F5AC217E9C985000B593D /* devconfig.lua in Resources */,
@@ -617,6 +618,7 @@
 				DCEF82CF17CFD35B00157387 /* Icon-72.png in Resources */,
 				DC5BCDB617CF88E500A5CB01 /* Default-Landscape@2x~ipad.png in Resources */,
 				DC18B129178C7EA000641A6D /* Main_iPhone.storyboard in Resources */,
+				98C74506187E506100DF74E2 /* tiledmap.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,7 +632,6 @@
 				DCD7EC4A178C573500BBAFB0 /* AppDelegate.m in Sources */,
 				DCD11E40178C522300FBC406 /* main.m in Sources */,
 				DC0C220817CF9C97007FE7B8 /* MyScene.m in Sources */,
-				DCEF831917CFDE9500157387 /* RemoveSpaceshipBehavior.m in Sources */,
 				DCD7EC4D178C573500BBAFB0 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,7 +643,6 @@
 				DCD7A289178C7526004A0467 /* AppDelegate.m in Sources */,
 				DCD7A28C178C7526004A0467 /* ViewController.m in Sources */,
 				DC0C220717CF9C97007FE7B8 /* MyScene.m in Sources */,
-				DCEF831817CFDE9500157387 /* RemoveSpaceshipBehavior.m in Sources */,
 				DCD7A28D178C7526004A0467 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,9 +702,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -721,9 +719,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INFOPLIST_FILE = "EscapeTheSchool/EscapeTheSchool-Mac-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";

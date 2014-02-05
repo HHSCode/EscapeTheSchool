@@ -86,7 +86,8 @@ DEVELOPER_TODO("tilemap pvr texture load")
 -(void) createTileTextures
 {
 	// first figure out how many rects to allocate
-	CGSize textureSize = _texture.size;
+//#warning changed from _texture.size
+	CGSize textureSize = CGSizeMake(32, 32);
 	CGSize pixelSize = textureSize;
 	if ([_imageFile containsString:@"@2x"])
 	{
