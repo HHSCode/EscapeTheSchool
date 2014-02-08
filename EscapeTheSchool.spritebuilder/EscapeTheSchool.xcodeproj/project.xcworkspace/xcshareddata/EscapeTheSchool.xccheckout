@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4D15743E-7BC7-4128-9559-4F0358C42906</string>
+	<key>IDESourceControlProjectName</key>
+	<string>EscapeTheSchool</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9EBE0ABB-0E90-4490-8DE7-A0B519878248</key>
+		<string>https://github.com/HHSCode/EscapeTheSchool.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>EscapeTheSchool.spritebuilder/EscapeTheSchool.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9EBE0ABB-0E90-4490-8DE7-A0B519878248</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/HHSCode/EscapeTheSchool.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9EBE0ABB-0E90-4490-8DE7-A0B519878248</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9EBE0ABB-0E90-4490-8DE7-A0B519878248</string>
+			<key>IDESourceControlWCCName</key>
+			<string>EscapeTheSchool</string>
+		</dict>
+	</array>
+</dict>
+</plist>
