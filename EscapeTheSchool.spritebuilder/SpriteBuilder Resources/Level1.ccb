@@ -41,21 +41,13 @@
 				<array>
 					<dict>
 						<key>name</key>
-						<string>name</string>
-						<key>type</key>
-						<string>StringSimple</string>
-						<key>value</key>
-						<string></string>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1420.2779541015625</real>
-							<real>164.80255126953125</real>
+							<real>371</real>
+							<real>158</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -79,8 +71,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>3.8313016891479492</real>
-							<real>3.8313016891479492</real>
+							<real>7.0101070404052734</real>
+							<real>4.1108517646789551</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -96,20 +88,132 @@
 							<string>gradiant1.png</string>
 						</array>
 					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>animatedProperties</key>
+				<dict>
+					<key>0</key>
 					<dict>
+						<key>position</key>
+						<dict>
+							<key>keyframes</key>
+							<array>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>position</string>
+									<key>time</key>
+									<real>0.0</real>
+									<key>type</key>
+									<integer>3</integer>
+									<key>value</key>
+									<array>
+										<real>71</real>
+										<real>114</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>time</key>
+									<real>10</real>
+									<key>type</key>
+									<integer>3</integer>
+									<key>value</key>
+									<array>
+										<real>2889</real>
+										<real>114</real>
+									</array>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>position</string>
+							<key>type</key>
+							<integer>3</integer>
+						</dict>
+					</dict>
+				</dict>
+				<key>baseClass</key>
+				<string>CCSprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>walking-man-black</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>baseValue</key>
+						<array>
+							<real>71</real>
+							<real>114</real>
+						</array>
 						<key>name</key>
-						<string>color</string>
+						<string>position</string>
 						<key>type</key>
-						<string>Color3</string>
+						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
+							<real>1094.8734130859375</real>
+							<real>114</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.48610416054725647</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>0.57827150821685791</real>
+							<real>0.57827150821685791</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>spriteFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>walking-man-black.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -122,14 +226,6 @@
 		<integer>0</integer>
 		<key>properties</key>
 		<array>
-			<dict>
-				<key>name</key>
-				<string>name</string>
-				<key>type</key>
-				<string>StringSimple</string>
-				<key>value</key>
-				<string></string>
-			</dict>
 			<dict>
 				<key>name</key>
 				<string>position</string>
@@ -205,15 +301,15 @@
 			<key>centeredOrigin</key>
 			<false/>
 			<key>ext</key>
-			<string>tablet phonehd</string>
+			<string>phone</string>
 			<key>height</key>
-			<integer>320</integer>
+			<integer>640</integer>
 			<key>name</key>
 			<string>Tablet</string>
 			<key>scale</key>
 			<real>2</real>
 			<key>width</key>
-			<integer>3000</integer>
+			<integer>6000</integer>
 		</dict>
 	</array>
 	<key>sequences</key>
@@ -237,17 +333,15 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>3.6333334445953369</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>128</real>
+			<real>32</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>
 			<dict>
-				<key>isExpanded</key>
-				<false/>
 				<key>keyframes</key>
 				<array/>
 				<key>type</key>
