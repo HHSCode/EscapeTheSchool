@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4D15743E-7BC7-4128-9559-4F0358C42906</string>
+	<string>CA6B5AE8-90EC-439B-AE95-3E04FBF2B191</string>
 	<key>IDESourceControlProjectName</key>
 	<string>EscapeTheSchool</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -21,7 +21,7 @@
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/HHSCode/EscapeTheSchool.git</string>
+	<string>svn://svn.simbex.com/Greenwald/EscapeTheSchool/EscapeTheSchool.spritebuilder/EscapeTheSchool.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
