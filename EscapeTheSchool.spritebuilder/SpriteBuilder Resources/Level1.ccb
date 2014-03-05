@@ -113,8 +113,8 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>71</real>
-										<real>114</real>
+										<real>124</real>
+										<real>159</real>
 									</array>
 								</dict>
 								<dict>
@@ -123,14 +123,16 @@
 										<key>type</key>
 										<integer>1</integer>
 									</dict>
+									<key>name</key>
+									<string>position</string>
 									<key>time</key>
 									<real>10</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>2889</real>
-										<real>114</real>
+										<real>2899</real>
+										<real>159</real>
 									</array>
 								</dict>
 							</array>
@@ -158,8 +160,8 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>71</real>
-							<real>114</real>
+							<real>124</real>
+							<real>159</real>
 						</array>
 						<key>name</key>
 						<string>position</string>
@@ -167,8 +169,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1094.8734130859375</real>
-							<real>114</real>
+							<real>124</real>
+							<real>159</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -182,7 +184,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.48610416054725647</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -192,8 +194,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.57827150821685791</real>
-							<real>0.57827150821685791</real>
+							<real>0.69471287727355957</real>
+							<real>0.69471287727355957</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -210,8 +212,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -333,7 +333,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3.6333334445953369</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -173,11 +173,9 @@
 			<integer>1</integer>
 		</dict>
 	</dict>
-	<key>tabletPositionScaleFactorType</key>
-	<integer>0</integer>
 	<key>versionStr</key>
-	<string>Version: 0.9.alpha
-GitHub: a60fad70ec
+	<string>Version: 1.0.3
+GitHub: 9026dcdd50
 </string>
 </dict>
 </plist>
