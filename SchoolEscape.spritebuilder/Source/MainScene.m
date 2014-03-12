@@ -10,8 +10,21 @@
 
 @implementation MainScene
 
+-(void)play{
+    NSLog(@"Play");
+}
+
 -(void)about{
     NSLog(@"About");
 }
+
+-(void)settings{
+    NSLog(@"Settings");
+}
+
+-(void)store{
+    NSLog(@"Store");
+}
+
 
 @end
