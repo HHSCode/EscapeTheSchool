@@ -20,6 +20,7 @@ static const CGFloat scrollSpeed = 80.f;
 
 - (void)didLoadFromCCB {
     _grounds = @[_ground1, _ground2];
+    NSLog(@"Ground Content Size: %@",NSStringFromCGSize( _ground1.contentSize) );
 }
 
 - (void)update:(CCTime)delta {
