@@ -37,44 +37,6 @@
 				<string></string>
 				<key>memberVarAssignmentType</key>
 				<integer>0</integer>
-				<key>physicsBody</key>
-				<dict>
-					<key>affectedByGravity</key>
-					<true/>
-					<key>allowsRotation</key>
-					<true/>
-					<key>bodyShape</key>
-					<integer>0</integer>
-					<key>cornerRadius</key>
-					<real>0.0</real>
-					<key>density</key>
-					<real>1</real>
-					<key>dynamic</key>
-					<false/>
-					<key>elasticity</key>
-					<real>0.30000001192092896</real>
-					<key>friction</key>
-					<real>0.30000001192092896</real>
-					<key>points</key>
-					<array>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-						<array>
-							<real>0.0</real>
-							<real>240</real>
-						</array>
-						<array>
-							<real>160</real>
-							<real>240</real>
-						</array>
-						<array>
-							<real>160</real>
-							<real>0.0</real>
-						</array>
-					</array>
-				</dict>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -251,9 +213,47 @@
 						<key>displayName</key>
 						<string>ground</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_ground1</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
+						<key>physicsBody</key>
+						<dict>
+							<key>affectedByGravity</key>
+							<true/>
+							<key>allowsRotation</key>
+							<true/>
+							<key>bodyShape</key>
+							<integer>0</integer>
+							<key>cornerRadius</key>
+							<real>0.0</real>
+							<key>density</key>
+							<real>1</real>
+							<key>dynamic</key>
+							<false/>
+							<key>elasticity</key>
+							<real>0.30000001192092896</real>
+							<key>friction</key>
+							<real>0.30000001192092896</real>
+							<key>points</key>
+							<array>
+								<array>
+									<real>0.0</real>
+									<real>0.0</real>
+								</array>
+								<array>
+									<real>228.87034606933594</real>
+									<real>-1.123199462890625</real>
+								</array>
+								<array>
+									<real>228.78410339355469</real>
+									<real>76.811988830566406</real>
+								</array>
+								<array>
+									<real>0.0</real>
+									<real>77</real>
+								</array>
+							</array>
+						</dict>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -271,8 +271,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>107</real>
-									<real>19</real>
+									<real>-3</real>
+									<real>28</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -285,7 +285,7 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>0.0</real>
 									<real>0.5</real>
 								</array>
 							</dict>
@@ -296,8 +296,133 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>5.8651371002197266</real>
-									<real>1.2093721628189087</real>
+									<real>2.5364193916320801</real>
+									<real>0.78946805000305176</real>
+									<false/>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>spriteFrame</string>
+								<key>type</key>
+								<string>SpriteFrame</string>
+								<key>value</key>
+								<array>
+									<string></string>
+									<string>FlappyFlyArtPack/ground.png</string>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+									<real>1</real>
+									<real>1</real>
+								</array>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>baseClass</key>
+						<string>CCSprite</string>
+						<key>children</key>
+						<array/>
+						<key>customClass</key>
+						<string></string>
+						<key>displayName</key>
+						<string>ground</string>
+						<key>memberVarAssignmentName</key>
+						<string>_ground2</string>
+						<key>memberVarAssignmentType</key>
+						<integer>1</integer>
+						<key>physicsBody</key>
+						<dict>
+							<key>affectedByGravity</key>
+							<true/>
+							<key>allowsRotation</key>
+							<true/>
+							<key>bodyShape</key>
+							<integer>0</integer>
+							<key>cornerRadius</key>
+							<real>0.0</real>
+							<key>density</key>
+							<real>1</real>
+							<key>dynamic</key>
+							<false/>
+							<key>elasticity</key>
+							<real>0.30000001192092896</real>
+							<key>friction</key>
+							<real>0.30000001192092896</real>
+							<key>points</key>
+							<array>
+								<array>
+									<real>0.0</real>
+									<real>0.0</real>
+								</array>
+								<array>
+									<real>228.87034606933594</real>
+									<real>-1.123199462890625</real>
+								</array>
+								<array>
+									<real>228.78410339355469</real>
+									<real>76.811988830566406</real>
+								</array>
+								<array>
+									<real>0.0</real>
+									<real>77</real>
+								</array>
+							</array>
+						</dict>
+						<key>properties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>name</string>
+								<key>type</key>
+								<string>StringSimple</string>
+								<key>value</key>
+								<string></string>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>567</real>
+									<real>30</real>
+									<integer>0</integer>
+									<integer>0</integer>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.0</real>
+									<real>0.5</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>scale</string>
+								<key>type</key>
+								<string>ScaleLock</string>
+								<key>value</key>
+								<array>
+									<real>2.5364193916320801</real>
+									<real>0.78946805000305176</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -338,9 +463,9 @@
 						<key>displayName</key>
 						<string>CCBFile</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_hero</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -356,7 +481,7 @@
 							<key>dynamic</key>
 							<true/>
 							<key>elasticity</key>
-							<real>0.30000001192092896</real>
+							<real>1</real>
 							<key>friction</key>
 							<real>0.30000001192092896</real>
 							<key>points</key>
@@ -367,14 +492,14 @@
 								</array>
 								<array>
 									<real>0.0</real>
-									<real>32</real>
+									<real>11</real>
 								</array>
 								<array>
-									<real>32</real>
-									<real>32</real>
+									<real>16</real>
+									<real>11</real>
 								</array>
 								<array>
-									<real>32</real>
+									<real>16</real>
 									<real>0.0</real>
 								</array>
 							</array>
@@ -396,8 +521,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>94</real>
-									<real>149</real>
+									<real>111</real>
+									<real>163</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -410,8 +535,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3</real>
-									<real>3</real>
+									<real>0.20000000298023224</real>
+									<real>0.20000000298023224</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -425,8 +550,6 @@
 								<string>Hero.ccb</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -434,9 +557,9 @@
 				<key>displayName</key>
 				<string>CCPhysicsNode</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_physicsNode</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -454,7 +577,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>0.0</real>
 							<real>0.0</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -521,7 +644,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>Game</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>
