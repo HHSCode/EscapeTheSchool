@@ -29,7 +29,6 @@ static const CGFloat scrollSpeed = 80.f;
 }
 
 - (void)update:(CCTime)delta {
-    //
     _hero.position = ccp(_hero.position.x + delta * scrollSpeed, _hero.position.y);
     float yVelocity = clampf(_hero.physicsBody.velocity.y, -1 * MAXFLOAT, 200.f);
     _hero.physicsBody.velocity = ccp(0, yVelocity);
