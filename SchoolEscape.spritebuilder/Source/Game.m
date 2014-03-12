@@ -20,11 +20,18 @@ static const CGFloat scrollSpeed = 80.f;
 
 - (void)didLoadFromCCB {
     _grounds = @[_ground1, _ground2];
-    NSLog(@"Ground Content Size: %@",NSStringFromCGSize( _ground1.contentSize) );
+    self.userInteractionEnabled = TRUE;
+
+}
+
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    [_hero.physicsBody applyImpulse:ccp(0, 40.f)];  //JUMP HEIGHT
 }
 
 - (void)update:(CCTime)delta {
     _hero.position = ccp(_hero.position.x + delta * scrollSpeed, _hero.position.y);
+    float yVelocity = clampf(_hero.physicsBody.velocity.y, -1 * MAXFLOAT, 200.f);
+    _hero.physicsBody.velocity = ccp(0, yVelocity);
     _physicsNode.position = ccp(_physicsNode.position.x - (scrollSpeed *delta), _physicsNode.position.y);
     for (CCNode *ground in _grounds) {
         // get the world position of the ground
