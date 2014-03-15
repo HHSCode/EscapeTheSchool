@@ -79,8 +79,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2.0677108764648438</real>
-							<real>2.0218074321746826</real>
+							<real>3.7100763320922852</real>
+							<real>1.5095008611679077</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -272,7 +272,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>14</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -286,7 +286,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>0.5</real>
 								</array>
 							</dict>
 							<dict>
@@ -397,7 +397,7 @@
 								<key>value</key>
 								<array>
 									<real>568</real>
-									<real>0.0</real>
+									<real>14</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -411,7 +411,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>0.5</real>
 								</array>
 							</dict>
 							<dict>
@@ -463,7 +463,7 @@
 						<key>displayName</key>
 						<string>CCBFile</string>
 						<key>memberVarAssignmentName</key>
-						<string>_physicsNode</string>
+						<string>_hero</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>physicsBody</key>
@@ -481,9 +481,9 @@
 							<key>dynamic</key>
 							<true/>
 							<key>elasticity</key>
-							<real>0.30000001192092896</real>
+							<real>1</real>
 							<key>friction</key>
-							<real>0.0</real>
+							<real>0.30000001192092896</real>
 							<key>points</key>
 							<array>
 								<array>
@@ -492,14 +492,14 @@
 								</array>
 								<array>
 									<real>0.0</real>
-									<real>375</real>
+									<real>11</real>
 								</array>
 								<array>
-									<real>222</real>
-									<real>375</real>
+									<real>16</real>
+									<real>11</real>
 								</array>
 								<array>
-									<real>222</real>
+									<real>16</real>
 									<real>0.0</real>
 								</array>
 							</array>
@@ -521,8 +521,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>68</real>
-									<real>138</real>
+									<real>111</real>
+									<real>163</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -535,8 +535,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.23940767347812653</real>
-									<real>0.23940767347812653</real>
+									<real>0.20000000298023224</real>
+									<real>0.20000000298023224</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -641,6 +641,8 @@
 						<real>0.5</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
