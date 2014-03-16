@@ -102,7 +102,6 @@ static const CGFloat scrollSpeed = 160.f; //scroll speed, change this to make it
 }
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    NSLog(@"Hero Position: %@", NSStringFromCGPoint(_hero.position));
     if (_hero.position.y<30.0) { //checks if hero is on the ground before allowing it to jump. the hero is generally at 29.9 when on the ground, so hopefully this will always work
         [_hero.physicsBody applyImpulse:ccp(0, 375.f)]; //applies impulse to make the hero jump
 
@@ -135,7 +134,6 @@ static const CGFloat scrollSpeed = 160.f; //scroll speed, change this to make it
     _hero.position = ccp(_hero.position.x + delta * scrollSpeed, _hero.position.y); //keeps hero in line with the moving physics node
     _physicsNode.position = ccp(_physicsNode.position.x - (scrollSpeed *delta), _physicsNode.position.y); //moves the physics node to the left
     // loop the ground
-    NSLog(@"%@", _grounds);
     
     for (CCNode *ground in _grounds) {
         // get the world position of the ground
