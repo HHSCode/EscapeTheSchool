@@ -36,7 +36,6 @@ static const CGFloat scrollSpeed = 160.f; //scroll speed, change this to make it
     [self schedule:@selector(addCoin) interval:4];//schedules addcoin method so a new coin is added every 4 seconds. Decrease this to make coins less frequent
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
-    _grounds = [[NSArray alloc]initWithObjects:_ground1, _ground2, nil ];//allocate grounds array
 
     //BACKGROUND
     CCSprite *_background = [CCSprite spriteWithImageNamed:@"background1.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
@@ -95,6 +94,7 @@ static const CGFloat scrollSpeed = 160.f; //scroll speed, change this to make it
     _hero.physicsBody.allowsRotation=NO;
     [_physicsNode addChild:_hero];
 
+    _grounds = [[NSArray alloc]initWithObjects:_ground1, _ground2, nil ];//allocate grounds array
 
     [self addChild:_physicsNode]; //add physics node to the scene
 
@@ -135,6 +135,8 @@ static const CGFloat scrollSpeed = 160.f; //scroll speed, change this to make it
     _hero.position = ccp(_hero.position.x + delta * scrollSpeed, _hero.position.y); //keeps hero in line with the moving physics node
     _physicsNode.position = ccp(_physicsNode.position.x - (scrollSpeed *delta), _physicsNode.position.y); //moves the physics node to the left
     // loop the ground
+    NSLog(@"%@", _grounds);
+    
     for (CCNode *ground in _grounds) {
         // get the world position of the ground
         CGPoint groundWorldPosition = [_physicsNode convertToWorldSpace:ground.position];
