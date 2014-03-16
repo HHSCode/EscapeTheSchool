@@ -36,7 +36,7 @@ static const CGFloat scrollSpeed = 160.f; //scroll speed, change this to make it
     [self schedule:@selector(addCoin) interval:4];//schedules addcoin method so a new coin is added every 4 seconds. Decrease this to make coins less frequent
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
-    _grounds = @[_ground1, _ground2]; //allocate grounds array
+    _grounds = [[NSArray alloc]initWithObjects:_ground1, _ground2, nil ];//allocate grounds array
 
     //BACKGROUND
     CCSprite *_background = [CCSprite spriteWithImageNamed:@"background1.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
