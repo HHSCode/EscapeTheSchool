@@ -7,39 +7,39 @@
             <key>runningman1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,357},{358,353}}</string>
+                <string>{{2,301},{288,277}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-4,-29}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{358,353}}</string>
+                <string>{{31,67},{288,277}}</string>
                 <key>sourceSize</key>
                 <string>{358,353}</string>
             </dict>
             <key>runningman2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{362,2},{358,353}}</string>
+                <string>{{2,2},{358,297}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,28}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{358,353}}</string>
+                <string>{{0,0},{358,297}}</string>
                 <key>sourceSize</key>
                 <string>{358,353}</string>
             </dict>
             <key>runningman3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{358,353}}</string>
+                <string>{{362,2},{138,245}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-3,-8}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{358,353}}</string>
+                <string>{{107,62},{138,245}}</string>
                 <key>sourceSize</key>
                 <string>{358,353}</string>
             </dict>
@@ -51,9 +51,9 @@
             <key>realTextureFileName</key>
             <string>runningmansheet.png</string>
             <key>size</key>
-            <string>{1024,1024}</string>
+            <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e9f14b041ac78738e11305dc59c9a7c8:1a33f4d93586043dd85749d188a3295e:5a7232f1436db98126bdeb04210063c1$</string>
+            <string>$TexturePacker:SmartUpdate:68c70b8802a6c23cc28682e45e983c0a:490af1a6f1cf573451d1e35eeb4b3eb6:5a7232f1436db98126bdeb04210063c1$</string>
             <key>textureFileName</key>
             <string>runningmansheet.png</string>
         </dict>

@@ -222,8 +222,8 @@
 		98E1494818D511D90044BA6A /* ground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494718D511D90044BA6A /* ground2.png */; };
 		98E1494A18D51DC00044BA6A /* walking-man-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494918D51DC00044BA6A /* walking-man-black.png */; };
 		B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF63B018D5BCDF0062141C /* Images.xcassets */; };
-		BF2F000018D6BEEF003BB0FF /* runningmansheet.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2FFFFE18D6BEEF003BB0FF /* runningmansheet.png */; };
-		BF2FFFFF18D6BEEF003BB0FF /* runningmansheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF2FFFFD18D6BEEF003BB0FF /* runningmansheet.plist */; };
+		BF2F000318D6C583003BB0FF /* runningmansheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF2F000118D6C583003BB0FF /* runningmansheet.plist */; };
+		BF2F000418D6C583003BB0FF /* runningmansheet.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2F000218D6C583003BB0FF /* runningmansheet.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -678,8 +678,8 @@
 		98E1494718D511D90044BA6A /* ground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground2.png; sourceTree = "<group>"; };
 		98E1494918D51DC00044BA6A /* walking-man-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "walking-man-black.png"; sourceTree = "<group>"; };
 		B3DF63B018D5BCDF0062141C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		BF2FFFFD18D6BEEF003BB0FF /* runningmansheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = runningmansheet.plist; sourceTree = "<group>"; };
-		BF2FFFFE18D6BEEF003BB0FF /* runningmansheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runningmansheet.png; sourceTree = "<group>"; };
+		BF2F000118D6C583003BB0FF /* runningmansheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = runningmansheet.plist; sourceTree = "<group>"; };
+		BF2F000218D6C583003BB0FF /* runningmansheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runningmansheet.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -765,8 +765,8 @@
 				98E143F618D507F70044BA6A /* iTunesArtwork */,
 				98E143F818D507F70044BA6A /* iTunesArtwork@2x */,
 				98E1494918D51DC00044BA6A /* walking-man-black.png */,
-				BF2FFFFD18D6BEEF003BB0FF /* runningmansheet.plist */,
-				BF2FFFFE18D6BEEF003BB0FF /* runningmansheet.png */,
+				BF2F000118D6C583003BB0FF /* runningmansheet.plist */,
+				BF2F000218D6C583003BB0FF /* runningmansheet.png */,
 				98E143DA18D507F70044BA6A /* Icons */,
 			);
 			name = Resources;
@@ -1666,7 +1666,7 @@
 				98E145EC18D507F90044BA6A /* LICENSE_CCBReader.txt in Resources */,
 				98E143DE18D507F70044BA6A /* Icon@2x.png in Resources */,
 				98E143F018D507F70044BA6A /* Icon-Small@2x.png in Resources */,
-				BF2FFFFF18D6BEEF003BB0FF /* runningmansheet.plist in Resources */,
+				BF2F000318D6C583003BB0FF /* runningmansheet.plist in Resources */,
 				98E143E218D507F70044BA6A /* Icon-72@2x.png in Resources */,
 				98E143D318D507F70044BA6A /* Default.png in Resources */,
 				98E143DC18D507F70044BA6A /* Icon.png in Resources */,
@@ -1693,7 +1693,7 @@
 				98E1494618D50FED0044BA6A /* background1.png in Resources */,
 				9820C1D318D62EA600CDEFD4 /* white-closed-book.png in Resources */,
 				98E143F918D507F70044BA6A /* iTunesArtwork@2x in Resources */,
-				BF2F000018D6BEEF003BB0FF /* runningmansheet.png in Resources */,
+				BF2F000418D6C583003BB0FF /* runningmansheet.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

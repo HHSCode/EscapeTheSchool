@@ -87,7 +87,7 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     //PHYSICS NODE
     _physicsNode = [CCPhysicsNode node];
     _physicsNode.gravity = ccp(0,-1500); //change this to increase or decrease gravity
-    _physicsNode.debugDraw = YES; //YES to see phsyics bodies
+    _physicsNode.debugDraw = NO; //YES to see phsyics bodies
     _physicsNode.collisionDelegate = self;
     
     //GROUND 1 PHYSICS
