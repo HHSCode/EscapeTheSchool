@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "CCAnimation.h"
 static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
 
 
@@ -64,17 +65,29 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     [_ground2 setScaleY:.5];
     
     //HERO
-    _hero = [CCSprite spriteWithImageNamed:@"walking-man-black.png" ];
+    NSMutableArray *runFrames = [NSMutableArray array];
+    CCSpriteFrameCache *cache = [CCSpriteFrameCache sharedSpriteFrameCache];
+    [cache addSpriteFramesWithFile:@"runningmansheet.plist"];
+
+    for(int i = 1; i <= 3; ++i)
+    {
+        [runFrames addObject:[cache spriteFrameByName: [NSString stringWithFormat:@"runningman%i.png", i]]];
+    }
+    CCAnimation *runAnimation = [CCAnimation animationWithSpriteFrames:runFrames delay:0.1f];
+    CCActionAnimate *animationAction = [CCActionAnimate actionWithAnimation:runAnimation];
+    CCActionRepeatForever *repeatingAnimation = [CCActionRepeatForever actionWithAction:animationAction];
+    _hero = [CCSprite spriteWithImageNamed:@"runningman1.png" ];
+    [_hero runAction:repeatingAnimation];
     [_hero setAnchorPoint:ccp(0, 0)];
     [_hero setPosition:ccp(60, 100)];
-    [_hero setScaleX:.05];
-    [_hero setScaleY:.05];
+    [_hero setScaleX:.25];
+    [_hero setScaleY:.25];
 
     
     //PHYSICS NODE
     _physicsNode = [CCPhysicsNode node];
     _physicsNode.gravity = ccp(0,-1500); //change this to increase or decrease gravity
-    _physicsNode.debugDraw = YES; //change this to see phsyics bodies
+    _physicsNode.debugDraw = YES; //YES to see phsyics bodies
     _physicsNode.collisionDelegate = self;
     
     //GROUND 1 PHYSICS
