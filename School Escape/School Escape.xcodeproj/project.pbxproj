@@ -221,6 +221,8 @@
 		98E1494618D50FED0044BA6A /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494518D50FED0044BA6A /* background1.png */; };
 		98E1494818D511D90044BA6A /* ground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494718D511D90044BA6A /* ground2.png */; };
 		98E1494A18D51DC00044BA6A /* walking-man-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494918D51DC00044BA6A /* walking-man-black.png */; };
+		B348805718D88CFB00CC5067 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805618D88CFB00CC5067 /* GameKit.framework */; };
+		B348805918D88D1F00CC5067 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805818D88D1F00CC5067 /* StoreKit.framework */; };
 		B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF63B018D5BCDF0062141C /* Images.xcassets */; };
 		BF2B4B9E18D81277004724EC /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B4B9D18D81277004724EC /* Pause.m */; };
 		BF2B4BA118D81EDB004724EC /* Lose.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B4BA018D81EDB004724EC /* Lose.m */; };
@@ -679,6 +681,9 @@
 		98E1494518D50FED0044BA6A /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
 		98E1494718D511D90044BA6A /* ground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground2.png; sourceTree = "<group>"; };
 		98E1494918D51DC00044BA6A /* walking-man-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "walking-man-black.png"; sourceTree = "<group>"; };
+		B348805518D88CF500CC5067 /* School Escape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "School Escape.entitlements"; sourceTree = "<group>"; };
+		B348805618D88CFB00CC5067 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		B348805818D88D1F00CC5067 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B3DF63B018D5BCDF0062141C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF2B4B9C18D81277004724EC /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
 		BF2B4B9D18D81277004724EC /* Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pause.m; sourceTree = "<group>"; };
@@ -693,8 +698,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B348805718D88CFB00CC5067 /* GameKit.framework in Frameworks */,
 				98E143CF18D507F70044BA6A /* libObjectiveChipmunk.a in Frameworks */,
 				98E143BD18D507F70044BA6A /* OpenAL.framework in Frameworks */,
+				B348805918D88D1F00CC5067 /* StoreKit.framework in Frameworks */,
 				98E143C318D507F70044BA6A /* UIKit.framework in Frameworks */,
 				98E143B918D507F70044BA6A /* QuartzCore.framework in Frameworks */,
 				98E143C118D507F70044BA6A /* AVFoundation.framework in Frameworks */,
@@ -730,6 +737,8 @@
 		98E143B718D507F70044BA6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B348805818D88D1F00CC5067 /* StoreKit.framework */,
+				B348805618D88CFB00CC5067 /* GameKit.framework */,
 				98E143B818D507F70044BA6A /* QuartzCore.framework */,
 				98E143BA18D507F70044BA6A /* OpenGLES.framework */,
 				98E143BC18D507F70044BA6A /* OpenAL.framework */,
@@ -746,6 +755,7 @@
 		98E143D018D507F70044BA6A /* School Escape */ = {
 			isa = PBXGroup;
 			children = (
+				B348805518D88CF500CC5067 /* School Escape.entitlements */,
 				98E1465F18D507F90044BA6A /* Classes */,
 				98E143D118D507F70044BA6A /* Resources */,
 				98E143FA18D507F70044BA6A /* Libraries */,
@@ -1647,6 +1657,22 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Lordtechy;
+				TargetAttributes = {
+					98E143B418D507F70044BA6A = {
+						DevelopmentTeam = 6U3V4DF34U;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 98E143B018D507F70044BA6A /* Build configuration list for PBXProject "School Escape" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2010,6 +2036,9 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "School Escape/School Escape.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2026,6 +2055,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2037,6 +2067,9 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "School Escape/School Escape.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "School Escape/Supporting Files/Prefix.pch";
@@ -2052,6 +2085,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -23,7 +23,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>265</string>
+	<string>269</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>
@@ -31,6 +31,8 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<dict>
 		<key>accelerometer</key>
+		<true/>
+		<key>gamekit</key>
 		<true/>
 		<key>opengles-2</key>
 		<true/>
