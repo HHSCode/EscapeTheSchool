@@ -35,6 +35,13 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     return [[self alloc] init];
 }
 
+-(void)updateCoinSpawnSpeed{
+    float CoinInterval = ((float)((arc4random() % 9)+1))/10.0;
+    NSLog(@"CoinInterval: %f",CoinInterval);
+    [self unschedule:@selector(addCoin)];
+    [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
+}
+
 - (id)init
 {
     // Apple recommend assigning self with supers return value
@@ -44,8 +51,9 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     self.userInteractionEnabled = YES; //makes it so user can touch screen
     float CoinInterval = ((float)((arc4random() % 9)+1))/10.0;
     NSLog(@"CoinInterval: %f",CoinInterval);
-    [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added every 4 seconds. Decrease this to make coins less frequent
+    [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
     [self schedule:@selector(addObstacle) interval:5];
+    [self schedule:@selector(updateCoinSpawnSpeed) interval:2];
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
     _obstacles = [[NSMutableArray alloc]init];
@@ -231,7 +239,6 @@ BOOL intersects=NO; //initializes no intersection
         [_obstacles removeObjectAtIndex:0]; //delete from array
     }
     [_physicsNode addChild:_obstacle]; //adds coin to physics node
-
 }
 
 - (void)update:(CCTime)delta {
