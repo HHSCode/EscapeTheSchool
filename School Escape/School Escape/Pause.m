@@ -28,6 +28,8 @@
     [gameButton setTarget:self selector:@selector(gamePressed)]; //if pressed run gamePressed
     CCButton *restartButton = [CCButton buttonWithTitle:@"Restart"]; //creates restart button
     [restartButton setTarget:self selector:@selector(restartPressed)]; //if pressed run restartPressed
+    CCButton *gamecenterButton = [CCButton buttonWithTitle:@"Game Center"]; //creates Game Center button
+    [gamecenterButton setTarget:self selector:@selector(gamecenterPressed)]; //if pressed run gamecenterPressed
     CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
     [menuButton setTarget:self selector:@selector(menuPressed)]; //if pressed run menuPressed
     
@@ -35,6 +37,7 @@
     [pauseLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
     [pauseLayoutBox addChild:menuButton]; //add menu to layout box
     [pauseLayoutBox addChild:restartButton]; //add restart to layout box
+    [pauseLayoutBox addChild:gamecenterButton]; //add game center to layout box
     [pauseLayoutBox addChild:gameButton]; //add resume to layout box
     
     [pauseLayoutBox setSpacing:10.f];
