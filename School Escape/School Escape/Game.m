@@ -27,6 +27,7 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     CCLabelTTF *_coinCounterLabelStatic;
     CCLabelTTF *_distanceLabelStatic;
     BOOL hasDoubleJumped;
+    BOOL intersects;
 }
 + (Game *)scene //DONT TOUCH THIS
 {
@@ -91,7 +92,7 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     //PHYSICS NODE
     _physicsNode = [CCPhysicsNode node];
     _physicsNode.gravity = ccp(0,-1500); //change this to increase or decrease gravity
-    _physicsNode.debugDraw = NO; //YES to see phsyics bodies
+    _physicsNode.debugDraw = YES; //YES to see phsyics bodies
     _physicsNode.collisionDelegate = self;
     
     //GROUND 1 PHYSICS
@@ -151,16 +152,24 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
 	return self;
 }
 
+
+BOOL intersects=NO;
+
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     if (_hero.position.y<30.0) { //checks if hero is on the ground before allowing it to jump. the hero is generally at 29.9 when on the ground, so hopefully this will always work
         [_hero.physicsBody applyImpulse:ccp(0, 600.f)]; //applies impulse to make the hero jump
 
     }else{
-        if (hasDoubleJumped==NO) {
+        if (hasDoubleJumped==NO && !(_hero.position.y>90 && intersects)) {
             [_hero.physicsBody setVelocity:ccp(0, 0)];
             [_hero.physicsBody applyImpulse:ccp(0, 500.f)]; //applies impulse to make the hero jump
             hasDoubleJumped=YES;
         }
+    }
+    if (_hero.position.y>90 && intersects) {
+        [_hero.physicsBody applyImpulse:ccp(0, 600.f)];
+        hasDoubleJumped=YES;
+        intersects=NO;
     }
 }
 
@@ -298,14 +307,13 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
             NSLog(@"Hero b: %f", _hero.position.y);
             NSLog(@"Obst t: %f\n|", obstacle.position.y+obstacle.contentSize.height);
 
-            //shouldRemove=YES;
+            intersects=YES;
         }
         
         if (shouldRemove) {
             [obstacle removeFromParent];
             
         }
-        
         
     }
 
