@@ -42,7 +42,8 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     if (!self) return(nil);
     
     self.userInteractionEnabled = YES; //makes it so user can touch screen
-    int CoinInterval = arc4random() % 1;
+    float CoinInterval = ((float)((arc4random() % 9)+1))/10.0;
+    NSLog(@"CoinInterval: %f",CoinInterval);
     [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added every 4 seconds. Decrease this to make coins less frequent
     [self schedule:@selector(addObstacle) interval:5];
     
