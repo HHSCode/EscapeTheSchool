@@ -14,6 +14,7 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
 @implementation Game{
     CCPhysicsNode *_physicsNode; //main physics node
     int score;
+    int distance;
     CCNode *_hero; //the hero, or the main character, or the runner
     CCNode *_ground1;
     CCNode *_ground2;
@@ -22,13 +23,15 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     NSMutableArray *_coins2;
     NSMutableArray *_obstacles;
     CCLabelTTF *_coinCounterLabel;
+    CCLabelTTF *_distanceLabel;
+    CCLabelTTF *_coinCounterLabelStatic;
+    CCLabelTTF *_distanceLabelStatic;
     BOOL hasDoubleJumped;
 }
 + (Game *)scene //DONT TOUCH THIS
 {
     return [[self alloc] init];
 }
-
 
 - (id)init
 {
@@ -122,6 +125,24 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     [_coinCounterLabel setColor:(0,0,0)];
     [_coinCounterLabel setAnchorPoint:ccp(1, 1)];
     [self addChild:_coinCounterLabel z:1];
+    _coinCounterLabelStatic = [CCLabelTTF labelWithString:@"Coins: " fontName:@"Marker Felt" fontSize:20];
+    [_coinCounterLabelStatic setPosition:ccp(self.contentSize.width-60, self.contentSize.height-10)];
+    [_coinCounterLabelStatic setColor:(0,0,0)];
+    [_coinCounterLabelStatic setAnchorPoint:ccp(1, 1)];
+    [self addChild:_coinCounterLabelStatic z:1];
+    
+    //DISTANCE
+    distance = 0;
+    _distanceLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:20];
+    [_distanceLabel setPosition:ccp(self.contentSize.width-10, self.contentSize.height-30)];
+    [_distanceLabel setColor:(0,0,0)];
+    [_distanceLabel setAnchorPoint:ccp(1, 1)];
+    [self addChild:_distanceLabel z:1];
+    _distanceLabelStatic = [CCLabelTTF labelWithString:@"Distance: " fontName:@"Marker Felt" fontSize:20];
+    [_distanceLabelStatic setPosition:ccp(self.contentSize.width-60, self.contentSize.height-30)];
+    [_distanceLabelStatic setColor:(0,0,0)];
+    [_distanceLabelStatic setAnchorPoint:ccp(1, 1)];
+    [self addChild:_distanceLabelStatic z:1];
 
     _grounds = [[NSArray alloc]initWithObjects:_ground1, _ground2, nil ];//allocate grounds array
 
@@ -254,7 +275,8 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
             [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
         }
         
-        
+        [_distanceLabel setString:[NSString stringWithFormat:@"%i", distance]];
+        distance = -1*(int)_physicsNode.position.x/10;
     }
     
     //Obstacle Collisions
