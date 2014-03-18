@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		88143BC018D894420048A2B2 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BBF18D894420048A2B2 /* GCHelper.m */; };
 		88143BC418D8BAE80048A2B2 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC318D8BAE80048A2B2 /* GameCenterManager.m */; };
+		88143BC918D8C85D0048A2B2 /* GameCenterUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */; };
 		9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D018D62E9F00CDEFD4 /* desk.png */; };
 		9820C1D318D62EA600CDEFD4 /* white-closed-book.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D218D62EA600CDEFD4 /* white-closed-book.png */; };
 		98DF15DF18D52C57004E553B /* coin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DF15DE18D52C57004E553B /* coin1.png */; };
@@ -248,6 +249,8 @@
 		88143BC118D8BAE80048A2B2 /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
 		88143BC218D8BAE80048A2B2 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
 		88143BC318D8BAE80048A2B2 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
+		88143BC718D8C85D0048A2B2 /* GameCenterUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterUpdater.h; sourceTree = "<group>"; };
+		88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterUpdater.m; sourceTree = "<group>"; };
 		9820C1D018D62E9F00CDEFD4 /* desk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk.png; sourceTree = "<group>"; };
 		9820C1D218D62EA600CDEFD4 /* white-closed-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-closed-book.png"; sourceTree = "<group>"; };
 		98DF15DE18D52C57004E553B /* coin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin1.png; sourceTree = "<group>"; };
@@ -1610,6 +1613,8 @@
 				98E1493A18D50D350044BA6A /* Game.m */,
 				BF2B4B9F18D81EDB004724EC /* Lose.h */,
 				BF2B4BA018D81EDB004724EC /* Lose.m */,
+				88143BC718D8C85D0048A2B2 /* GameCenterUpdater.h */,
+				88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */,
 				88143BBE18D894420048A2B2 /* GCHelper.h */,
 				88143BBF18D894420048A2B2 /* GCHelper.m */,
 				BF2B4B9C18D81277004724EC /* Pause.h */,
@@ -1767,6 +1772,7 @@
 				98E1442318D507F70044BA6A /* CCClippingNode.m in Sources */,
 				98E144B618D507F80044BA6A /* CCSpriteBatchNode.m in Sources */,
 				98E144DA18D507F80044BA6A /* CCTransition.m in Sources */,
+				88143BC918D8C85D0048A2B2 /* GameCenterUpdater.m in Sources */,
 				98E144B918D507F80044BA6A /* CCSpriteFrame.m in Sources */,
 				98E1444D18D507F70044BA6A /* CCNodeColor.m in Sources */,
 				98E1452618D507F80044BA6A /* TransformUtils.m in Sources */,
