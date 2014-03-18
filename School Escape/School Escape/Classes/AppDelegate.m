@@ -24,6 +24,14 @@
 	// There are a number of simple options you can change.
 	// If you want more flexibility, you can configure Cocos2D yourself instead of calling setupCocos2dWithOptions:.]
     //cpInitChipmunk();
+    
+    NSURL* ubiq = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+    
+    if (ubiq) {
+        NSLog(@"iCloud access at %@",ubiq);
+    }else{
+        NSLog(@"No iCloud access");
+    }
 
 	[self setupCocos2dWithOptions:@{
 		// Show the FPS and draw call label.
