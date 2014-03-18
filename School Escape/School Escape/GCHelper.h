@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GameKit/GameKit.h"
 
 @interface GCHelper : NSObject{
     // This class is the implementation of the Game Center Helper
