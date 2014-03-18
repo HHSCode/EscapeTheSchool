@@ -222,6 +222,7 @@
 		98E1494818D511D90044BA6A /* ground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494718D511D90044BA6A /* ground2.png */; };
 		98E1494A18D51DC00044BA6A /* walking-man-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494918D51DC00044BA6A /* walking-man-black.png */; };
 		B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF63B018D5BCDF0062141C /* Images.xcassets */; };
+		BF2B4B9E18D81277004724EC /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B4B9D18D81277004724EC /* Pause.m */; };
 		BF2F000318D6C583003BB0FF /* runningmansheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF2F000118D6C583003BB0FF /* runningmansheet.plist */; };
 		BF2F000418D6C583003BB0FF /* runningmansheet.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2F000218D6C583003BB0FF /* runningmansheet.png */; };
 /* End PBXBuildFile section */
@@ -678,6 +679,8 @@
 		98E1494718D511D90044BA6A /* ground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground2.png; sourceTree = "<group>"; };
 		98E1494918D51DC00044BA6A /* walking-man-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "walking-man-black.png"; sourceTree = "<group>"; };
 		B3DF63B018D5BCDF0062141C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BF2B4B9C18D81277004724EC /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
+		BF2B4B9D18D81277004724EC /* Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pause.m; sourceTree = "<group>"; };
 		BF2F000118D6C583003BB0FF /* runningmansheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = runningmansheet.plist; sourceTree = "<group>"; };
 		BF2F000218D6C583003BB0FF /* runningmansheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runningmansheet.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1582,6 +1585,8 @@
 				98E1467218D508A00044BA6A /* Menu.m */,
 				98E1493918D50D350044BA6A /* Game.h */,
 				98E1493A18D50D350044BA6A /* Game.m */,
+				BF2B4B9C18D81277004724EC /* Pause.h */,
+				BF2B4B9D18D81277004724EC /* Pause.m */,
 				98E1493C18D50E540044BA6A /* About.h */,
 				98E1493D18D50E540044BA6A /* About.m */,
 				98E1493F18D50E680044BA6A /* Settings.h */,
@@ -1740,6 +1745,7 @@
 				98E1444D18D507F70044BA6A /* CCNodeColor.m in Sources */,
 				98E1452618D507F80044BA6A /* TransformUtils.m in Sources */,
 				98E144C718D507F80044BA6A /* CCTextureCache.m in Sources */,
+				BF2B4B9E18D81277004724EC /* Pause.m in Sources */,
 				98E144F218D507F80044BA6A /* CCAppDelegate.m in Sources */,
 				98E144F618D507F80044BA6A /* CCDirectorMac.m in Sources */,
 				98E1442A18D507F70044BA6A /* ccDeprecated.m in Sources */,

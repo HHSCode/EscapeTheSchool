@@ -1,0 +1,48 @@
+//
+//  Pause.m
+//  School Escape
+//
+//  Created by Kathleen Chaimberg on 3/17/14.
+//  Copyright (c) 2014 Lordtechy. All rights reserved.
+//
+
+#import "Pause.h"
+
+@implementation Pause
+
++ (Pause *)scene
+{
+    return [[self alloc] init];
+}
+
+- (id)init
+{
+    // Apple recommend assigning self with supers return value
+    self = [super init];
+    if (!self) return(nil);
+    
+    // Enable touch handling on scene node
+    self.userInteractionEnabled = YES;
+    
+    CCButton *gameButton = [CCButton buttonWithTitle:@"Resume"]; //creates resume button
+    [gameButton setTarget:self selector:@selector(gamePressed)]; //id pressed run gamePressed
+    
+    CCLayoutBox *pauseLayoutBox = [[CCLayoutBox alloc]init]; //create layout box
+    [pauseLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
+    [pauseLayoutBox addChild:gameButton]; //add resume to layout box
+    
+    [pauseLayoutBox setSpacing:10.f];
+    [pauseLayoutBox setDirection:CCLayoutBoxDirectionVertical];
+    [pauseLayoutBox setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
+    [self addChild:pauseLayoutBox]; //add layout box to scene
+    
+    
+    // done
+	return self;
+}
+
+-(void)gamePressed{
+    [[CCDirector sharedDirector]popSceneWithTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionUp duration:.5]]; //resume game scene
+    
+}
+@end

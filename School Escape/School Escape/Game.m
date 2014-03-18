@@ -144,6 +144,13 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     [_distanceLabelStatic setColor:(0,0,0)];
     [_distanceLabelStatic setAnchorPoint:ccp(1, 1)];
     [self addChild:_distanceLabelStatic z:1];
+    
+    //PAUSE
+    CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause"]; //creates pause button
+    [pauseButton setTarget:self selector:@selector(pausePressed)]; //if pressed, run pausePressed
+    [pauseButton setPosition:ccp(30,self.contentSize.height-10)]; //set position
+    [pauseButton setLabelColor:[CCColor blackColor] forState:CCControlStateNormal]; //set color for unpressed state
+    [self addChild:pauseButton z:1]; //add button to scene
 
     _grounds = [[NSArray alloc]initWithObjects:_ground1, _ground2, nil ];//allocate grounds array
 
@@ -152,6 +159,9 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
 	return self;
 }
 
+-(void)pausePressed{
+    [[CCDirector sharedDirector]pushScene:[Pause scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionDown duration:.5]]; //pause current scene, go to pause scene
+}
 
 BOOL intersects=NO; //initializes no intersection
 

@@ -11,6 +11,7 @@
 #import "cocos2d-ui.h"
 #import "chipmunk.h"
 #import "Menu.h"
+#import "Pause.h"
 
 @interface Game : CCScene <CCPhysicsCollisionDelegate> {
 
