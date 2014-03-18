@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Menu.h"
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
 
