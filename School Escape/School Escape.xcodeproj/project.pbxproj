@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88143BC018D894420048A2B2 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BBF18D894420048A2B2 /* GCHelper.m */; };
+		88143BC418D8BAE80048A2B2 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC318D8BAE80048A2B2 /* GameCenterManager.m */; };
 		9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D018D62E9F00CDEFD4 /* desk.png */; };
 		9820C1D318D62EA600CDEFD4 /* white-closed-book.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D218D62EA600CDEFD4 /* white-closed-book.png */; };
 		98DF15DF18D52C57004E553B /* coin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DF15DE18D52C57004E553B /* coin1.png */; };
@@ -222,7 +223,7 @@
 		98E1494618D50FED0044BA6A /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494518D50FED0044BA6A /* background1.png */; };
 		98E1494818D511D90044BA6A /* ground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494718D511D90044BA6A /* ground2.png */; };
 		98E1494A18D51DC00044BA6A /* walking-man-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494918D51DC00044BA6A /* walking-man-black.png */; };
-		B348805718D88CFB00CC5067 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805618D88CFB00CC5067 /* GameKit.framework */; };
+		B348805718D88CFB00CC5067 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805618D88CFB00CC5067 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B348805918D88D1F00CC5067 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805818D88D1F00CC5067 /* StoreKit.framework */; };
 		B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF63B018D5BCDF0062141C /* Images.xcassets */; };
 		BF2B4B9E18D81277004724EC /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B4B9D18D81277004724EC /* Pause.m */; };
@@ -244,6 +245,9 @@
 /* Begin PBXFileReference section */
 		88143BBE18D894420048A2B2 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
 		88143BBF18D894420048A2B2 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHelper.m; sourceTree = "<group>"; };
+		88143BC118D8BAE80048A2B2 /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
+		88143BC218D8BAE80048A2B2 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		88143BC318D8BAE80048A2B2 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
 		9820C1D018D62E9F00CDEFD4 /* desk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk.png; sourceTree = "<group>"; };
 		9820C1D218D62EA600CDEFD4 /* white-closed-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-closed-book.png"; sourceTree = "<group>"; };
 		98DF15DE18D52C57004E553B /* coin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin1.png; sourceTree = "<group>"; };
@@ -771,6 +775,9 @@
 		98E143D118D507F70044BA6A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				88143BC118D8BAE80048A2B2 /* AppSpecificValues.h */,
+				88143BC218D8BAE80048A2B2 /* GameCenterManager.h */,
+				88143BC318D8BAE80048A2B2 /* GameCenterManager.m */,
 				98E143D218D507F70044BA6A /* Default.png */,
 				98E143D418D507F70044BA6A /* Default@2x.png */,
 				98E143D618D507F70044BA6A /* Default-568h@2x.png */,
@@ -1855,6 +1862,7 @@
 				98E1446318D507F80044BA6A /* CCParallaxNode.m in Sources */,
 				98E145CB18D507F90044BA6A /* ray2.c in Sources */,
 				98E1454718D507F80044BA6A /* OALAudioTracks.m in Sources */,
+				88143BC418D8BAE80048A2B2 /* GameCenterManager.m in Sources */,
 				98E1454418D507F80044BA6A /* OALAudioTrackNotifications.m in Sources */,
 				98E145C918D507F90044BA6A /* quaternion.c in Sources */,
 				98E1447D18D507F80044BA6A /* CCPhysicsNode.m in Sources */,

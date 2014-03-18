@@ -23,13 +23,27 @@
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
     
+    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+    
+    NSArray* Scores;
+    if ([[NSFileManager defaultManager]fileExistsAtPath:path isDirectory:NO]) {
+        Scores = [NSArray arrayWithContentsOfFile:path];
+    }else{
+        NSLog(@"No access to file! Using default score");
+        Scores = [NSArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:0,0,[NSDate date], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time", nil]]];
+    }
+    
+    Scores=[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+    
     CCButton *restartButton = [CCButton buttonWithTitle:@"Restart"]; //creates restart button
     [restartButton setTarget:self selector:@selector(restartPressed)]; //if pressed run restartPressed
     CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
     [menuButton setTarget:self selector:@selector(menuPressed)]; //if pressed run menuPressed
     CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:@" " fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:@"Score: %i" fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:@"Distance: %i" fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"coins"]] fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Distance: %@",[[Scores objectAtIndex:0] objectForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
+    
+    [Scores writeToFile:path atomically:YES];
     
     CCLayoutBox *loseLayoutBox = [[CCLayoutBox alloc]init]; //create layout box
     [loseLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
