@@ -27,11 +27,17 @@
     [restartButton setTarget:self selector:@selector(restartPressed)]; //if pressed run restartPressed
     CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
     [menuButton setTarget:self selector:@selector(menuPressed)]; //if pressed run menuPressed
+    CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:@" " fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:@"Score: %i" fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:@"Distance: %i" fontName:@"Marker Felt" fontSize:20];
     
     CCLayoutBox *loseLayoutBox = [[CCLayoutBox alloc]init]; //create layout box
     [loseLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
     [loseLayoutBox addChild:menuButton]; //add menu to layout box
     [loseLayoutBox addChild:restartButton]; //add restart to layout box
+    [loseLayoutBox addChild:spacingLabel]; //add spacing to layout box
+    [loseLayoutBox addChild:coinLabel]; //add coin score to layout box
+    [loseLayoutBox addChild:distanceLabel]; //add distance score to layout box
     
     [loseLayoutBox setSpacing:10.f];
     [loseLayoutBox setDirection:CCLayoutBoxDirectionVertical];
