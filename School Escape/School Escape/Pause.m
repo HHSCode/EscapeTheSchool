@@ -25,10 +25,16 @@
     self.userInteractionEnabled = YES;
     
     CCButton *gameButton = [CCButton buttonWithTitle:@"Resume"]; //creates resume button
-    [gameButton setTarget:self selector:@selector(gamePressed)]; //id pressed run gamePressed
+    [gameButton setTarget:self selector:@selector(gamePressed)]; //if pressed run gamePressed
+    CCButton *restartButton = [CCButton buttonWithTitle:@"Restart"]; //creates restart button
+    [restartButton setTarget:self selector:@selector(restartPressed)]; //if pressed run restartPressed
+    CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
+    [menuButton setTarget:self selector:@selector(menuPressed)]; //if pressed run menuPressed
     
     CCLayoutBox *pauseLayoutBox = [[CCLayoutBox alloc]init]; //create layout box
     [pauseLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
+    [pauseLayoutBox addChild:menuButton]; //add menu to layout box
+    [pauseLayoutBox addChild:restartButton]; //add restart to layout box
     [pauseLayoutBox addChild:gameButton]; //add resume to layout box
     
     [pauseLayoutBox setSpacing:10.f];
@@ -44,5 +50,15 @@
 -(void)gamePressed{
     [[CCDirector sharedDirector]popSceneWithTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionUp duration:.5]]; //resume game scene
     
+}
+
+-(void)restartPressed{
+    [[CCDirector sharedDirector]popScene]; //discards current game
+    [[CCDirector sharedDirector]replaceScene:[Game scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionDown duration:.5]]; //restarts game scene
+}
+
+-(void)menuPressed{
+    [[CCDirector sharedDirector]popScene]; //discards current game
+    [[CCDirector sharedDirector]replaceScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]]; //goes to men scene
 }
 @end

@@ -42,7 +42,6 @@
     [menuLayoutBox addChild:aboutButton];
     [menuLayoutBox addChild:settingsButton];
     [menuLayoutBox addChild:storeButton];
-
     [menuLayoutBox addChild:playButton];
     
     [menuLayoutBox setSpacing:10.f];

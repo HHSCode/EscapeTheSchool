@@ -8,6 +8,7 @@
 
 #import "CCScene.h"
 #import "Game.h"
+#import "Menu.h"
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
