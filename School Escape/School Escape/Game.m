@@ -153,23 +153,23 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
 }
 
 
-BOOL intersects=NO;
+BOOL intersects=NO; //initializes no intersection
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     if (_hero.position.y<30.0) { //checks if hero is on the ground before allowing it to jump. the hero is generally at 29.9 when on the ground, so hopefully this will always work
         [_hero.physicsBody applyImpulse:ccp(0, 600.f)]; //applies impulse to make the hero jump
 
     }else{
-        if (hasDoubleJumped==NO && !(_hero.position.y>90 && intersects)) {
-            [_hero.physicsBody setVelocity:ccp(0, 0)];
+        if (hasDoubleJumped==NO && !(_hero.position.y>90 && intersects)) { //if player hasn't double jumped and is not on a table
+            [_hero.physicsBody setVelocity:ccp(0, 0)]; //sets velocity to zero so impulse is accurately applied
             [_hero.physicsBody applyImpulse:ccp(0, 500.f)]; //applies impulse to make the hero jump
-            hasDoubleJumped=YES;
+            hasDoubleJumped=YES; //broadcasts player has double jumped
         }
     }
-    if (_hero.position.y>90 && intersects) {
-        [_hero.physicsBody applyImpulse:ccp(0, 600.f)];
-        hasDoubleJumped=YES;
-        intersects=NO;
+    if (_hero.position.y>90 && intersects) { //if player is on table (above 90 and collisions cgrects overlap)
+        [_hero.physicsBody applyImpulse:ccp(0, 600.f)]; //applies impulse to make the hero jump
+        hasDoubleJumped=YES; //broadcasts player has double jumped
+        intersects=NO; //resets intersection until changed by collision handler
     }
 }
 
