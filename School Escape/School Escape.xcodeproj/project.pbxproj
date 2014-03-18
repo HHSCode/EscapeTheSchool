@@ -1624,7 +1624,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98E1466E18D507F90044BA6A /* Build configuration list for PBXNativeTarget "School Escape" */;
 			buildPhases = (
-				B3DF63AF18D5BCCF0062141C /* ShellScript */,
 				98E143B118D507F70044BA6A /* Sources */,
 				98E143B218D507F70044BA6A /* Frameworks */,
 				98E143B318D507F70044BA6A /* Resources */,
@@ -1739,22 +1738,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		B3DF63AF18D5BCCF0062141C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		98E143B118D507F70044BA6A /* Sources */ = {
