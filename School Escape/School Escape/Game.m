@@ -14,11 +14,13 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
 @implementation Game{
     CCPhysicsNode *_physicsNode; //main physics node
     int coinCounter;
+    int score;
     CCNode *_hero; //the hero, or the main character, or the runner
     CCNode *_ground1;
     CCNode *_ground2;
     NSArray *_grounds; //array that stores the two grounds so they can change positionand seem continuous
     NSMutableArray *_coins; //array that stores all the coins and checks them to see if they collided with the hero in the update method
+    NSMutableArray *_coins2;
     NSMutableArray *_obstacles;
     CCLabelTTF *_coinCounterLabel;
     BOOL hasDoubleJumped;
@@ -65,19 +67,19 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     [_ground2 setScaleY:.5];
     
     //HERO
-    NSMutableArray *runFrames = [NSMutableArray array];
-    CCSpriteFrameCache *cache = [CCSpriteFrameCache sharedSpriteFrameCache];
-    [cache addSpriteFramesWithFile:@"runningmansheet.plist"];
+    NSMutableArray *runFrames = [NSMutableArray array]; //initialize runFrames array
+    CCSpriteFrameCache *cache = [CCSpriteFrameCache sharedSpriteFrameCache]; //initialize cahce
+    [cache addSpriteFramesWithFile:@"runningmansheet.plist"]; //add spritesheet to cache
 
-    for(int i = 1; i <= 3; ++i)
+    for(int i = 1; i <= 3; ++i) //forloop uses 3 frames
     {
-        [runFrames addObject:[cache spriteFrameByName: [NSString stringWithFormat:@"runningman%i.png", i]]];
+        [runFrames addObject:[cache spriteFrameByName: [NSString stringWithFormat:@"runningman%i.png", i]]]; //adds sprite image to array based on i in loop
     }
-    CCAnimation *runAnimation = [CCAnimation animationWithSpriteFrames:runFrames delay:0.1f];
-    CCActionAnimate *animationAction = [CCActionAnimate actionWithAnimation:runAnimation];
-    CCActionRepeatForever *repeatingAnimation = [CCActionRepeatForever actionWithAction:animationAction];
-    _hero = [CCSprite spriteWithImageNamed:@"runningman1.png" ];
-    [_hero runAction:repeatingAnimation];
+    CCAnimation *runAnimation = [CCAnimation animationWithSpriteFrames:runFrames delay:0.1f]; //creates animation with runFrames with delay between of 0.1
+    CCActionAnimate *animationAction = [CCActionAnimate actionWithAnimation:runAnimation]; //creates action with animation
+    CCActionRepeatForever *repeatingAnimation = [CCActionRepeatForever actionWithAction:animationAction]; //repeats action forever
+    _hero = [CCSprite spriteWithImageNamed:@"runningman1.png" ]; //initializes hero with first image
+    [_hero runAction:repeatingAnimation]; //assigns animation to hero
     [_hero setAnchorPoint:ccp(0, 0)];
     [_hero setPosition:ccp(60, 100)];
     [_hero setScaleX:.25];
@@ -87,7 +89,7 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     //PHYSICS NODE
     _physicsNode = [CCPhysicsNode node];
     _physicsNode.gravity = ccp(0,-1500); //change this to increase or decrease gravity
-    _physicsNode.debugDraw = NO; //YES to see phsyics bodies
+    _physicsNode.debugDraw = YES; //YES to see phsyics bodies
     _physicsNode.collisionDelegate = self;
     
     //GROUND 1 PHYSICS
@@ -114,10 +116,13 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     _hero.physicsBody.elasticity=0;
     [_physicsNode addChild:_hero];
     
-    //COIN COUNTER - DOESNT WORK YET
-    _coinCounterLabel = [[CCLabelTTF alloc]initWithString:@"0" fontName:@"Helvetica" fontSize:20];
-    [_coinCounterLabel setPosition:ccp(20, 30)];
-    [self addChild:_coinCounterLabel];
+    //COIN COUNTER
+    score = 0;
+    _coinCounterLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:20];
+    [_coinCounterLabel setPosition:ccp(self.contentSize.width-10, self.contentSize.height-10)];
+    [_coinCounterLabel setColor:(0,0,0)];
+    [_coinCounterLabel setAnchorPoint:ccp(1, 1)];
+    [self addChild:_coinCounterLabel z:1];
 
     _grounds = [[NSArray alloc]initWithObjects:_ground1, _ground2, nil ];//allocate grounds array
 
@@ -160,7 +165,6 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     [_coins addObject:_coin]; //adds coin to _coins so it can check for collisions
     if ([_coins count]>30) {
         [_coins removeObjectAtIndex:0];
-        
     }
     [_physicsNode addChild:_coin]; //adds coin to physics node
 }
@@ -220,9 +224,12 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
         }
     }
     
+    NSMutableArray *_coins2 = [_coins mutableCopy];
     
-    for (CCNode *coin in _coins) {
+    for (CCNode *coin in _coins2) {
+        
         BOOL shouldRemove = NO;
+        BOOL upScore = NO;
         CGPoint coinWorldPosition = [_physicsNode convertToWorldSpace:coin.position];
         // get the screen position of the ground
         CGPoint coinScreenPosition = [self convertToNodeSpace:coinWorldPosition];
@@ -235,13 +242,20 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
         if (CGRectIntersectsRect([_hero boundingBox], [coin boundingBox])) { //check if hero and coin collides, if so remove coin from screen. need to add a counter
             
             shouldRemove=YES;
+            upScore=YES;
             coinCounter++;
         }
         
         if (shouldRemove) {
             [coin removeFromParent];
-            //[_coins removeObject:coin];
+            [_coins removeObject:coin];
 
+        }
+        
+        if (upScore) {
+            score++;
+            [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]];
+            upScore = NO;
         }
         
         
