@@ -8,6 +8,7 @@
 
 #import "Game.h"
 #import "CCAnimation.h"
+
 static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
 
 
@@ -42,7 +43,7 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     
     self.userInteractionEnabled = YES; //makes it so user can touch screen
     
-    [self schedule:@selector(addCoin) interval:1];//schedules addcoin method so a new coin is added every 4 seconds. Decrease this to make coins less frequent
+    [self schedule:@selector(addCoin) interval:.1];//schedules addcoin method so a new coin is added every 4 seconds. Decrease this to make coins less frequent
     [self schedule:@selector(addObstacle) interval:5];
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
