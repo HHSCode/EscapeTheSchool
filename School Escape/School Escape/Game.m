@@ -275,8 +275,8 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
             [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
         }
         
-        [_distanceLabel setString:[NSString stringWithFormat:@"%i", distance]];
-        distance = -1*(int)_physicsNode.position.x/10;
+        distance = -1*(int)_physicsNode.position.x/10; //distance takes the negative integer of physics node position and divides it by 10 (to make it slower)
+        [_distanceLabel setString:[NSString stringWithFormat:@"%i", distance]]; //sets the label to the current distance
     }
     
     //Obstacle Collisions
