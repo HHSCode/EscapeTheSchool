@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "Menu.h"
 #import "chipmunk.h"
+#import "GCHelper.h"
 
 
 @implementation AppDelegate
@@ -52,7 +53,7 @@
 		// Make iPad's act like they run at a 2x content scale. (iPad retina 4x)
 //		CCSetupTabletScale2X: @(YES),
 	}];
-	
+	[[GCHelper sharedInstance] authenticateLocalUser];
 	return YES;
 }
 
