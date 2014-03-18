@@ -12,6 +12,7 @@
 #import "chipmunk.h"
 #import "Menu.h"
 #import "Pause.h"
+#import "Lose.h"
 
 @interface Game : CCScene <CCPhysicsCollisionDelegate> {
 

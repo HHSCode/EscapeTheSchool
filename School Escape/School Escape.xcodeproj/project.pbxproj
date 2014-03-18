@@ -223,6 +223,7 @@
 		98E1494A18D51DC00044BA6A /* walking-man-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494918D51DC00044BA6A /* walking-man-black.png */; };
 		B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF63B018D5BCDF0062141C /* Images.xcassets */; };
 		BF2B4B9E18D81277004724EC /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B4B9D18D81277004724EC /* Pause.m */; };
+		BF2B4BA118D81EDB004724EC /* Lose.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B4BA018D81EDB004724EC /* Lose.m */; };
 		BF2F000318D6C583003BB0FF /* runningmansheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF2F000118D6C583003BB0FF /* runningmansheet.plist */; };
 		BF2F000418D6C583003BB0FF /* runningmansheet.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2F000218D6C583003BB0FF /* runningmansheet.png */; };
 /* End PBXBuildFile section */
@@ -681,6 +682,8 @@
 		B3DF63B018D5BCDF0062141C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF2B4B9C18D81277004724EC /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
 		BF2B4B9D18D81277004724EC /* Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pause.m; sourceTree = "<group>"; };
+		BF2B4B9F18D81EDB004724EC /* Lose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lose.h; sourceTree = "<group>"; };
+		BF2B4BA018D81EDB004724EC /* Lose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lose.m; sourceTree = "<group>"; };
 		BF2F000118D6C583003BB0FF /* runningmansheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = runningmansheet.plist; sourceTree = "<group>"; };
 		BF2F000218D6C583003BB0FF /* runningmansheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runningmansheet.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1585,6 +1588,8 @@
 				98E1467218D508A00044BA6A /* Menu.m */,
 				98E1493918D50D350044BA6A /* Game.h */,
 				98E1493A18D50D350044BA6A /* Game.m */,
+				BF2B4B9F18D81EDB004724EC /* Lose.h */,
+				BF2B4BA018D81EDB004724EC /* Lose.m */,
 				BF2B4B9C18D81277004724EC /* Pause.h */,
 				BF2B4B9D18D81277004724EC /* Pause.m */,
 				98E1493C18D50E540044BA6A /* About.h */,
@@ -1790,6 +1795,7 @@
 				98E1493E18D50E540044BA6A /* About.m in Sources */,
 				98E1440818D507F70044BA6A /* CCActionInstant.m in Sources */,
 				98E1494118D50E680044BA6A /* Settings.m in Sources */,
+				BF2B4BA118D81EDB004724EC /* Lose.m in Sources */,
 				98E1450218D507F80044BA6A /* base64.c in Sources */,
 				98E1454118D507F80044BA6A /* OALAudioTrack.m in Sources */,
 				98E1448418D507F80044BA6A /* CCProgressNode.m in Sources */,

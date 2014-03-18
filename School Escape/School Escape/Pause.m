@@ -59,6 +59,6 @@
 
 -(void)menuPressed{
     [[CCDirector sharedDirector]popScene]; //discards current game
-    [[CCDirector sharedDirector]replaceScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]]; //goes to men scene
+    [[CCDirector sharedDirector]replaceScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]]; //goes to menu scene
 }
 @end

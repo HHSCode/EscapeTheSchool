@@ -243,7 +243,7 @@ BOOL intersects=NO; //initializes no intersection
     CGPoint heroScreenPosition = [self convertToNodeSpace:heroWorldPosition];
     
     if (heroScreenPosition.x <= 0) { //IF HERO IS OFFSCREEN - AKA YOU LOST
-        [[CCDirector sharedDirector]presentScene:[Game scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1]]; //go back to game scene, just tempororary until YOU LOST screen
+        [[CCDirector sharedDirector]presentScene:[Lose scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]]; //go to lose scene
     
     }
     if (_hero.position.y<30) {
