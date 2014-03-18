@@ -8,8 +8,8 @@
 
 #import "Game.h"
 #import "CCAnimation.h"
-
-static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
+int SpeedIncrease = 225;
+static const CGFloat scrollSpeed = 225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
 
 
 @implementation Game{
