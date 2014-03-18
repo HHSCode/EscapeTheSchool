@@ -8,8 +8,8 @@
 
 #import "Game.h"
 #import "CCAnimation.h"
-
-static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
+int SpeedIncrease = 225;
+static const CGFloat scrollSpeed = 225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
 
 
 @implementation Game{
@@ -241,6 +241,26 @@ BOOL intersects=NO; //initializes no intersection
     [_physicsNode addChild:_obstacle]; //adds coin to physics node
 }
 
+-(void)lost{
+    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+    NSMutableArray* Scores;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:NO]) {
+        Scores = [NSMutableArray arrayWithContentsOfFile:path];
+    }else{
+        Scores = [NSMutableArray array];
+    }
+    NSMutableDictionary* thisRun = [NSMutableDictionary dictionary];
+    [thisRun setValue:[NSNumber numberWithInt:distance] forKey:@"distance"];
+    [thisRun setValue:[NSNumber numberWithInt:score] forKey:@"coins"];
+    [thisRun setValue:[NSDate date] forKey:@"time"];
+    
+    [Scores addObject:thisRun];
+    
+    [Scores writeToFile:path atomically:YES];
+    
+    [[CCDirector sharedDirector]presentScene:[Lose scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]]; //go to lose scene
+}
+
 - (void)update:(CCTime)delta {
     _hero.position = ccp(_hero.position.x + delta * scrollSpeed, _hero.position.y); //keeps hero in line with the moving physics node
     _physicsNode.position = ccp(_physicsNode.position.x - (scrollSpeed *delta), _physicsNode.position.y); //moves the physics node to the left
@@ -252,8 +272,7 @@ BOOL intersects=NO; //initializes no intersection
     CGPoint heroScreenPosition = [self convertToNodeSpace:heroWorldPosition];
     
     if (heroScreenPosition.x <= 0) { //IF HERO IS OFFSCREEN - AKA YOU LOST
-        [[CCDirector sharedDirector]presentScene:[Lose scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]]; //go to lose scene
-    
+        [self lost];
     }
     if (_hero.position.y<30) {
         hasDoubleJumped=NO;
