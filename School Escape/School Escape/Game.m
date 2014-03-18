@@ -13,7 +13,6 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
 
 @implementation Game{
     CCPhysicsNode *_physicsNode; //main physics node
-    int coinCounter;
     int score;
     CCNode *_hero; //the hero, or the main character, or the runner
     CCNode *_ground1;
@@ -89,7 +88,7 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     //PHYSICS NODE
     _physicsNode = [CCPhysicsNode node];
     _physicsNode.gravity = ccp(0,-1500); //change this to increase or decrease gravity
-    _physicsNode.debugDraw = YES; //YES to see phsyics bodies
+    _physicsNode.debugDraw = NO; //YES to see phsyics bodies
     _physicsNode.collisionDelegate = self;
     
     //GROUND 1 PHYSICS
@@ -163,8 +162,8 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     
     _coin.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY); //sets coin position off to the right at a random y location
     [_coins addObject:_coin]; //adds coin to _coins so it can check for collisions
-    if ([_coins count]>30) {
-        [_coins removeObjectAtIndex:0];
+    if ([_coins count]>30) { //if more than 30 coins
+        [_coins removeObjectAtIndex:0]; //delete from array
     }
     [_physicsNode addChild:_coin]; //adds coin to physics node
 }
@@ -173,7 +172,7 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     CCNode *_obstacle = [[CCSprite alloc]initWithImageNamed:@"desk.png"]; //change this to change how the coin looks
     [_obstacle setScaleY:.15];
     [_obstacle setScaleX:.15];
-    float obstacleSize = 100; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
+    float obstacleSize = 100; //this is used to calculate the coin position, or basically where it is placed on the screen, max and min
     [_obstacle setAnchorPoint:ccp(0, 0)];
     _obstacle.physicsBody.elasticity=0;
     _obstacle.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0, 0, _obstacle.contentSize.width, _obstacle.contentSize.height) cornerRadius:0];
@@ -186,9 +185,8 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     _obstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, 29); //sets coin position off to the right at a random y location
     //[_coins addObject:_coin]; //adds coin to _coins so it can check for collisions
     [_obstacles addObject:_obstacle];
-    if ([_coins count]>30) {
-        [_coins removeObjectAtIndex:0];
-        
+    if ([_obstacles count]>30) { //if more than 30 obstacles
+        [_obstacles removeObjectAtIndex:0]; //delete from array
     }
     [_physicsNode addChild:_obstacle]; //adds coin to physics node
 
@@ -224,38 +222,36 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
         }
     }
     
-    NSMutableArray *_coins2 = [_coins mutableCopy];
+    NSMutableArray *_coins2 = [_coins mutableCopy]; //makes copy of coins array
     
-    for (CCNode *coin in _coins2) {
+    for (CCNode *coin in _coins2) { //run everything below for each coin in array
         
-        BOOL shouldRemove = NO;
-        BOOL upScore = NO;
+        BOOL shouldRemove = NO; //will not remove coin unless changed below
+        BOOL upScore = NO; //will not give point unless changed below
         CGPoint coinWorldPosition = [_physicsNode convertToWorldSpace:coin.position];
         // get the screen position of the ground
         CGPoint coinScreenPosition = [self convertToNodeSpace:coinWorldPosition];
         
-        if (coinScreenPosition.x<=(-1*coin.contentSize.width/2)) {
-            shouldRemove=YES;
+        if (coinScreenPosition.x<=(-1*coin.contentSize.width/2)) { //if coin is too far to the left
+            shouldRemove=YES; //tells program to remove coin below
             
         }
 
-        if (CGRectIntersectsRect([_hero boundingBox], [coin boundingBox])) { //check if hero and coin collides, if so remove coin from screen. need to add a counter
+        if (CGRectIntersectsRect([_hero boundingBox], [coin boundingBox])) { //check if hero and coin collides
             
-            shouldRemove=YES;
-            upScore=YES;
-            coinCounter++;
+            shouldRemove=YES; //tells program to remove coin below
+            upScore=YES; //tells program to add point below
         }
         
-        if (shouldRemove) {
-            [coin removeFromParent];
-            [_coins removeObject:coin];
+        if (shouldRemove) { //if above has told to remove
+            [coin removeFromParent]; //removes from physics node
+            [_coins removeObject:coin]; //removes from original coins array
 
         }
         
-        if (upScore) {
-            score++;
-            [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]];
-            upScore = NO;
+        if (upScore) { //if above has told to add point
+            score++; //adds one to score
+            [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
         }
         
         
@@ -302,8 +298,4 @@ static const CGFloat scrollSpeed = 225.f; //scroll speed, change this to make it
     return YES;
 }
 
--(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coinType:(CCNode *)coin heroType:(CCNode *)hero{
-    [coin removeFromParent];
-    return YES;
-}
 @end
