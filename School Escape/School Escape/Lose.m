@@ -36,6 +36,9 @@
     
     Scores=[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
     
+    NSArray* HighScores = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:NO], nil]];
+    NSDictionary* highScore = [HighScores objectAtIndex:0];
+    
     GameCenterUpdater* gameCenterUpdater = [[GameCenterUpdater alloc] init];
     [gameCenterUpdater sendScore:[Scores objectAtIndex:0] andScores:Scores];
     
@@ -44,6 +47,7 @@
     CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
     [menuButton setTarget:self selector:@selector(menuPressed)]; //if pressed run menuPressed
     CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:@" " fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"High Score: %@",[highScore valueForKey:@"distance"]] fontName:@"Marker Felt" fontSize:10];
     CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"coins"]] fontName:@"Marker Felt" fontSize:20];
     CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Distance: %@",[[Scores objectAtIndex:0] objectForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
     
@@ -56,6 +60,7 @@
     [loseLayoutBox addChild:spacingLabel]; //add spacing to layout box
     [loseLayoutBox addChild:coinLabel]; //add coin score to layout box
     [loseLayoutBox addChild:distanceLabel]; //add distance score to layout box
+    [loseLayoutBox addChild:highScoreLabel]; //add high score label to layout box
     
     [loseLayoutBox setSpacing:10.f];
     [loseLayoutBox setDirection:CCLayoutBoxDirectionVertical];

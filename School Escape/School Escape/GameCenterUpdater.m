@@ -25,7 +25,7 @@
         if ([GameCenterManager isGameCenterAvailable]) {
             
             self.gameCenterManager = [[GameCenterManager alloc] init];
-            [self.gameCenterManager setDelegate:self];
+            //[self.gameCenterManager setDelegate:self];
             [self.gameCenterManager authenticateLocalUser];
             
         }else{
@@ -44,22 +44,46 @@
 }
 
 -(void)sendScore:(NSDictionary *)score andScores:(NSArray *)Scores{
-    self.currentScore = [score objectForKey:@"distance"];
+    self.currentScore = [[score objectForKey:@"distance"] intValue];
+    NSLog(@"Scores being sent...");
     [self checkAchievements:Scores];
-    [self.gameCenterManager reportScore: self.currentScore forCategory: self.currentLeaderBoard];
+    int64_t totalDistance = 0;
+    for (NSDictionary* score2 in Scores) {
+        totalDistance = totalDistance+[[score2 valueForKey:@"distance"] intValue];
+    }
+    [self.gameCenterManager reportScore: totalDistance forCategory: @"bestdistance"];
+    [self.gameCenterManager reportScore: currentScore forCategory: @"topdistance"];
+    [self.gameCenterManager reportScore: [[score valueForKey:@"coins"] intValue] forCategory: @"bestcoin"];
+    NSLog(@"Sent!");
 }
 
 -(void)checkAchievements:(NSArray *)Scores{
     int numberOfScores = (int)[Scores count];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Achievement Get!" message:@"" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+    if (numberOfScores<=1) {
+        [self.gameCenterManager resetAchievements];
+    }
     // 10 plays:
     double parcent10 = (numberOfScores/10.0)*100.0;
     [self.gameCenterManager submitAchievement:kAchievement10Plays percentComplete:parcent10];
+    if (parcent10==100) {
+        [alert setMessage:@"You completed 10 Games!"];
+        [alert show];
+    }
     // 20 plays:
     double parcent20 = (numberOfScores/20.0)*100.0;
     [self.gameCenterManager submitAchievement:kAchievement20Plays percentComplete:parcent20];
+    if (parcent20==100) {
+        [alert setMessage:@"You completed 20 Games!"];
+        [alert show];
+    }
     // 50 plays:
     double parcent50 = (numberOfScores/50.0)*100.0;
     [self.gameCenterManager submitAchievement:kAchievement50Plays percentComplete:parcent50];
+    if (parcent50==100) {
+        [alert setMessage:@"You completed 50 Games!"];
+        [alert show];
+    }
 }
 
 - (void) achievementSubmitted: (GKAchievement*) ach error:(NSError*) error;
