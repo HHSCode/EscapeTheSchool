@@ -44,17 +44,30 @@
 }
 
 -(void)sendScore:(NSDictionary *)score andScores:(NSArray *)Scores{
-    self.currentScore = [[score objectForKey:@"distance"] intValue];
+    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+    Scores=[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+    
+    score = [Scores objectAtIndex:0];
+    
+    int64_t currentScore = [[score objectForKey:@"distance"] intValue];
     NSLog(@"Scores being sent...");
     [self checkAchievements:Scores];
     int64_t totalDistance = 0;
+    int num = 0;
     for (NSDictionary* score2 in Scores) {
         totalDistance = totalDistance+[[score2 valueForKey:@"distance"] intValue];
+        num++;
     }
-    [self.gameCenterManager reportScore: totalDistance forCategory: @"bestdistance"];
-    [self.gameCenterManager reportScore: currentScore forCategory: @"topdistance"];
-    [self.gameCenterManager reportScore: [[score valueForKey:@"coins"] intValue] forCategory: @"bestcoin"];
+    NSLog(@"Distance: %lld",currentScore);
+    NSLog(@"Total distance: %lld",totalDistance);
+    NSLog(@"Coins: %i",[[score valueForKey:@"coins"]intValue]);
+    NSLog(@"Average distance: %lld",totalDistance/num);
+    [self.gameCenterManager reportScore: currentScore forCategory: @"bestdistance"];
+    [self.gameCenterManager reportScore: totalDistance forCategory: @"totaldistance"];
+    [self.gameCenterManager reportScore: ((int64_t)([[score valueForKey:@"coins"]intValue])) forCategory: @"bestcoin"];
+    [self.gameCenterManager reportScore:((int64_t)(totalDistance/num)) forCategory:@"averagedistance"];
     NSLog(@"Sent!");
+    [Scores writeToFile:path atomically:YES];
 }
 
 -(void)checkAchievements:(NSArray *)Scores{
