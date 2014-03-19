@@ -7,6 +7,7 @@
 //
 
 #import "Lose.h"
+#import "GameCenterUpdater.h"
 
 @implementation Lose
 + (Lose *)scene
@@ -34,6 +35,9 @@
     }
     
     Scores=[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+    
+    GameCenterUpdater* gameCenterUpdater = [[GameCenterUpdater alloc] init];
+    [gameCenterUpdater sendScore:[Scores objectAtIndex:0] andScores:Scores];
     
     CCButton *restartButton = [CCButton buttonWithTitle:@"Restart"]; //creates restart button
     [restartButton setTarget:self selector:@selector(restartPressed)]; //if pressed run restartPressed

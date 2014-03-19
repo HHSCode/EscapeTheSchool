@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#define kLeaderboardID @"1"
+#define kLeaderboardID @"bestdistance"
 #define kAchievement10Plays @"play10"
 #define kAchievement20Plays @"play20"
 #define kAchievement50Plays @"play50"
@@ -24,7 +24,7 @@
 @property (nonatomic, assign) int64_t currentScore;
 @property (nonatomic, assign) NSString* currentLeaderBoard;
 
--(void)sendScore:(NSDictionary*)score;
--(void)checkAchievements;
+-(void)sendScore:(NSDictionary*)score andScores:(NSArray *)Scores;
+-(void)checkAchievements:(NSArray *)Scores;
 
 @end
