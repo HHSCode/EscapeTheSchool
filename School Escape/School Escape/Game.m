@@ -133,12 +133,12 @@ static const CGFloat scrollSpeed = 225; //scroll speed, change this to make it g
     score = 0;
     _coinCounterLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:20];
     [_coinCounterLabel setPosition:ccp(self.contentSize.width-10, self.contentSize.height-10)];
-    [_coinCounterLabel setColor:(0,0,0)];
+    [_coinCounterLabel setColor:[CCColor blackColor]];
     [_coinCounterLabel setAnchorPoint:ccp(1, 1)];
     [self addChild:_coinCounterLabel z:1];
     _coinCounterLabelStatic = [CCLabelTTF labelWithString:@"Coins: " fontName:@"Marker Felt" fontSize:20];
     [_coinCounterLabelStatic setPosition:ccp(self.contentSize.width-60, self.contentSize.height-10)];
-    [_coinCounterLabelStatic setColor:(0,0,0)];
+    [_coinCounterLabelStatic setColor:[CCColor blackColor]];
     [_coinCounterLabelStatic setAnchorPoint:ccp(1, 1)];
     [self addChild:_coinCounterLabelStatic z:1];
     
@@ -146,12 +146,12 @@ static const CGFloat scrollSpeed = 225; //scroll speed, change this to make it g
     distance = 0;
     _distanceLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:20];
     [_distanceLabel setPosition:ccp(self.contentSize.width-10, self.contentSize.height-30)];
-    [_distanceLabel setColor:(0,0,0)];
+    [_distanceLabel setColor:[CCColor blackColor]];
     [_distanceLabel setAnchorPoint:ccp(1, 1)];
     [self addChild:_distanceLabel z:1];
     _distanceLabelStatic = [CCLabelTTF labelWithString:@"Distance: " fontName:@"Marker Felt" fontSize:20];
     [_distanceLabelStatic setPosition:ccp(self.contentSize.width-60, self.contentSize.height-30)];
-    [_distanceLabelStatic setColor:(0,0,0)];
+    [_distanceLabelStatic setColor:[CCColor blackColor]];
     [_distanceLabelStatic setAnchorPoint:ccp(1, 1)];
     [self addChild:_distanceLabelStatic z:1];
     
@@ -290,7 +290,7 @@ BOOL intersects=NO; //initializes no intersection
         }
     }
     
-    NSMutableArray *_coins2 = [_coins mutableCopy]; //makes copy of coins array
+    _coins2 = [_coins mutableCopy]; //makes copy of coins array
     
     for (CCNode *coin in _coins2) { //run everything below for each coin in array
         
