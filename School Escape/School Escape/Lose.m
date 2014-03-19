@@ -47,7 +47,7 @@
     CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
     [menuButton setTarget:self selector:@selector(menuPressed)]; //if pressed run menuPressed
     CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:@" " fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"High Score: %@",[highScore valueForKey:@"distance"]] fontName:@"Marker Felt" fontSize:10];
+    CCLabelTTF *highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Longest Run: %@",[highScore valueForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
     CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"coins"]] fontName:@"Marker Felt" fontSize:20];
     CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Distance: %@",[[Scores objectAtIndex:0] objectForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
     
