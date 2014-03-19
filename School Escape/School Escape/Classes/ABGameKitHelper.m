@@ -564,6 +564,7 @@
  */
 -(BOOL) hasConnectivity
 {
+    return YES;
     struct sockaddr_in zeroAddress;
     bzero(&zeroAddress, sizeof(zeroAddress));
     zeroAddress.sin_len = sizeof(zeroAddress);
