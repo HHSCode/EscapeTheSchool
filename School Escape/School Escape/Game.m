@@ -52,7 +52,7 @@ int gameTime = 0;
 }
 //Change Scroll Speed over time
 -(void)updateScrollSpeed{
-    scrollSpeed = scrollSpeed +10;
+    scrollSpeed = scrollSpeed +5;
     NSLog(@"scrollSpeed: %f", scrollSpeed);
 }
 
