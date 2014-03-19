@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5256EF4418D9C7C6002B6473 /* ABGameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5256EF4318D9C7C6002B6473 /* ABGameKitHelper.m */; };
 		88143BC018D894420048A2B2 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BBF18D894420048A2B2 /* GCHelper.m */; };
 		88143BC418D8BAE80048A2B2 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC318D8BAE80048A2B2 /* GameCenterManager.m */; };
 		88143BC918D8C85D0048A2B2 /* GameCenterUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */; };
@@ -244,6 +245,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5256EF4218D9C7C6002B6473 /* ABGameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABGameKitHelper.h; path = Classes/ABGameKitHelper.h; sourceTree = "<group>"; };
+		5256EF4318D9C7C6002B6473 /* ABGameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABGameKitHelper.m; path = Classes/ABGameKitHelper.m; sourceTree = "<group>"; };
 		88143BBE18D894420048A2B2 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
 		88143BBF18D894420048A2B2 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHelper.m; sourceTree = "<group>"; };
 		88143BC118D8BAE80048A2B2 /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
@@ -1615,6 +1618,8 @@
 				BF2B4BA018D81EDB004724EC /* Lose.m */,
 				88143BC718D8C85D0048A2B2 /* GameCenterUpdater.h */,
 				88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */,
+				5256EF4218D9C7C6002B6473 /* ABGameKitHelper.h */,
+				5256EF4318D9C7C6002B6473 /* ABGameKitHelper.m */,
 				88143BBE18D894420048A2B2 /* GCHelper.h */,
 				88143BBF18D894420048A2B2 /* GCHelper.m */,
 				BF2B4B9C18D81277004724EC /* Pause.h */,
@@ -1795,6 +1800,7 @@
 				98E145A218D507F90044BA6A /* CCTextField.m in Sources */,
 				98E1450D18D507F80044BA6A /* CCProfiling.m in Sources */,
 				98E1453418D507F80044BA6A /* OALAction.m in Sources */,
+				5256EF4418D9C7C6002B6473 /* ABGameKitHelper.m in Sources */,
 				98E144CA18D507F80044BA6A /* CCTexturePVR.m in Sources */,
 				98E145D918D507F90044BA6A /* CCBAnimationManager.m in Sources */,
 				98E145BD18D507F90044BA6A /* mat4stack.c in Sources */,
