@@ -7,6 +7,7 @@
 //
 
 #import "Pause.h"
+#import "ABGameKitHelper.h"
 
 @implementation Pause
 
@@ -66,7 +67,8 @@
 }
 
 -(void)gamecenterPressed{
-    [[GCHelper defaultHelper] showLeaderboardOnViewController:[CCDirector sharedDirector]]; //shows gamecenter on ccdirector through helper
+    ABGameKitHelper *helper = [[ABGameKitHelper alloc] init];
+     [helper showAchievements];
 }
 
 @end
