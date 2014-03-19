@@ -7,13 +7,15 @@
 //
 
 #import "CCScene.h"
+#import "GCHelper.h"
 #import "Game.h"
 #import "Menu.h"
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
 
-@interface Pause : CCScene
+@interface Pause : CCScene<GKLocalPlayerListener>{
+}
 
 + (Pause *)scene;
 - (id)init;

@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "GameKit/GameKit.h"
+#import "GameCenterUpdater.h"
+#import "cocos2d.h"
+#import "cocos2d-ui.h"
+#import "Pause.h"
 
-@interface GCHelper : NSObject{
+@interface GCHelper : NSObject<GKGameCenterControllerDelegate>{
     // This class is the implementation of the Game Center Helper
     BOOL gameCenterAvailable;
     BOOL userAuthenticated;
@@ -17,7 +21,9 @@
 
 @property (assign, readonly) BOOL gameCenterAvailable;
 
-+ (GCHelper *)sharedInstance;
++ (GCHelper*)defaultHelper;
 - (void)authenticateLocalUser;
+- (void)showLeaderboardOnViewController:(UIViewController*)viewController;
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController;
 
 @end

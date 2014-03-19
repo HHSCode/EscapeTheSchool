@@ -315,7 +315,6 @@ BOOL intersects=NO; //initializes no intersection
         for (CCNode *obstacle in _obstacles) {
             if (CGRectIntersectsRect([obstacle boundingBox], [coin boundingBox])) { //check if obstacle and coin collides
                 [coin setPosition:CGPointMake(coin.position.x, 95)];
-                NSLog(@"coin obstacle");
             }
         }
         

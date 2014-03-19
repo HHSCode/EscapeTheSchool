@@ -64,4 +64,9 @@
     [[CCDirector sharedDirector]popScene]; //discards current game
     [[CCDirector sharedDirector]replaceScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]]; //goes to menu scene
 }
+
+-(void)gamecenterPressed{
+    [[GCHelper defaultHelper] showLeaderboardOnViewController:[CCDirector sharedDirector]]; //shows gamecenter on ccdirector through helper
+}
+
 @end

@@ -53,7 +53,7 @@
 		// Make iPad's act like they run at a 2x content scale. (iPad retina 4x)
 //		CCSetupTabletScale2X: @(YES),
 	}];
-	[[GCHelper sharedInstance] authenticateLocalUser];
+	[[GCHelper defaultHelper] authenticateLocalUser];
 	return YES;
 }
 

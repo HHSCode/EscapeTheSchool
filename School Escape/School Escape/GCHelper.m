@@ -43,6 +43,26 @@ static GCHelper *sharedHelper=nil;
     }
 }
 
+- (void)showLeaderboardOnViewController:(UIViewController*)viewController //creates view controller
+{
+    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init]; //creates gamecenter controller
+    if (gameCenterController != nil) {
+        gameCenterController.gameCenterDelegate = self;
+        gameCenterController.viewState = GKGameCenterViewControllerStateLeaderboards; //state is leaderboards
+        gameCenterController.leaderboardIdentifier = kLeaderboardID;
+        
+        [viewController presentViewController: gameCenterController animated: YES completion:nil]; //adds gamecenter controller to view controller
+    }
+}
+
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController //when finished
+{
+    [gameCenterViewController dismissViewControllerAnimated:YES completion:^{ //dismiss all the controllers
+        
+    }];
+
+}
+
 #pragma mark User Functions
 
 -(void)authenticateLocalUser{
@@ -56,11 +76,16 @@ static GCHelper *sharedHelper=nil;
     }
 }
 
+
+
+
 # pragma mark Initialization
-+(GCHelper *)sharedInstance{
-    if (!sharedHelper) {
++ (GCHelper*)defaultHelper {
+    // dispatch_once will ensure that the method is only called once (thread-safe)
+    static dispatch_once_t pred = 0;
+    dispatch_once(&pred, ^{
         sharedHelper = [[GCHelper alloc] init];
-    }
+    });
     return sharedHelper;
 }
 
