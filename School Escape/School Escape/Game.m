@@ -8,8 +8,9 @@
 
 #import "Game.h"
 #import "CCAnimation.h"
-int SpeedIncrease = 225;
-static const CGFloat scrollSpeed = 225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
+static CGFloat scrollSpeed = 225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
+
+int gameTime = 0;
 
 
 @implementation Game{
@@ -43,11 +44,23 @@ static const CGFloat scrollSpeed = 225; //scroll speed, change this to make it g
     [self unschedule:@selector(addCoin)];
     [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
 }
+//Track GameTime
+-(void)updateGameTime{
+    gameTime ++;
+    NSLog(@"gameTime: %i",gameTime);
+    
+}
+//Change Scroll Speed over time
+-(void)updateScrollSpeed{
+    scrollSpeed = scrollSpeed +10;
+    NSLog(@"scrollSpeed: %f", scrollSpeed);
+}
 
 - (id)init
 {
     
  
+    
     
     // Apple recommend assigning self with supers return value
     self = [super init];
@@ -58,7 +71,9 @@ static const CGFloat scrollSpeed = 225; //scroll speed, change this to make it g
     NSLog(@"CoinInterval: %f",CoinInterval);
     [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
     [self schedule:@selector(addObstacle) interval:5];
-    [self schedule:@selector(updateCoinSpawnSpeed) interval:2];
+    [self schedule:@selector(updateCoinSpawnSpeed) interval:0.5];
+    [self schedule:@selector(updateGameTime) interval:1];
+    [self schedule:@selector(updateScrollSpeed) interval:1];
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
     _obstacles = [[NSMutableArray alloc]init];
