@@ -104,7 +104,7 @@ int gameTime = 0;
     
     //HERO
     NSMutableArray *runFrames = [NSMutableArray array]; //initialize runFrames array
-    CCSpriteFrameCache *cache = [CCSpriteFrameCache sharedSpriteFrameCache]; //initialize cahce
+    CCSpriteFrameCache *cache = [CCSpriteFrameCache sharedSpriteFrameCache]; //initialize cache
     [cache addSpriteFramesWithFile:@"runningmansheet.plist"]; //add spritesheet to cache
 
     for(int i = 1; i <= 3; ++i) //forloop uses 3 frames
