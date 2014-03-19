@@ -10,6 +10,10 @@
 #import "AppSpecificValues.h"
 #import "GameCenterManager.h"
 
+@interface GameCenterUpdater () <GameCenterManagerDelegate>
+
+@end
+
 @implementation GameCenterUpdater
 @synthesize currentLeaderBoard,currentScore,gameCenterManager;
 
@@ -21,7 +25,7 @@
         if ([GameCenterManager isGameCenterAvailable]) {
             
             self.gameCenterManager = [[GameCenterManager alloc] init];
-            //[self.gameCenterManager setDelegate:self];
+            [self.gameCenterManager setDelegate:self];
             [self.gameCenterManager authenticateLocalUser];
             
         }else{
@@ -32,7 +36,11 @@
     return self;
 }
 -(void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController{
-    
+    return;
+}
+
+-(void)scoreReported:(NSError *)error{
+    NSLog(@"%@",error);
 }
 
 -(void)sendScore:(NSDictionary *)score andScores:(NSArray *)Scores{
@@ -56,25 +64,8 @@
 
 - (void) achievementSubmitted: (GKAchievement*) ach error:(NSError*) error;
 {
-    
-    if((error == NULL) && (ach != NULL))
-    {
-        if (ach.percentComplete == 100.0) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Achievement Earned!"
-                                                            message:(@"%@",ach.identifier)
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }
-        
-    }
-    else
-    {
-        // Achievement Submission Failed.
-        
-    }
-    
+    NSLog(@"Achievement Submitted");
+    return;
 }
 
 -(void)dealloc{
