@@ -565,10 +565,13 @@
  */
 -(BOOL) hasConnectivity
 {
-    return YES;
-    
-    Reach
-    
+    Reachability* networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus != NotReachable) {
+        NSLog(@"There is conectivity to the interweb");
+        return YES;
+    }
+    NSLog(@"There is no conectivity to the interweb");
     return NO;
 }
 
