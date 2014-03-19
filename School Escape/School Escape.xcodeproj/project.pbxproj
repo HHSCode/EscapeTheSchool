@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5256EF4418D9C7C6002B6473 /* ABGameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5256EF4318D9C7C6002B6473 /* ABGameKitHelper.m */; };
+		5256EF4718D9CCA5002B6473 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5256EF4618D9CCA5002B6473 /* Reachability.m */; };
 		88143BC018D894420048A2B2 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BBF18D894420048A2B2 /* GCHelper.m */; };
 		88143BC418D8BAE80048A2B2 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC318D8BAE80048A2B2 /* GameCenterManager.m */; };
 		88143BC918D8C85D0048A2B2 /* GameCenterUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */; };
@@ -247,6 +248,8 @@
 /* Begin PBXFileReference section */
 		5256EF4218D9C7C6002B6473 /* ABGameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABGameKitHelper.h; path = Classes/ABGameKitHelper.h; sourceTree = "<group>"; };
 		5256EF4318D9C7C6002B6473 /* ABGameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABGameKitHelper.m; path = Classes/ABGameKitHelper.m; sourceTree = "<group>"; };
+		5256EF4518D9CCA5002B6473 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5256EF4618D9CCA5002B6473 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		88143BBE18D894420048A2B2 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
 		88143BBF18D894420048A2B2 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHelper.m; sourceTree = "<group>"; };
 		88143BC118D8BAE80048A2B2 /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
@@ -1620,6 +1623,8 @@
 				88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */,
 				5256EF4218D9C7C6002B6473 /* ABGameKitHelper.h */,
 				5256EF4318D9C7C6002B6473 /* ABGameKitHelper.m */,
+				5256EF4518D9CCA5002B6473 /* Reachability.h */,
+				5256EF4618D9CCA5002B6473 /* Reachability.m */,
 				88143BBE18D894420048A2B2 /* GCHelper.h */,
 				88143BBF18D894420048A2B2 /* GCHelper.m */,
 				BF2B4B9C18D81277004724EC /* Pause.h */,
@@ -1767,6 +1772,7 @@
 				98E1453A18D507F80044BA6A /* OALAudioActions.m in Sources */,
 				98E1457F18D507F90044BA6A /* NSMutableArray+WeakReferences.m in Sources */,
 				98E144F918D507F80044BA6A /* CCGLView.m in Sources */,
+				5256EF4718D9CCA5002B6473 /* Reachability.m in Sources */,
 				98E145C318D507F90044BA6A /* mat4.c in Sources */,
 				98E1441F18D507F70044BA6A /* CCAtlasNode.m in Sources */,
 				98E1456D18D507F90044BA6A /* OpenALManager.m in Sources */,

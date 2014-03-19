@@ -27,6 +27,7 @@
 #import <netinet/in.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import "ABGameKitHelper.h"
+#import "Reachability.h"
 
 #define IS_MIN_IOS6 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0f)
 
