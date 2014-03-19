@@ -31,6 +31,9 @@
     }
     return self;
 }
+-(void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController{
+    
+}
 
 -(void)sendScore:(NSDictionary *)score andScores:(NSArray *)Scores{
     self.currentScore = [score objectForKey:@"distance"];
@@ -49,6 +52,29 @@
     // 50 plays:
     double parcent50 = (numberOfScores/50.0)*100.0;
     [self.gameCenterManager submitAchievement:kAchievement50Plays percentComplete:parcent50];
+}
+
+- (void) achievementSubmitted: (GKAchievement*) ach error:(NSError*) error;
+{
+    
+    if((error == NULL) && (ach != NULL))
+    {
+        if (ach.percentComplete == 100.0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Achievement Earned!"
+                                                            message:(@"%@",ach.identifier)
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        
+    }
+    else
+    {
+        // Achievement Submission Failed.
+        
+    }
+    
 }
 
 -(void)dealloc{

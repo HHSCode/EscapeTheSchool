@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GameKit/GameKit.h"
 #define kLeaderboardID @"bestdistance"
 #define kAchievement10Plays @"play10"
 #define kAchievement20Plays @"play20"
@@ -14,7 +15,7 @@
 
 @class GameCenterManager;
 
-@interface GameCenterUpdater : NSObject{
+@interface GameCenterUpdater : NSObject <GKAchievementViewControllerDelegate>{
     GameCenterManager* gameCenterManager;
     int64_t currentScore;
     //NSString* currentLeaderBoard;
