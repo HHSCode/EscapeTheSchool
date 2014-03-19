@@ -276,6 +276,7 @@ BOOL intersects=NO; //initializes no intersection
     }
     if (_hero.position.y<30) {
         hasDoubleJumped=NO;
+        intersects=NO;
     }
     
     for (CCNode *ground in _grounds) {
