@@ -12,6 +12,7 @@
 		88143BC018D894420048A2B2 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BBF18D894420048A2B2 /* GCHelper.m */; };
 		88143BC418D8BAE80048A2B2 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC318D8BAE80048A2B2 /* GameCenterManager.m */; };
 		88143BC918D8C85D0048A2B2 /* GameCenterUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */; };
+		883FB41C18D9CF0A00CA959F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */; };
 		9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D018D62E9F00CDEFD4 /* desk.png */; };
 		9820C1D318D62EA600CDEFD4 /* white-closed-book.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D218D62EA600CDEFD4 /* white-closed-book.png */; };
 		98DF15DF18D52C57004E553B /* coin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DF15DE18D52C57004E553B /* coin1.png */; };
@@ -257,6 +258,8 @@
 		88143BC318D8BAE80048A2B2 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
 		88143BC718D8C85D0048A2B2 /* GameCenterUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterUpdater.h; sourceTree = "<group>"; };
 		88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterUpdater.m; sourceTree = "<group>"; };
+		883FB41918D9CEBB00CA959F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9820C1D018D62E9F00CDEFD4 /* desk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk.png; sourceTree = "<group>"; };
 		9820C1D218D62EA600CDEFD4 /* white-closed-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-closed-book.png"; sourceTree = "<group>"; };
 		98DF15DE18D52C57004E553B /* coin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin1.png; sourceTree = "<group>"; };
@@ -714,6 +717,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				883FB41C18D9CF0A00CA959F /* SystemConfiguration.framework in Frameworks */,
 				B348805718D88CFB00CC5067 /* GameKit.framework in Frameworks */,
 				98E143CF18D507F70044BA6A /* libObjectiveChipmunk.a in Frameworks */,
 				98E143BD18D507F70044BA6A /* OpenAL.framework in Frameworks */,
@@ -753,6 +757,8 @@
 		98E143B718D507F70044BA6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */,
+				883FB41918D9CEBB00CA959F /* CFNetwork.framework */,
 				B348805818D88D1F00CC5067 /* StoreKit.framework */,
 				B348805618D88CFB00CC5067 /* GameKit.framework */,
 				98E143B818D507F70044BA6A /* QuartzCore.framework */,
