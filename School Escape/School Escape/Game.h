@@ -13,7 +13,7 @@
 #import "Menu.h"
 #import "Pause.h"
 #import "Lose.h"
-#import "AVFoundation/AVAudioPlayer.h"
+
 
 @interface Game : CCScene <CCPhysicsCollisionDelegate> {
 

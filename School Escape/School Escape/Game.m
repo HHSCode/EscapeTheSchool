@@ -47,14 +47,7 @@ static const CGFloat scrollSpeed = 225; //scroll speed, change this to make it g
 - (id)init
 {
     
-    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle]
-                                         pathForResource:@"backgroundMusic1"
-                                         ofType:@"mp3"]];
-    AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc]
-                                  initWithContentsOfURL:url
-                                  error:nil];
-    [audioPlayer play];
-    
+ 
     
     // Apple recommend assigning self with supers return value
     self = [super init];
