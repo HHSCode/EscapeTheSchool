@@ -312,6 +312,13 @@ BOOL intersects=NO; //initializes no intersection
             upScore=YES; //tells program to add point below
         }
         
+        for (CCNode *obstacle in _obstacles) {
+            if (CGRectIntersectsRect([obstacle boundingBox], [coin boundingBox])) { //check if obstacle and coin collides
+                [coin setPosition:CGPointMake(coin.position.x, 95)];
+                NSLog(@"coin obstacle");
+            }
+        }
+        
         if (shouldRemove) { //if above has told to remove
             [coin removeFromParent]; //removes from physics node
             [_coins removeObject:coin]; //removes from original coins array
@@ -345,7 +352,7 @@ BOOL intersects=NO; //initializes no intersection
             NSLog(@"Obst l: %f", obstacle.position.x);
             NSLog(@"Hero b: %f", _hero.position.y);
             NSLog(@"Obst t: %f\n|", obstacle.position.y+obstacle.contentSize.height);
-
+            
             intersects=YES;
         }
         
