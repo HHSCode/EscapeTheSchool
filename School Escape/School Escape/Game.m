@@ -60,8 +60,8 @@ int gameTime;
 
 - (id)init
 {
-    
- 
+    gameTime = 0;
+    scrollSpeed = 225;
     
     
     // Apple recommend assigning self with supers return value

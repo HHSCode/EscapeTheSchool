@@ -25,7 +25,8 @@
         if ([GameCenterManager isGameCenterAvailable]) {
             
             self.gameCenterManager = [[GameCenterManager alloc] init];
-            //[self.gameCenterManager setDelegate:self];
+            self.gameCenterManager.delegate = self;
+            //NSLog(@"%@",[self respondsToSelector:@selector(sendScore:andScores:)]);
             [self.gameCenterManager authenticateLocalUser];
             
         }else{
@@ -40,75 +41,64 @@
 }
 
 -(void)scoreReported:(NSError *)error{
-    NSLog(@"%@",error);
+    if (error==nil) {
+        //NSLog(@"No problems reporting scores");
+    }else{
+        NSLog(@"Had trouble reporting score: %@",error);
+    }
 }
 
 -(void)sendScore:(NSDictionary *)score andScores:(NSArray *)Scores{
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
     Scores=[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
     
-    score = [Scores objectAtIndex:0];
+    Scores = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:NO], nil]];
     
-    int64_t currentScore = [[score objectForKey:@"distance"] intValue];
-    NSLog(@"Scores being sent...");
+    int64_t currentScore = [[[Scores objectAtIndex:0] objectForKey:@"distance"] intValue];
+    
+    Scores = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"coins" ascending:NO], nil]];
+    
+    int64_t coinsScore = [[[Scores objectAtIndex:0] objectForKey:@"coins"] intValue];
+    
+    
+    
     [self checkAchievements:Scores];
-    int64_t totalDistance = 0;
-    int num = 0;
-    for (NSDictionary* score2 in Scores) {
-        totalDistance = totalDistance+[[score2 valueForKey:@"distance"] intValue];
-        num++;
-    }
-    NSLog(@"Distance: %lld",currentScore);
-    NSLog(@"Total distance: %lld",totalDistance);
-    NSLog(@"Coins: %i",[[score valueForKey:@"coins"]intValue]);
-    NSLog(@"Average distance: %lld",totalDistance/num);
+    NSLog(@"Best distance: %lld",currentScore);
+    NSLog(@"Best coins: %lld",coinsScore);
     [self.gameCenterManager reportScore: currentScore forCategory: @"bestdistance"];
-    [self.gameCenterManager reportScore: totalDistance forCategory: @"totaldistance"];
     [self.gameCenterManager reportScore: ((int64_t)([[score valueForKey:@"coins"]intValue])) forCategory: @"bestcoin"];
-    [self.gameCenterManager reportScore:((int64_t)(totalDistance/num)) forCategory:@"averagedistance"];
-    NSLog(@"Sent!");
     [Scores writeToFile:path atomically:YES];
 }
 
 -(void)checkAchievements:(NSArray *)Scores{
     int numberOfScores = (int)[Scores count];
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Achievement Get!" message:@"" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
     if (numberOfScores<=1) {
         [self.gameCenterManager resetAchievements];
     }
     // 10 plays:
     double parcent10 = (numberOfScores/10.0)*100.0;
     [self.gameCenterManager submitAchievement:kAchievement10Plays percentComplete:parcent10];
-    if (parcent10==100) {
-        [alert setMessage:@"You completed 10 Games!"];
-        [alert show];
-    }
     // 20 plays:
     double parcent20 = (numberOfScores/20.0)*100.0;
     [self.gameCenterManager submitAchievement:kAchievement20Plays percentComplete:parcent20];
-    if (parcent20==100) {
-        [alert setMessage:@"You completed 20 Games!"];
-        [alert show];
-    }
     // 50 plays:
     double parcent50 = (numberOfScores/50.0)*100.0;
     [self.gameCenterManager submitAchievement:kAchievement50Plays percentComplete:parcent50];
-    if (parcent50==100) {
-        [alert setMessage:@"You completed 50 Games!"];
-        [alert show];
-    }
 }
 
 - (void) achievementSubmitted: (GKAchievement*) ach error:(NSError*) error;
 {
-    NSLog(@"Achievement Submitted");
+    
+    if (error==nil && ach != NULL) {
+        NSLog(@"Achievement (%@) Submitted",ach.identifier);
+        if (ach.percentComplete==100.0) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Achievement Get!" message:[NSString stringWithFormat:@"%@",ach.identifier] delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+            [alert show];
+        }
+    }else{
+        NSLog(@"Achievement submission failed!");
+    }
     return;
-}
-
--(void)dealloc{
-    gameCenterManager = nil;
-    currentScore = nil;
-    currentLeaderBoard = nil;
 }
 
 @end

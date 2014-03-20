@@ -47,6 +47,7 @@
 
 #import "GameCenterManager.h"
 #import <GameKit/GameKit.h>
+#import "GameCenterUpdater.h"
 
 
 
@@ -94,16 +95,18 @@
 
 - (void) callDelegate: (SEL) selector withArg: (id) arg error: (NSError*) err
 {
+    GameCenterUpdater* delegate = [GameCenterUpdater alloc];
 	assert([NSThread isMainThread]);
+    //NSLog(@"%@",self.delegate);
 	if([delegate respondsToSelector: selector])
 	{
 		if(arg != NULL)
 		{
-			[delegate performSelector: selector withObject: arg withObject: err];
+			[delegate performSelector: @selector(achievementSubmitted:error:) withObject: arg withObject: err];
 		}
 		else
 		{
-			[delegate performSelector: selector withObject: err];
+			[delegate performSelector: @selector(scoreReported:) withObject: err];
 		}
 	}
 	else
@@ -111,7 +114,6 @@
 		NSLog(@"Missed Method");
 	}
 }
-
 
 - (void) callDelegateOnMainThread: (SEL) selector withArg: (id) arg error: (NSError*) err
 {

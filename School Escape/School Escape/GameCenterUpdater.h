@@ -25,6 +25,8 @@
 @property (nonatomic, assign) int64_t currentScore;
 @property (nonatomic, assign) NSString* currentLeaderBoard;
 
+-(void) achievementSubmitted: (GKAchievement*) ach error:(NSError*) error;
+-(void)scoreReported:(NSError *)error;
 -(void)sendScore:(NSDictionary*)score andScores:(NSArray *)Scores;
 -(void)checkAchievements:(NSArray *)Scores;
 
