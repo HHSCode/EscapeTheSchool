@@ -61,7 +61,7 @@ int gameTime;
 //Change Scroll Speed over time
 -(void)updateScrollSpeed{
     if (scrollSpeed < 2000) { //Stop at 2000
-        scrollSpeed = scrollSpeed +5;
+        scrollSpeed = scrollSpeed +10;
     }
 }
 
