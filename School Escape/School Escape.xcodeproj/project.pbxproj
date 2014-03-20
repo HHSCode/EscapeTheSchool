@@ -19,6 +19,7 @@
 		881CA21C18DB4DDC00574CFC /* door1.png in Resources */ = {isa = PBXBuildFile; fileRef = 881CA21B18DB4DDC00574CFC /* door1.png */; };
 		881CA21E18DB4E0100574CFC /* door2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881CA21D18DB4E0100574CFC /* door2.png */; };
 		881CA22018DB4E6900574CFC /* locker2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881CA21F18DB4E6900574CFC /* locker2.png */; };
+		881CA22218DB669200574CFC /* atrium.png in Resources */ = {isa = PBXBuildFile; fileRef = 881CA22118DB669200574CFC /* atrium.png */; };
 		88200D0718DB5EA00030170F /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 88200D0618DB5EA00030170F /* MKiCloudSync.m */; };
 		883FAE8218D9D31F00A75F05 /* backgroundMusic1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 883FAE8118D9D31F00A75F05 /* backgroundMusic1.mp3 */; };
 		883FB41C18D9CF0A00CA959F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */; };
@@ -261,6 +262,7 @@
 		881CA21B18DB4DDC00574CFC /* door1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door1.png; sourceTree = "<group>"; };
 		881CA21D18DB4E0100574CFC /* door2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door2.png; sourceTree = "<group>"; };
 		881CA21F18DB4E6900574CFC /* locker2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locker2.png; sourceTree = "<group>"; };
+		881CA22118DB669200574CFC /* atrium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = atrium.png; sourceTree = "<group>"; };
 		88200D0518DB5EA00030170F /* MKiCloudSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKiCloudSync.h; path = Classes/MKiCloudSync.h; sourceTree = "<group>"; };
 		88200D0618DB5EA00030170F /* MKiCloudSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKiCloudSync.m; path = Classes/MKiCloudSync.m; sourceTree = "<group>"; };
 		883FAE8118D9D31F00A75F05 /* backgroundMusic1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic1.mp3; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 		881CA21318DB46F600574CFC /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				881CA22118DB669200574CFC /* atrium.png */,
 				881CA21A18DB4BEA00574CFC /* Hallway */,
 			);
 			name = Backgrounds;
@@ -1756,6 +1759,7 @@
 				881CA21218DB46EC00574CFC /* brickBig.png in Resources */,
 				98E145BA18D507F90044BA6A /* ChangeLog in Resources */,
 				9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */,
+				881CA22218DB669200574CFC /* atrium.png in Resources */,
 				B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */,
 				98E1494618D50FED0044BA6A /* background1.png in Resources */,
 				9820C1D318D62EA600CDEFD4 /* white-closed-book.png in Resources */,
