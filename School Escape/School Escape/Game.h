@@ -14,7 +14,6 @@
 #import "Pause.h"
 #import "Lose.h"
 
-
 @interface Game : CCScene <CCPhysicsCollisionDelegate> {
 
 }
