@@ -57,16 +57,12 @@ int gameTime;
 //Track GameTime
 -(void)updateGameTime{
     gameTime ++;
-    NSLog(@"gameTime: %i",gameTime);
-    
 }
 //Change Scroll Speed over time
 -(void)updateScrollSpeed{
     if (scrollSpeed < 2000) { //Stop at 2000
         scrollSpeed = scrollSpeed +5;
     }
-
-    NSLog(@"scrollSpeed: %f", scrollSpeed);
 }
 
 - (id)init
