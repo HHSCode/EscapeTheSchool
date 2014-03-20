@@ -375,7 +375,7 @@ BOOL intersects=NO; //initializes no intersection
             [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
         }
         
-        distance = -1*(int)_physicsNode.position.x/10; //distance takes the negative integer of physics node position and divides it by 10 (to make it slower)
+        distance = (int)_hero.position.x/10; //distance takes the negative integer of physics node position and divides it by 10 (to make it slower)
         [_distanceLabel setString:[NSString stringWithFormat:@"%i", distance]]; //sets the label to the current distance
     }
     
