@@ -28,14 +28,14 @@
     
     NSArray* Scores;
     Scores = [NSArray arrayWithContentsOfFile:path];
-
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
     CCButton *menuButton = [CCButton buttonWithTitle:@"< Back"];
     [menuButton setTarget:self selector:@selector(menuPressed)];
     CCButton *buyButton = [CCButton buttonWithTitle:@"Buy for 10 coins"];
     [buyButton setTarget:self selector:@selector(buyPressed)];
     CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@""] fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"totalcoins"]] fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:20];
     
     CCLayoutBox *storeLayoutBox = [[CCLayoutBox alloc]init];
     [storeLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
