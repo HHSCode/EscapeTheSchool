@@ -8,9 +8,8 @@
 
 #import "Game.h"
 #import "CCAnimation.h"
-static CGFloat scrollSpeed = 225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
-
-int gameTime = 0;
+float scrollSpeed;
+int gameTime;
 
 
 @implementation Game{
@@ -77,6 +76,8 @@ int gameTime = 0;
     [self schedule:@selector(updateCoinSpawnSpeed) interval:0.5];
     [self schedule:@selector(updateGameTime) interval:1];
     [self schedule:@selector(updateScrollSpeed) interval:1];
+    scrollSpeed=225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
+    gameTime=0;
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
     _obstacles = [[NSMutableArray alloc]init];
