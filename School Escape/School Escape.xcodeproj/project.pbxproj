@@ -19,6 +19,7 @@
 		881CA21C18DB4DDC00574CFC /* door1.png in Resources */ = {isa = PBXBuildFile; fileRef = 881CA21B18DB4DDC00574CFC /* door1.png */; };
 		881CA21E18DB4E0100574CFC /* door2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881CA21D18DB4E0100574CFC /* door2.png */; };
 		881CA22018DB4E6900574CFC /* locker2.png in Resources */ = {isa = PBXBuildFile; fileRef = 881CA21F18DB4E6900574CFC /* locker2.png */; };
+		88200D0718DB5EA00030170F /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 88200D0618DB5EA00030170F /* MKiCloudSync.m */; };
 		883FAE8218D9D31F00A75F05 /* backgroundMusic1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 883FAE8118D9D31F00A75F05 /* backgroundMusic1.mp3 */; };
 		883FB41C18D9CF0A00CA959F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */; };
 		9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D018D62E9F00CDEFD4 /* desk.png */; };
@@ -260,6 +261,8 @@
 		881CA21B18DB4DDC00574CFC /* door1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door1.png; sourceTree = "<group>"; };
 		881CA21D18DB4E0100574CFC /* door2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door2.png; sourceTree = "<group>"; };
 		881CA21F18DB4E6900574CFC /* locker2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locker2.png; sourceTree = "<group>"; };
+		88200D0518DB5EA00030170F /* MKiCloudSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKiCloudSync.h; path = Classes/MKiCloudSync.h; sourceTree = "<group>"; };
+		88200D0618DB5EA00030170F /* MKiCloudSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKiCloudSync.m; path = Classes/MKiCloudSync.m; sourceTree = "<group>"; };
 		883FAE8118D9D31F00A75F05 /* backgroundMusic1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic1.mp3; sourceTree = "<group>"; };
 		883FB41918D9CEBB00CA959F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -815,6 +818,8 @@
 				88143BC118D8BAE80048A2B2 /* AppSpecificValues.h */,
 				88143BC218D8BAE80048A2B2 /* GameCenterManager.h */,
 				88143BC318D8BAE80048A2B2 /* GameCenterManager.m */,
+				88200D0518DB5EA00030170F /* MKiCloudSync.h */,
+				88200D0618DB5EA00030170F /* MKiCloudSync.m */,
 				98E143D218D507F70044BA6A /* Default.png */,
 				98E143D418D507F70044BA6A /* Default@2x.png */,
 				98E143D618D507F70044BA6A /* Default-568h@2x.png */,
@@ -1915,6 +1920,7 @@
 				98E1455318D507F80044BA6A /* ALCaptureDevice.m in Sources */,
 				98E1448F18D507F80044BA6A /* CCResponderManager.m in Sources */,
 				98E1442718D507F70044BA6A /* CCConfiguration.m in Sources */,
+				88200D0718DB5EA00030170F /* MKiCloudSync.m in Sources */,
 				98E1456A18D507F90044BA6A /* ALWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
