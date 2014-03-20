@@ -80,6 +80,9 @@ int gameTime;
     if (!self) return(nil);
     
     self.userInteractionEnabled = YES; //makes it so user can touch screen
+    
+    
+    
     [self schedule:@selector(addCoin) interval:2];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
     //[self schedule:@selector(updateCoinSpawnSpeed) interval:0.5];
     //float flyingObstacleInterval = (float)(arc4random() % 9)+1;
