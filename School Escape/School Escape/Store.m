@@ -60,24 +60,13 @@
 }
 
 -(void)buyPressed{
-    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
-    
-    NSArray* theScore=[[NSArray arrayWithContentsOfFile:path] sortedArrayUsingDescriptors:[NSMutableArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
-    
-    NSMutableArray *scores = [theScore mutableCopy];
-    
-    if ([[[scores objectAtIndex:0] objectForKey:@"totalcoins"] intValue]>=10) {
+    if ([[defaults objectForKey:@"totalCoins"] intValue]>=10) {
         UIAlertView *buyAlert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Bought nothing for 10 coins!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [buyAlert show];
-        NSMutableDictionary* updateCoins = [NSMutableDictionary dictionary];
-        [updateCoins setValue:[NSNumber numberWithInt:0] forKey:@"distance"];
-        [updateCoins setValue:[NSNumber numberWithInt:0] forKey:@"coins"];
-        [updateCoins setValue:[NSDate date] forKey:@"time"];
-        [updateCoins setValue:[NSNumber numberWithInt:[[[scores objectAtIndex:0]objectForKey:@"totalcoins"]intValue] - 10] forKey:@"totalcoins"];
-        [scores addObject:updateCoins];
-        
-        [scores writeToFile:path atomically:YES];
+        [defaults setValue:[NSNumber numberWithInt:([[defaults objectForKey:@"totalCoins"] intValue]-10)] forKey:@"totalCoins"];
+
     } else {
         UIAlertView *failAlert = [[UIAlertView alloc]initWithTitle:@"Failure!" message:@"Not enough coins!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [failAlert show];
