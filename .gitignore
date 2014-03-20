@@ -2,3 +2,4 @@
 *.xcodeproj/
 !*.xcodeproj/project.pbxproj
 GameCenter.h
+~*.xls*
