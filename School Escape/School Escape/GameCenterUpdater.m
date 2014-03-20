@@ -10,15 +10,22 @@
 #import "AppSpecificValues.h"
 #import "GameCenterManager.h"
 
-@interface GameCenterUpdater () <GameCenterManagerDelegate>
+@interface GameCenterUpdater () <GameCenterManagerDelegate>{
+    int64_t submitedDistance;
+    int64_t submitedCoins;
+}
 
 @end
 
 @implementation GameCenterUpdater
 @synthesize currentLeaderBoard,currentScore,gameCenterManager;
 
+bool useDistanceSubmittedScore = false;
+
 -(id)init{
     if (self = [super init]) {
+        submitedCoins = nil;
+        submitedDistance = nil;
         self.currentLeaderBoard = gDistanceLeaderboard;
         self.currentScore = 0;
         
@@ -59,13 +66,48 @@
 }
 
 -(void)sendScore:(NSDictionary *)score andScores:(NSArray *)Scores{
+    // Pull high scores
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+    leaderboardRequest.identifier = gDistanceLeaderboard;
+    if (leaderboardRequest != nil) {
+        [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+            if (error != nil) {
+                NSLog(@"Error pulling distance score");
+            }else{
+                submitedDistance = leaderboardRequest.localPlayerScore.value;
+            }
+            leaderboardRequest.identifier = gBestCoinLeaderboard;
+            if (leaderboardRequest != nil) {
+                [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+                    if (error !=nil) {
+                        NSLog(@"Error pulling coin score");
+                    }else{
+                        submitedCoins = leaderboardRequest.localPlayerScore.value;
+                    }
+                    [self finishScoreSend:score andScores:Scores];
+                    return;
+                }];
+            }else{
+                [self finishScoreSend:score andScores:Scores];
+                return;
+            }
+        }];
+    }else{
+        [self finishScoreSend:score andScores:Scores];
+        return;
+    }
+    
+}
+
+-(void)finishScoreSend:(NSDictionary *)score andScores:(NSArray *)Scores{
+    
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
     NSArray* Scores2 =[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
     
     
     // Get best score
     Scores2 = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:NO], nil]];
-    int64_t distanceScore = [[[Scores objectAtIndex:0] objectForKey:@"distance"] intValue];
+    int64_t distanceScore = [[[Scores2 objectAtIndex:0] objectForKey:@"distance"] intValue];
     
     Scores2 = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"coins" ascending:NO], nil]];
     int64_t coinsScore = [[[Scores2 objectAtIndex:0] objectForKey:@"coins"] intValue];
@@ -84,13 +126,20 @@
     }
     int64_t averageDistance = totalDistance / numOfRuns;
     
-    
     // Init scores
     GKScore * GCscore = [[GKScore alloc] initWithCategory:gDistanceLeaderboard];
-    GCscore.value = distanceScore;
+    if (distanceScore < submitedDistance) {
+        GCscore.value = submitedDistance;
+    }else{
+        GCscore.value = distanceScore;
+    }
     
     GKScore * coinsScore2 = [[GKScore alloc] initWithCategory:gBestCoinLeaderboard];
-    coinsScore2.value = coinsScore;
+    if (coinsScore < submitedCoins) {
+        coinsScore2.value = submitedCoins;
+    }else{
+        coinsScore2.value = coinsScore;
+    }
     
     GKScore * totalDistanceScore = [[GKScore alloc] initWithCategory:gTotalDistanceLeaderboard];
     totalDistanceScore.value = totalDistance;
