@@ -23,6 +23,8 @@ int gameTime;
     NSMutableArray *_coins; //array that stores all the coins and checks them to see if they collided with the hero in the update method
     NSMutableArray *_coins2;
     NSMutableArray *_obstacles;
+    NSMutableArray *_flyingObstacles;
+
     CCLabelTTF *_coinCounterLabel;
     CCLabelTTF *_distanceLabel;
     CCLabelTTF *_coinCounterLabelStatic;
@@ -38,11 +40,19 @@ int gameTime;
 
 
 -(void)updateCoinSpawnSpeed{
-    float CoinInterval = (float)(arc4random() % 9);
+    float CoinInterval = (float)(arc4random() % 9)+1;
     NSLog(@"CoinInterval: %f",CoinInterval);
     [self unschedule:@selector(addCoin)];
     [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
 }
+
+-(void)updateFlyingObstacleSpawnSpeed{
+    float flyingObstacleInterval = ((float)(arc4random() % 9)+1)*2;
+    NSLog(@"Flyinginterval: %f", flyingObstacleInterval);
+    [self unschedule:@selector(addFlyingObstacle)];
+    [self schedule:@selector(addFlyingObstacle) interval:flyingObstacleInterval];//schedules addFlyingObstacle method so a new flying obstacle is added at a random interval (this is the start interval for the schedule)
+}
+
 //Track GameTime
 -(void)updateGameTime{
     gameTime ++;
@@ -61,7 +71,7 @@ int gameTime;
 - (id)init
 {
     gameTime = 0;
-    scrollSpeed = 225;
+    scrollSpeed = 150;
     
     
     // Apple recommend assigning self with supers return value
@@ -69,11 +79,14 @@ int gameTime;
     if (!self) return(nil);
     
     self.userInteractionEnabled = YES; //makes it so user can touch screen
-    float CoinInterval = (float)(arc4random() % 9);
-    NSLog(@"CoinInterval: %f",CoinInterval);
     [self schedule:@selector(addCoin) interval:2];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
-    [self schedule:@selector(addObstacle) interval:5];
     //[self schedule:@selector(updateCoinSpawnSpeed) interval:0.5];
+    //float flyingObstacleInterval = (float)(arc4random() % 9)+1;
+    #warning must fix the flying interval to be random
+    
+    [self schedule:@selector(addFlyingObstacle) interval:3];
+    
+    //[self schedule:@selector(updateFlyingObstacleSpawnSpeed) interval:0.5];
     [self schedule:@selector(updateGameTime) interval:1];
     [self schedule:@selector(updateScrollSpeed) interval:1];
     scrollSpeed=225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
@@ -81,6 +94,7 @@ int gameTime;
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
     _obstacles = [[NSMutableArray alloc]init];
+    _flyingObstacles = [[NSMutableArray alloc]init];
     //BACKGROUND
     CCSprite *_background = [CCSprite spriteWithImageNamed:@"background1.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
     [_background setPosition:ccp(0, 0)];
@@ -115,7 +129,7 @@ int gameTime;
     CCAnimation *runAnimation = [CCAnimation animationWithSpriteFrames:runFrames delay:0.1f]; //creates animation with runFrames with delay between of 0.1
     CCActionAnimate *animationAction = [CCActionAnimate actionWithAnimation:runAnimation]; //creates action with animation
     CCActionRepeatForever *repeatingAnimation = [CCActionRepeatForever actionWithAction:animationAction]; //repeats action forever
-    _hero = [CCSprite spriteWithImageNamed:@"runningman1.png" ]; //initializes hero with first image
+    _hero = [CCSprite spriteWithImageNamed:@"runningman1.png"]; //initializes hero with first image
     [_hero runAction:repeatingAnimation]; //assigns animation to hero
     [_hero setAnchorPoint:ccp(0, 0)];
     [_hero setPosition:ccp(60, 100)];
@@ -126,7 +140,7 @@ int gameTime;
     //PHYSICS NODE
     _physicsNode = [CCPhysicsNode node];
     _physicsNode.gravity = ccp(0,-1500); //change this to increase or decrease gravity
-    _physicsNode.debugDraw = YES; //YES to see phsyics bodies
+    _physicsNode.debugDraw = NO; //YES to see phsyics bodies
     _physicsNode.collisionDelegate = self;
     
     //GROUND 1 PHYSICS
@@ -187,7 +201,7 @@ int gameTime;
     [self addChild:pauseButton z:1]; //add button to scene
 
     _grounds = [[NSArray alloc]initWithObjects:_ground1, _ground2, nil ];//allocate grounds array
-
+    
     [self addChild:_physicsNode]; //add physics node to the scene
 
 	return self;
@@ -215,6 +229,31 @@ BOOL intersects=NO; //initializes no intersection
         hasDoubleJumped=YES; //broadcasts player has double jumped
         intersects=NO; //resets intersection until changed by collision handler
     }
+}
+
+-(void)addFlyingObstacle{
+    CCNode *_flyingObstacle = [[CCSprite alloc]initWithImageNamed:@"white-closed-book.png"]; //change this to change how the coin looks
+    [_flyingObstacle setScaleY:.015];
+    [_flyingObstacle setScaleX:.015];
+    float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
+    [_flyingObstacle setAnchorPoint:ccp(0, 0)];
+    
+    _flyingObstacle.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_flyingObstacle.contentSize.width/2-40 andCenter:ccp(_flyingObstacle.contentSize.width/2, _flyingObstacle.contentSize.height/2)];
+    _flyingObstacle.physicsBody.collisionGroup = @"heroGroup";
+    _flyingObstacle.physicsBody.collisionType = @"flyingObstacleType";
+    _flyingObstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
+    int minY = _ground1.boundingBox.size.height+10; //min is above the ground slightly
+    int maxY = self.contentSize.height-_flyingObstacle.boundingBox.size.height-10;//max is below the top but in reach ofthe character jumping
+    int rangeY = maxY - minY;
+    int randomY = (arc4random() % rangeY) + minY;
+    
+    _flyingObstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY); //sets coin position off to the right at a random y location
+    [_flyingObstacles addObject:_flyingObstacle]; //adds coin to _coins so it can check for collisions
+    if ([_flyingObstacles count]>30) { //if more than 30 coins
+        [_flyingObstacles removeObjectAtIndex:0]; //delete from array
+    }
+    [_physicsNode addChild:_flyingObstacle]; //adds coin to physics node
+    
 }
 
 -(void)addCoin{
@@ -245,7 +284,7 @@ BOOL intersects=NO; //initializes no intersection
         CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin1.png"]; //change this to change how the coin looks
         [_coin setScaleY:.040];
         [_coin setScaleX:.040];
-        float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
+        //float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
         [_coin setAnchorPoint:ccp(0, 0)];
         
         _coin.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_coin.contentSize.width/2-40 andCenter:ccp(_coin.contentSize.width/2, _coin.contentSize.height/2)];
@@ -264,7 +303,7 @@ BOOL intersects=NO; //initializes no intersection
     }
 }
 
--(void)addObstacle{
+/*-(void)addObstacle{
     CCNode *_obstacle = [[CCSprite alloc]initWithImageNamed:@"desk.png"]; //change this to change how the coin looks
     [_obstacle setScaleY:.15];
     [_obstacle setScaleX:.15];
@@ -286,7 +325,7 @@ BOOL intersects=NO; //initializes no intersection
     }
     [_physicsNode addChild:_obstacle]; //adds coin to physics node
 }
-
+*/
 -(void)lost{
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
     NSMutableArray* Scores;
@@ -352,17 +391,16 @@ BOOL intersects=NO; //initializes no intersection
             
         }
 
-        if (CGRectIntersectsRect([_hero boundingBox], [coin boundingBox])) { //check if hero and coin collides
+        CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
+        CGRect coinTempBoundingBox = CGRectInset(coin.boundingBox, coin.boundingBox.size.width/8, coin.boundingBox.size.height/8);
+
+        if (CGRectIntersectsRect(heroTempBoundingBox, coinTempBoundingBox)) { //check if hero and coin collides
             
             shouldRemove=YES; //tells program to remove coin below
             upScore=YES; //tells program to add point below
         }
         
-        for (CCNode *obstacle in _obstacles) {
-            if (CGRectIntersectsRect([obstacle boundingBox], [coin boundingBox])) { //check if obstacle and coin collides
-                [coin setPosition:CGPointMake(coin.position.x, 95)];
-            }
-        }
+       
         
         if (shouldRemove) { //if above has told to remove
             [coin removeFromParent]; //removes from physics node
@@ -381,6 +419,18 @@ BOOL intersects=NO; //initializes no intersection
     
     //Obstacle Collisions
     
+    for (CCNode *flyingObstacle in _flyingObstacles) {
+        flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed/6), flyingObstacle.position.y); //keeps hero in line with the moving physics node
+        CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
+        CGRect flyingObstacleTempBoundingBox = CGRectInset(flyingObstacle.boundingBox, flyingObstacle.boundingBox.size.width/8, flyingObstacle.boundingBox.size.height/8);
+
+        if (CGRectIntersectsRect(heroTempBoundingBox, flyingObstacleTempBoundingBox)) { //check if hero and coin collides
+            
+            [self lost];
+        }
+
+    }
+    
     for (CCNode *obstacle in _obstacles) {
         BOOL shouldRemove = NO;
         CGPoint obstacleWorldPosition = [_physicsNode convertToWorldSpace:obstacle.position];
@@ -393,10 +443,10 @@ BOOL intersects=NO; //initializes no intersection
         }
         
         if (CGRectIntersectsRect([_hero boundingBox], [obstacle boundingBox])) { //check if hero and coin collides, if so remove coin from screen. need to add a counter
-            NSLog(@"Hero r: %f", _hero.position.x+_hero.contentSize.width);
+            /*NSLog(@"Hero r: %f", _hero.position.x+_hero.contentSize.width);
             NSLog(@"Obst l: %f", obstacle.position.x);
             NSLog(@"Hero b: %f", _hero.position.y);
-            NSLog(@"Obst t: %f\n|", obstacle.position.y+obstacle.contentSize.height);
+            NSLog(@"Obst t: %f\n|", obstacle.position.y+obstacle.contentSize.height);*/
             
             intersects=YES;
         }
