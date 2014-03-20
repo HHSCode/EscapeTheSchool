@@ -11,6 +11,7 @@
 #import "Menu.h"
 #import "chipmunk.h"
 #import "GCHelper.h"
+#import "MKiCloudSync.h"
 
 
 @implementation AppDelegate
@@ -30,6 +31,7 @@
     
     if (ubiq) {
         NSLog(@"iCloud access at %@",ubiq);
+        [MKiCloudSync start];
     }else{
         NSLog(@"No iCloud access");
     }
