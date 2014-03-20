@@ -63,7 +63,7 @@
     NSArray* Scores2 =[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
     
     
-    // Get recent score
+    // Get best score
     Scores2 = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:NO], nil]];
     int64_t distanceScore = [[[Scores objectAtIndex:0] objectForKey:@"distance"] intValue];
     
@@ -99,7 +99,7 @@
     averageDistanceScore.value = averageDistance;
     
     // Display scores to be sent
-    NSLog(@"Scores being sent:\n");
+    NSLog(@"Scores being sent:\nBest distance: %lld - %lld\nBest Coin Collection: %lld - %lld\nTotal Distance: %lld - %lld\nAverage Distance: %lld - %lld",distanceScore,GCscore.value,coinsScore,coinsScore2.value,totalDistance,totalDistanceScore.value,averageDistance,averageDistanceScore.value);
     
     // Submit scores
     [GCscore reportScoreWithCompletionHandler:^(NSError *error) {[self reportedScore:error];}];
