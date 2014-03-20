@@ -61,12 +61,36 @@
     int64_t coinsScore = [[[Scores objectAtIndex:0] objectForKey:@"coins"] intValue];
     
     
+    GKScore * GCscore = [[GKScore alloc] initWithCategory:@"bestdistance"];
+    GCscore.value = currentScore;
+    
+    GKScore * coinsScore2 = [[GKScore alloc] initWithCategory:@"bestcoin"];
+    coinsScore2.value = coinsScore;
+    
+    [GCscore reportScoreWithCompletionHandler:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if (error == NULL) {
+                NSLog(@"Score Sent");
+            } else {
+                NSLog(@"Score Failed, %@",[error localizedDescription]);
+            }
+        });
+    }];
+    
+    [coinsScore2 reportScoreWithCompletionHandler:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if (error == NULL) {
+                NSLog(@"Score Sent");
+            } else {
+                NSLog(@"Score Failed, %@",[error localizedDescription]);
+            }
+        });
+    }];
     
     [self checkAchievements:Scores];
     NSLog(@"Best distance: %lld",currentScore);
     NSLog(@"Best coins: %lld",coinsScore);
-    [self.gameCenterManager reportScore: currentScore forCategory: @"bestdistance"];
-    [self.gameCenterManager reportScore: ((int64_t)([[score valueForKey:@"coins"]intValue])) forCategory: @"bestcoin"];
+    //[self.gameCenterManager reportScore: ((int64_t)([[score valueForKey:@"coins"]intValue])) forCategory: @"bestcoin"];
     [Scores writeToFile:path atomically:YES];
 }
 
