@@ -24,12 +24,25 @@
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
     
+    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+    
+    NSArray* Scores;
+    Scores = [NSArray arrayWithContentsOfFile:path];
+
+    
     CCButton *menuButton = [CCButton buttonWithTitle:@"< Back"];
     [menuButton setTarget:self selector:@selector(menuPressed)];
+    CCButton *buyButton = [CCButton buttonWithTitle:@"Buy for 10 coins"];
+    [buyButton setTarget:self selector:@selector(buyPressed)];
+    CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@""] fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"totalcoins"]] fontName:@"Marker Felt" fontSize:20];
     
     CCLayoutBox *storeLayoutBox = [[CCLayoutBox alloc]init];
     [storeLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
     [storeLayoutBox addChild:menuButton];
+    [storeLayoutBox addChild:buyButton];
+    [storeLayoutBox addChild:spacingLabel];
+    [storeLayoutBox addChild:totalCoinLabel];
     
     [storeLayoutBox setSpacing:10.f];
     [storeLayoutBox setDirection:CCLayoutBoxDirectionVertical];
@@ -43,6 +56,32 @@
 
 -(void)menuPressed{
     [[CCDirector sharedDirector]presentScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]];
+    
+}
+
+-(void)buyPressed{
+    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+    
+    
+    NSArray* theScore=[[NSArray arrayWithContentsOfFile:path] sortedArrayUsingDescriptors:[NSMutableArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+    
+    NSMutableArray *scores = [theScore mutableCopy];
+    
+    if ([[[scores objectAtIndex:0] objectForKey:@"totalcoins"] intValue]>=10) {
+        UIAlertView *buyAlert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Bought nothing for 10 coins!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [buyAlert show];
+        NSMutableDictionary* updateCoins = [NSMutableDictionary dictionary];
+        [updateCoins setValue:[NSNumber numberWithInt:0] forKey:@"distance"];
+        [updateCoins setValue:[NSNumber numberWithInt:0] forKey:@"coins"];
+        [updateCoins setValue:[NSDate date] forKey:@"time"];
+        [updateCoins setValue:[NSNumber numberWithInt:[[[scores objectAtIndex:0]objectForKey:@"totalcoins"]intValue] - 10] forKey:@"totalcoins"];
+        [scores addObject:updateCoins];
+        
+        [scores writeToFile:path atomically:YES];
+    } else {
+        UIAlertView *failAlert = [[UIAlertView alloc]initWithTitle:@"Failure!" message:@"Not enough coins!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [failAlert show];
+    }
     
 }
 

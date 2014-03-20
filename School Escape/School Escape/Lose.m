@@ -31,10 +31,12 @@
         Scores = [NSArray arrayWithContentsOfFile:path];
     }else{
         NSLog(@"No access to file! Using default score");
-        Scores = [NSArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:0,0,[NSDate date], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time", nil]]];
+        Scores = [NSArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:0,0,[NSDate date],0, nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
     }
     
     Scores=[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+    
+    NSLog(@"%@",[Scores objectAtIndex:0]);
     
     NSArray* HighScores = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:NO], nil]];
     NSDictionary* highScore = [HighScores objectAtIndex:0];
@@ -50,6 +52,7 @@
     CCLabelTTF *highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Longest Run: %@",[highScore valueForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
     CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"coins"]] fontName:@"Marker Felt" fontSize:20];
     CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Distance: %@",[[Scores objectAtIndex:0] objectForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"totalcoins"]] fontName:@"Marker Felt" fontSize:20];
     
     [Scores writeToFile:path atomically:YES];
     
@@ -58,6 +61,7 @@
     [loseLayoutBox addChild:menuButton]; //add menu to layout box
     [loseLayoutBox addChild:restartButton]; //add restart to layout box
     [loseLayoutBox addChild:spacingLabel]; //add spacing to layout box
+    [loseLayoutBox addChild:totalCoinLabel]; //add coin score to layout box
     [loseLayoutBox addChild:coinLabel]; //add coin score to layout box
     [loseLayoutBox addChild:distanceLabel]; //add distance score to layout box
     [loseLayoutBox addChild:highScoreLabel]; //add high score label to layout box

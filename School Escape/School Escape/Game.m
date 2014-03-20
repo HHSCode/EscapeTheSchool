@@ -344,7 +344,7 @@ BOOL intersects=NO; //initializes no intersection
     [thisRun setValue:[NSNumber numberWithInt:distance] forKey:@"distance"];
     [thisRun setValue:[NSNumber numberWithInt:score] forKey:@"coins"];
     [thisRun setValue:[NSDate date] forKey:@"time"];
-    
+    [thisRun setValue:[NSNumber numberWithInt:[[[Scores objectAtIndex:0]objectForKey:@"totalcoins"]intValue] + score] forKey:@"totalcoins"];
     [Scores addObject:thisRun];
     
     [Scores writeToFile:path atomically:YES];
