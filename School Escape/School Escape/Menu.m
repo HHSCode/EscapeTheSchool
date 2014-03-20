@@ -24,9 +24,15 @@
     
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
+<<<<<<< HEAD
     //[[OALSimpleAudio sharedInstance]playBg:@"backgroundMusic1.mp3" loop:YES]; //Background music
     //[[OALSimpleAudio sharedInstance]playBg:@"you'retime.mp3" loop:YES];
     
+=======
+    //[[OALSimpleAudio sharedInstance]playBg:@"backgroundMusic1.mp3" loop:YES];
+    [[OALSimpleAudio sharedInstance]playBg:@"you'retime.mp3" loop:YES];
+
+>>>>>>> FETCH_HEAD
     CCButton *playButton = [CCButton buttonWithTitle:@"Play"];
     [playButton setTarget:self selector:@selector(playPressed)];
     
