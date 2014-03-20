@@ -29,7 +29,7 @@
     //[[OALSimpleAudio sharedInstance]playBg:@"you'retime.mp3" loop:YES];
     
 
-    [[OALSimpleAudio sharedInstance]playBg:@"backgroundMusic1.mp3" loop:YES];
+    //[[OALSimpleAudio sharedInstance]playBg:@"backgroundMusic1.mp3" loop:YES];
     //[[OALSimpleAudio sharedInstance]playBg:@"you'retime.mp3" loop:YES];
 
 
