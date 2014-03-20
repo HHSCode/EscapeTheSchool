@@ -49,7 +49,7 @@ static GCHelper *sharedHelper=nil;
     if (gameCenterController != nil) {
         gameCenterController.gameCenterDelegate = self;
         gameCenterController.viewState = GKGameCenterViewControllerStateLeaderboards; //state is leaderboards
-        gameCenterController.leaderboardIdentifier = kLeaderboardID;
+        gameCenterController.leaderboardIdentifier = gDistanceLeaderboard;
         
         [viewController presentViewController: gameCenterController animated: YES completion:nil]; //adds gamecenter controller to view controller
     }

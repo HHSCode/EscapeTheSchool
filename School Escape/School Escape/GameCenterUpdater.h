@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "GameKit/GameKit.h"
-#define kLeaderboardID @"topdistance"
+#define gDistanceLeaderboard @"bestdistance"
+#define gTotalDistanceLeaderboard @"totaldistance"
+#define gBestCoinLeaderboard @"bestcoin"
+#define gAverageDistanceLeaderboard @"averagedistance"
 #define kAchievement10Plays @"play10"
 #define kAchievement20Plays @"play20"
 #define kAchievement50Plays @"play50"
