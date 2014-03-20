@@ -9,5 +9,5 @@
 
 #import "cocos2d.h"
 
-@interface AppDelegate : CCAppDelegate
+@interface AppDelegate : CCAppDelegate <UIAlertViewDelegate>
 @end

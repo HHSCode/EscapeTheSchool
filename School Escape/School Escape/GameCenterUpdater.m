@@ -67,36 +67,37 @@ bool useDistanceSubmittedScore = false;
 
 -(void)sendScore:(NSDictionary *)score andScores:(NSArray *)Scores{
     // Pull high scores
-    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
-    leaderboardRequest.identifier = gDistanceLeaderboard;
-    if (leaderboardRequest != nil) {
-        [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
-            if (error != nil) {
-                NSLog(@"Error pulling distance score");
-            }else{
-                submitedDistance = leaderboardRequest.localPlayerScore.value;
-            }
-            leaderboardRequest.identifier = gBestCoinLeaderboard;
-            if (leaderboardRequest != nil) {
-                [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
-                    if (error !=nil) {
-                        NSLog(@"Error pulling coin score");
-                    }else{
-                        submitedCoins = leaderboardRequest.localPlayerScore.value;
-                    }
+    if ([GameCenterManager isGameCenterAvailable]) {
+        GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+        leaderboardRequest.identifier = gDistanceLeaderboard;
+        if (leaderboardRequest != nil) {
+            [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+                if (error != nil) {
+                    NSLog(@"Error pulling distance score");
+                }else{
+                    submitedDistance = leaderboardRequest.localPlayerScore.value;
+                }
+                leaderboardRequest.identifier = gBestCoinLeaderboard;
+                if (leaderboardRequest != nil) {
+                    [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+                        if (error !=nil) {
+                            NSLog(@"Error pulling coin score");
+                        }else{
+                            submitedCoins = leaderboardRequest.localPlayerScore.value;
+                        }
+                        [self finishScoreSend:score andScores:Scores];
+                        return;
+                    }];
+                }else{
                     [self finishScoreSend:score andScores:Scores];
                     return;
-                }];
-            }else{
-                [self finishScoreSend:score andScores:Scores];
-                return;
-            }
-        }];
-    }else{
-        [self finishScoreSend:score andScores:Scores];
-        return;
+                }
+            }];
+        }else{
+            [self finishScoreSend:score andScores:Scores];
+            return;
+        }
     }
-    
 }
 
 -(void)finishScoreSend:(NSDictionary *)score andScores:(NSArray *)Scores{
@@ -117,7 +118,7 @@ bool useDistanceSubmittedScore = false;
      Calculate total distance
      - This runs through all the distance scores from the past and adds them up
      Average distance is calculated off of this
-    */
+     */
     int64_t totalDistance = 0;
     int numOfRuns = 0;
     for (NSDictionary *score in Scores) {
@@ -146,10 +147,7 @@ bool useDistanceSubmittedScore = false;
     
     GKScore * averageDistanceScore = [[GKScore alloc] initWithCategory:gAverageDistanceLeaderboard];
     averageDistanceScore.value = averageDistance;
-    
-    // Display scores to be sent
-    NSLog(@"Scores being sent:\nBest distance: %lld - %lld\nBest Coin Collection: %lld - %lld\nTotal Distance: %lld - %lld\nAverage Distance: %lld - %lld",distanceScore,GCscore.value,coinsScore,coinsScore2.value,totalDistance,totalDistanceScore.value,averageDistance,averageDistanceScore.value);
-    
+        
     // Submit scores
     [GCscore reportScoreWithCompletionHandler:^(NSError *error) {[self reportedScore:error];}];
     [coinsScore2 reportScoreWithCompletionHandler:^(NSError *error) {[self reportedScore:error];}];
