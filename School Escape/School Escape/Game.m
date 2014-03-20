@@ -334,16 +334,24 @@ BOOL intersects=NO; //initializes no intersection
 -(void)lost{
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
     NSMutableArray* Scores;
+    
+    
     if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:NO]) {
         Scores = [NSMutableArray arrayWithContentsOfFile:path];
     }else{
         Scores = [NSMutableArray array];
     }
+    
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    
     NSMutableDictionary* thisRun = [NSMutableDictionary dictionary];
     [thisRun setValue:[NSNumber numberWithInt:distance] forKey:@"distance"];
     [thisRun setValue:[NSNumber numberWithInt:score] forKey:@"coins"];
     [thisRun setValue:[NSDate date] forKey:@"time"];
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    
     NSArray* allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
     BOOL totalCoinsExists = false;
     for (NSString* key in allKeys) {
@@ -358,10 +366,12 @@ BOOL intersects=NO; //initializes no intersection
         [defaults setValue:[NSNumber numberWithInt:([[defaults objectForKey:@"totalCoins"] intValue]+score)] forKey:@"totalCoins"];
     }
     
-    [defaults synchronize];
-    
     [Scores addObject:thisRun];
+    NSMutableArray* defaultScores = [NSMutableArray arrayWithArray:[defaults objectForKey:@"saves"]];
+    [defaultScores addObject:thisRun];
+    [defaults setValue:defaultScores forKey:@"saves"];
     
+    [defaults synchronize];
     [Scores writeToFile:path atomically:YES];
     
     [[CCDirector sharedDirector]presentScene:[Lose scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]]; //go to lose scene

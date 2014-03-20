@@ -28,20 +28,16 @@
     //cpInitChipmunk();
     
     
-//    NSString* path2 = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"hasOpened.plist"];
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:path2]) {
-//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"iCloud?" message:@"Can School Escape use iCloud to sync your scores and coins?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-//        [alert show];
-//    }
-    
-    
-    
-    
+    NSString* path2 = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"hasOpened.plist"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path2]) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"iCloud?" message:@"Can School Escape use iCloud to sync your scores and coins?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        [alert show];
+    }
     
     
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
     NSMutableArray* saves = [NSMutableArray arrayWithContentsOfFile:path];
-    saves = [saves sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+    saves = [NSMutableArray arrayWithArray:[saves sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]]];
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSArray* allKeys = [[defaults dictionaryRepresentation] allKeys];
@@ -84,8 +80,9 @@
     [defaults synchronize];
     
     NSURL* ubiq = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
-    
-    [MKiCloudSync start];
+    if ([[NSDictionary dictionaryWithContentsOfFile:path2] objectForKey:@"canUseiCloud"]==[NSNumber numberWithBool:YES]) {
+        [MKiCloudSync start];
+    }
     if (ubiq) {
         NSLog(@"iCloud access at %@",ubiq);
     }else{
@@ -115,13 +112,11 @@
 	return YES;
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     NSString* path2 = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"hasOpened.plist"];
-    NSDictionary* hasOpened =[NSDictionary dictionary];
+    NSMutableDictionary* hasOpened =[NSMutableDictionary dictionary];
     if (buttonIndex==1) {
         [hasOpened setValue:[NSNumber numberWithBool:YES] forKey:@"canUseiCloud"];
-    }else{
-        [hasOpened setValue:[NSNumber numberWithBool:NO] forKey:@"canUseiCloud"];
     }
     [hasOpened writeToFile:path2 atomically:YES];
     //[alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
