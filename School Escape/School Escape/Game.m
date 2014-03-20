@@ -347,7 +347,23 @@ BOOL intersects=NO; //initializes no intersection
     [thisRun setValue:[NSNumber numberWithInt:distance] forKey:@"distance"];
     [thisRun setValue:[NSNumber numberWithInt:score] forKey:@"coins"];
     [thisRun setValue:[NSDate date] forKey:@"time"];
-    [thisRun setValue:[NSNumber numberWithInt:[[[Scores objectAtIndex:0]objectForKey:@"totalcoins"]intValue] + score] forKey:@"totalcoins"];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
+    BOOL totalCoinsExists = false;
+    for (NSString* key in allKeys) {
+        if ([key isEqualToString:@"totalCoins"]) {
+            totalCoinsExists = true;
+            break;
+        }
+    }
+    if (!totalCoinsExists) {
+        [defaults setValue:[NSNumber numberWithInt:score] forKey:@"totalCoins"];
+    }else{
+        [defaults setValue:[NSNumber numberWithInt:([[defaults objectForKey:@"totalCoins"] intValue]+score)] forKey:@"totalCoins"];
+    }
+    
+    [defaults synchronize];
+    
     [Scores addObject:thisRun];
     
     [Scores writeToFile:path atomically:YES];

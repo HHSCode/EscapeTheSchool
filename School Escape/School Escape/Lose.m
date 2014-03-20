@@ -44,6 +44,8 @@
     GameCenterUpdater* gameCenterUpdater = [[GameCenterUpdater alloc] init];
     [gameCenterUpdater sendScore:[Scores objectAtIndex:0] andScores:Scores];
     
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
     CCButton *restartButton = [CCButton buttonWithTitle:@"Restart"]; //creates restart button
     [restartButton setTarget:self selector:@selector(restartPressed)]; //if pressed run restartPressed
     CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
@@ -52,7 +54,7 @@
     CCLabelTTF *highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Longest Run: %@",[highScore valueForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
     CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"coins"]] fontName:@"Marker Felt" fontSize:20];
     CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Distance: %@",[[Scores objectAtIndex:0] objectForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"totalcoins"]] fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:20];
     
     [Scores writeToFile:path atomically:YES];
     
