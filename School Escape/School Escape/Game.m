@@ -100,11 +100,11 @@ int gameTime;
     _obstacles = [[NSMutableArray alloc]init];
     _flyingObstacles = [[NSMutableArray alloc]init];
     //BACKGROUND
-    CCSprite *_background = [CCSprite spriteWithImageNamed:@"brick.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
+    CCSprite *_background = [CCSprite spriteWithImageNamed:@"brickBig.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
     [_background setPosition:ccp(0, 0)];
     [_background setAnchorPoint:ccp(0, 0)];
-    [_background setScaleX:.4];
-    [_background setScaleY:.3];
+    [_background setScaleX:0.5];
+    [_background setScaleY:0.5];
     [self addChild:_background];
     
     //GROUND 1
