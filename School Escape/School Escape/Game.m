@@ -38,7 +38,7 @@ int gameTime;
 
 
 -(void)updateCoinSpawnSpeed{
-    float CoinInterval = ((float)((arc4random() % 9)+1))/10.0;
+    float CoinInterval = (float)(arc4random() % 9);
     NSLog(@"CoinInterval: %f",CoinInterval);
     [self unschedule:@selector(addCoin)];
     [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
@@ -69,11 +69,11 @@ int gameTime;
     if (!self) return(nil);
     
     self.userInteractionEnabled = YES; //makes it so user can touch screen
-    float CoinInterval = ((float)((arc4random() % 9)+1))/10.0;
+    float CoinInterval = (float)(arc4random() % 9);
     NSLog(@"CoinInterval: %f",CoinInterval);
-    [self schedule:@selector(addCoin) interval:CoinInterval];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
+    [self schedule:@selector(addCoin) interval:2];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
     [self schedule:@selector(addObstacle) interval:5];
-    [self schedule:@selector(updateCoinSpawnSpeed) interval:0.5];
+    //[self schedule:@selector(updateCoinSpawnSpeed) interval:0.5];
     [self schedule:@selector(updateGameTime) interval:1];
     [self schedule:@selector(updateScrollSpeed) interval:1];
     scrollSpeed=225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
@@ -223,7 +223,7 @@ BOOL intersects=NO; //initializes no intersection
     [_coin setScaleX:.040];
     float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
     [_coin setAnchorPoint:ccp(0, 0)];
-
+    
     _coin.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_coin.contentSize.width/2-40 andCenter:ccp(_coin.contentSize.width/2, _coin.contentSize.height/2)];
     _coin.physicsBody.collisionGroup = @"heroGroup";
     _coin.physicsBody.collisionType = @"coinType";
@@ -240,6 +240,28 @@ BOOL intersects=NO; //initializes no intersection
         [_coins removeObjectAtIndex:0]; //delete from array
     }
     [_physicsNode addChild:_coin]; //adds coin to physics node
+    float coinNumber = (float)(arc4random() % 3)+3;
+    for (int i=1; i<=coinNumber; i++) {
+        CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin1.png"]; //change this to change how the coin looks
+        [_coin setScaleY:.040];
+        [_coin setScaleX:.040];
+        float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
+        [_coin setAnchorPoint:ccp(0, 0)];
+        
+        _coin.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_coin.contentSize.width/2-40 andCenter:ccp(_coin.contentSize.width/2, _coin.contentSize.height/2)];
+        _coin.physicsBody.collisionGroup = @"heroGroup";
+        _coin.physicsBody.collisionType = @"coinType";
+        
+        _coin.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
+        
+        _coin.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width+i*_coin.contentSize.width*.04, randomY); //sets coin position off to the right at a random y location
+        [_coins addObject:_coin]; //adds coin to _coins so it can check for collisions
+        if ([_coins count]>30) { //if more than 30 coins
+            [_coins removeObjectAtIndex:0]; //delete from array
+        }
+        [_physicsNode addChild:_coin]; //adds coin to physics node
+
+    }
 }
 
 -(void)addObstacle{
