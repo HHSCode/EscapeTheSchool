@@ -8,6 +8,7 @@
 
 #import "Game.h"
 #import "CCAnimation.h"
+
 float scrollSpeed;
 int gameTime;
 
@@ -135,7 +136,7 @@ int gameTime;
     [_hero setPosition:ccp(60, 100)];
     [_hero setScaleX:.25];
     [_hero setScaleY:.25];
-
+    
     
     //PHYSICS NODE
     _physicsNode = [CCPhysicsNode node];
@@ -236,7 +237,7 @@ BOOL intersects=NO; //initializes no intersection
     [_flyingObstacle setScaleY:.015];
     [_flyingObstacle setScaleX:.015];
     float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
-    [_flyingObstacle setAnchorPoint:ccp(0, 0)];
+    [_flyingObstacle setAnchorPoint:ccp(.5, .5)];
     
     _flyingObstacle.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_flyingObstacle.contentSize.width/2-40 andCenter:ccp(_flyingObstacle.contentSize.width/2, _flyingObstacle.contentSize.height/2)];
     _flyingObstacle.physicsBody.collisionGroup = @"heroGroup";
@@ -248,6 +249,11 @@ BOOL intersects=NO; //initializes no intersection
     int randomY = (arc4random() % rangeY) + minY;
     
     _flyingObstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY); //sets coin position off to the right at a random y location
+    CCActionRotateBy *rotate = [[CCActionRotateBy alloc]initWithDuration:5 angle:360];
+    CCActionRepeatForever *repeatingRotation = [CCActionRepeatForever actionWithAction:rotate];
+
+    [_flyingObstacle runAction:repeatingRotation];
+
     [_flyingObstacles addObject:_flyingObstacle]; //adds coin to _coins so it can check for collisions
     if ([_flyingObstacles count]>30) { //if more than 30 coins
         [_flyingObstacles removeObjectAtIndex:0]; //delete from array
@@ -422,7 +428,7 @@ BOOL intersects=NO; //initializes no intersection
     for (CCNode *flyingObstacle in _flyingObstacles) {
         flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed/6), flyingObstacle.position.y); //keeps hero in line with the moving physics node
         CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
-        CGRect flyingObstacleTempBoundingBox = CGRectInset(flyingObstacle.boundingBox, flyingObstacle.boundingBox.size.width/8, flyingObstacle.boundingBox.size.height/8);
+        CGRect flyingObstacleTempBoundingBox = CGRectInset(flyingObstacle.boundingBox, flyingObstacle.boundingBox.size.width/4, flyingObstacle.boundingBox.size.height/4);
 
         if (CGRectIntersectsRect(heroTempBoundingBox, flyingObstacleTempBoundingBox)) { //check if hero and coin collides
             
