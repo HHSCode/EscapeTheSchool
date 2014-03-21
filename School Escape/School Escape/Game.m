@@ -291,7 +291,7 @@ BOOL intersects=NO; //initializes no intersection
     _flyingObstacle.physicsBody.collisionGroup = @"heroGroup";
     _flyingObstacle.physicsBody.collisionType = @"flyingObstacleType";
     _flyingObstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
-    int minY = _ground1.boundingBox.size.height+40; //min is above the ground slightly
+    int minY = _ground1.boundingBox.size.height+30; //min is above the ground slightly
     int maxY = self.contentSize.height-_flyingObstacle.boundingBox.size.height-10;//max is below the top but in reach ofthe character jumping
     int rangeY = maxY - minY;
     int randomY = (arc4random() % rangeY) + minY;
@@ -357,29 +357,7 @@ BOOL intersects=NO; //initializes no intersection
     }
 }
 
-/*-(void)addObstacle{
-    CCNode *_obstacle = [[CCSprite alloc]initWithImageNamed:@"desk.png"]; //change this to change how the coin looks
-    [_obstacle setScaleY:.15];
-    [_obstacle setScaleX:.15];
-    float obstacleSize = 100; //this is used to calculate the coin position, or basically where it is placed on the screen, max and min
-    [_obstacle setAnchorPoint:ccp(0, 0)];
-    _obstacle.physicsBody.elasticity=0;
-    _obstacle.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0, 0, _obstacle.contentSize.width, _obstacle.contentSize.height) cornerRadius:0];
-    _obstacle.physicsBody.collisionGroup = @"obstacleGroup";
-    _obstacle.physicsBody.collisionType = @"obstacleType";
-    
-    _obstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
-    
-    
-    _obstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, 29); //sets coin position off to the right at a random y location
-    //[_coins addObject:_coin]; //adds coin to _coins so it can check for collisions
-    [_obstacles addObject:_obstacle];
-    if ([_obstacles count]>30) { //if more than 30 obstacles
-        [_obstacles removeObjectAtIndex:0]; //delete from array
-    }
-    [_physicsNode addChild:_obstacle]; //adds coin to physics node
-}
-*/
+
 -(void)lost{
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
     NSMutableArray* Scores;
@@ -467,8 +445,7 @@ BOOL intersects=NO; //initializes no intersection
             /*int from = 2;
             int to = 5;
             [background setSpriteFrame:[CCSpriteFrame frameWithImageNamed: [NSString stringWithFormat:@"hallway%i.png", (int)from + arc4random() % (to-from+1)]]];*/
-            NSLog(@"Moved background");
-            NSLog(@"%@", _backgrounds);
+            
         }
     }
     
@@ -488,7 +465,7 @@ BOOL intersects=NO; //initializes no intersection
         }
 
         CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
-        CGRect coinTempBoundingBox = CGRectInset(coin.boundingBox, coin.boundingBox.size.width/8, coin.boundingBox.size.height/8);
+        CGRect coinTempBoundingBox = CGRectInset(coin.boundingBox, coin.boundingBox.size.width/4, coin.boundingBox.size.height/4);
 
         if (CGRectIntersectsRect(heroTempBoundingBox, coinTempBoundingBox)) { //check if hero and coin collides
             
@@ -527,33 +504,7 @@ BOOL intersects=NO; //initializes no intersection
 
     }
     
-    for (CCNode *obstacle in _obstacles) {
-        BOOL shouldRemove = NO;
-        CGPoint obstacleWorldPosition = [_physicsNode convertToWorldSpace:obstacle.position];
-        // get the screen position of the ground
-        CGPoint obstacleScreenPosition = [self convertToNodeSpace:obstacleWorldPosition];
-        
-        if (obstacleScreenPosition.x<=(-1*obstacle.contentSize.width/2)) {
-            shouldRemove=YES;
-            
-        }
-        
-        if (CGRectIntersectsRect([_hero boundingBox], [obstacle boundingBox])) { //check if hero and coin collides, if so remove coin from screen. need to add a counter
-            /*NSLog(@"Hero r: %f", _hero.position.x+_hero.contentSize.width);
-            NSLog(@"Obst l: %f", obstacle.position.x);
-            NSLog(@"Hero b: %f", _hero.position.y);
-            NSLog(@"Obst t: %f\n|", obstacle.position.y+obstacle.contentSize.height);*/
-            
-            intersects=YES;
-        }
-        
-        if (shouldRemove) {
-            [obstacle removeFromParent];
-            
-        }
-        
-    }
-
+    
     
     
 }
