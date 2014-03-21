@@ -236,6 +236,8 @@
 		BF2B4BA118D81EDB004724EC /* Lose.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B4BA018D81EDB004724EC /* Lose.m */; };
 		BF2F000318D6C583003BB0FF /* runningmansheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF2F000118D6C583003BB0FF /* runningmansheet.plist */; };
 		BF2F000418D6C583003BB0FF /* runningmansheet.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2F000218D6C583003BB0FF /* runningmansheet.png */; };
+		BF60CBC318DBB739006C3544 /* you'retime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF60CBC218DBB739006C3544 /* you'retime.mp3 */; };
+		BF60CBC618DBB925006C3544 /* MusicSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BF60CBC518DBB925006C3544 /* MusicSettings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -715,6 +717,9 @@
 		BF2B4BA018D81EDB004724EC /* Lose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lose.m; sourceTree = "<group>"; };
 		BF2F000118D6C583003BB0FF /* runningmansheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = runningmansheet.plist; sourceTree = "<group>"; };
 		BF2F000218D6C583003BB0FF /* runningmansheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runningmansheet.png; sourceTree = "<group>"; };
+		BF60CBC218DBB739006C3544 /* you'retime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "you'retime.mp3"; sourceTree = "<group>"; };
+		BF60CBC418DBB925006C3544 /* MusicSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicSettings.h; sourceTree = "<group>"; };
+		BF60CBC518DBB925006C3544 /* MusicSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSettings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1660,8 +1665,11 @@
 				98E1493D18D50E540044BA6A /* About.m */,
 				98E1493F18D50E680044BA6A /* Settings.h */,
 				98E1494018D50E680044BA6A /* Settings.m */,
+				BF60CBC418DBB925006C3544 /* MusicSettings.h */,
+				BF60CBC518DBB925006C3544 /* MusicSettings.m */,
 				98E1494218D50E750044BA6A /* Store.h */,
 				98E1494318D50E750044BA6A /* Store.m */,
+				BF60CBC218DBB739006C3544 /* you'retime.mp3 */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1761,6 +1769,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF60CBC318DBB739006C3544 /* you'retime.mp3 in Resources */,
 				881CA22018DB4E6900574CFC /* locker2.png in Resources */,
 				98E143D518D507F70044BA6A /* Default@2x.png in Resources */,
 				98E145EC18D507F90044BA6A /* LICENSE_CCBReader.txt in Resources */,
@@ -1815,6 +1824,7 @@
 				98E145C318D507F90044BA6A /* mat4.c in Sources */,
 				98E1441F18D507F70044BA6A /* CCAtlasNode.m in Sources */,
 				98E1456D18D507F90044BA6A /* OpenALManager.m in Sources */,
+				BF60CBC618DBB925006C3544 /* MusicSettings.m in Sources */,
 				98E1457918D507F90044BA6A /* IOSVersion.m in Sources */,
 				98E1442E18D507F70044BA6A /* CCDirector.m in Sources */,
 				98E1459918D507F90044BA6A /* CCScrollView.m in Sources */,

@@ -8,8 +8,8 @@
 
 #import "Store.h"
 
-
-@implementation Store
+@implementation Store{
+}
 + (Store *)scene
 {
     return [[self alloc] init];
@@ -32,15 +32,18 @@
     
     CCButton *menuButton = [CCButton buttonWithTitle:@"< Back"];
     [menuButton setTarget:self selector:@selector(menuPressed)];
-    CCButton *buyButton = [CCButton buttonWithTitle:@"Buy for 10 coins"];
-    [buyButton setTarget:self selector:@selector(buyPressed)];
+    CCButton *buy10Button = [CCButton buttonWithTitle:@"Buy nothing for 10 coins"];
+    [buy10Button setTarget:self selector:@selector(buy10Pressed)];
+    CCButton *buy100Button = [CCButton buttonWithTitle:@"Buy \"You\'re Time\" for 100 coins"];
+    [buy100Button setTarget:self selector:@selector(buy100Pressed)];
     CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@""] fontName:@"Marker Felt" fontSize:20];
     CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:20];
     
     CCLayoutBox *storeLayoutBox = [[CCLayoutBox alloc]init];
     [storeLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
     [storeLayoutBox addChild:menuButton];
-    [storeLayoutBox addChild:buyButton];
+    [storeLayoutBox addChild:buy100Button];
+    [storeLayoutBox addChild:buy10Button];
     [storeLayoutBox addChild:spacingLabel];
     [storeLayoutBox addChild:totalCoinLabel];
     
@@ -59,7 +62,7 @@
     
 }
 
--(void)buyPressed{
+-(void)buy10Pressed{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
     if ([[defaults objectForKey:@"totalCoins"] intValue]>=10) {
@@ -67,6 +70,24 @@
         [buyAlert show];
         [defaults setValue:[NSNumber numberWithInt:([[defaults objectForKey:@"totalCoins"] intValue]-10)] forKey:@"totalCoins"];
         [[CCDirector sharedDirector]presentScene:[Store scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+    } else {
+        UIAlertView *failAlert = [[UIAlertView alloc]initWithTitle:@"Failure!" message:@"Not enough coins!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [failAlert show];
+    }
+    
+}
+
+-(void)buy100Pressed{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([[defaults objectForKey:@"totalCoins"] intValue]>=100) {
+        UIAlertView *buyAlert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Bought \"You\'re Time\" for 100 coins!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [buyAlert show];
+        [defaults setValue:[NSNumber numberWithInt:([[defaults objectForKey:@"totalCoins"] intValue]-100)] forKey:@"totalCoins"];
+        [defaults setValue:@"you'retime.mp3" forKey:@"music"];
+        [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES];
+        [[CCDirector sharedDirector]presentScene:[Store scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+        
     } else {
         UIAlertView *failAlert = [[UIAlertView alloc]initWithTitle:@"Failure!" message:@"Not enough coins!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [failAlert show];
