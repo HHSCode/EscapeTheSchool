@@ -7,8 +7,11 @@
 //
 
 #import "Store.h"
+#import "IAPHelper.h"
 
 @implementation Store{
+    IAPHelper* helper;
+    NSArray* products;
 }
 + (Store *)scene
 {
@@ -20,6 +23,9 @@
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
+    products = nil;
+    helper = [[IAPHelper alloc] init];
+    [helper requestProductData];
     
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
@@ -52,9 +58,21 @@
     [storeLayoutBox setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
     [self addChild:storeLayoutBox];
     
+    if ([helper getProductData]!=nil) {
+        products = [helper getProductData];
+    }else{
+        [self schedule:@selector(checkProducts) interval:0.5];
+    }
     
     // done
 	return self;
+}
+
+-(void)checkProducts{
+    if ([helper getProductData]!=nil) {
+        products = [helper getProductData];
+        [self unschedule:@selector(checkProducts)];
+    }
 }
 
 -(void)menuPressed{
