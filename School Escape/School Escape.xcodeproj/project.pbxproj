@@ -23,6 +23,8 @@
 		88200D0718DB5EA00030170F /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 88200D0618DB5EA00030170F /* MKiCloudSync.m */; };
 		883FAE8218D9D31F00A75F05 /* backgroundMusic1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 883FAE8118D9D31F00A75F05 /* backgroundMusic1.mp3 */; };
 		883FB41C18D9CF0A00CA959F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */; };
+		88AF0FC318DC64FB00A0EE57 /* coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AF0FC118DC64FB00A0EE57 /* coin2.png */; };
+		88AF0FC418DC64FB00A0EE57 /* coin3.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AF0FC218DC64FB00A0EE57 /* coin3.png */; };
 		9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D018D62E9F00CDEFD4 /* desk.png */; };
 		9820C1D318D62EA600CDEFD4 /* white-closed-book.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D218D62EA600CDEFD4 /* white-closed-book.png */; };
 		98DF15DF18D52C57004E553B /* coin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DF15DE18D52C57004E553B /* coin1.png */; };
@@ -275,6 +277,8 @@
 		883FAE8118D9D31F00A75F05 /* backgroundMusic1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic1.mp3; sourceTree = "<group>"; };
 		883FB41918D9CEBB00CA959F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		88AF0FC118DC64FB00A0EE57 /* coin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin2.png; sourceTree = "<group>"; };
+		88AF0FC218DC64FB00A0EE57 /* coin3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin3.png; sourceTree = "<group>"; };
 		9820C1D018D62E9F00CDEFD4 /* desk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk.png; sourceTree = "<group>"; };
 		9820C1D218D62EA600CDEFD4 /* white-closed-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-closed-book.png"; sourceTree = "<group>"; };
 		98DF15DE18D52C57004E553B /* coin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin1.png; sourceTree = "<group>"; };
@@ -772,6 +776,7 @@
 		883FAE8318D9D32200A75F05 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				BF60CBC218DBB739006C3544 /* you'retime.mp3 */,
 				883FAE8118D9D31F00A75F05 /* backgroundMusic1.mp3 */,
 				98F8991F18DBC15D00F8F642 /* coincollection.mp3 */,
 			);
@@ -847,6 +852,8 @@
 				98E1494718D511D90044BA6A /* ground2.png */,
 				9820C1D018D62E9F00CDEFD4 /* desk.png */,
 				98DF15DE18D52C57004E553B /* coin1.png */,
+				88AF0FC118DC64FB00A0EE57 /* coin2.png */,
+				88AF0FC218DC64FB00A0EE57 /* coin3.png */,
 				9820C1D218D62EA600CDEFD4 /* white-closed-book.png */,
 				98F8991E18DBAD4800F8F642 /* Hallway */,
 				98E143F518D507F70044BA6A /* Info.plist */,
@@ -1669,7 +1676,6 @@
 				BF60CBC518DBB925006C3544 /* MusicSettings.m */,
 				98E1494218D50E750044BA6A /* Store.h */,
 				98E1494318D50E750044BA6A /* Store.m */,
-				BF60CBC218DBB739006C3544 /* you'retime.mp3 */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1769,6 +1775,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88AF0FC418DC64FB00A0EE57 /* coin3.png in Resources */,
 				BF60CBC318DBB739006C3544 /* you'retime.mp3 in Resources */,
 				881CA22018DB4E6900574CFC /* locker2.png in Resources */,
 				98E143D518D507F70044BA6A /* Default@2x.png in Resources */,
@@ -1796,6 +1803,7 @@
 				98E145BA18D507F90044BA6A /* ChangeLog in Resources */,
 				9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */,
 				98F8991A18DBAD4200F8F642 /* hallway2.png in Resources */,
+				88AF0FC318DC64FB00A0EE57 /* coin2.png in Resources */,
 				881CA22218DB669200574CFC /* atrium.png in Resources */,
 				B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */,
 				98E1494618D50FED0044BA6A /* background1.png in Resources */,
