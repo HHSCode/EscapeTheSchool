@@ -316,14 +316,14 @@ bool useDistanceSubmittedScore = false;
     
     //Answer to the Universe, Life and Everything
     percent = 0.0;
-    if (numOfCoins==42) {
+    if ([[mostRecentScore objectForKey:@"coins"] intValue]==42) {
         percent = 100.0;
     }
     [self reportAchievement:k42coins withPercent:percent];
     
     //365
     percent = 0.0;
-    if (numOfCoins==365) {
+    if ([[mostRecentScore objectForKey:@"coins"] intValue]==365) {
         percent = 100.0;
     }
     [self reportAchievement:k365coins withPercent:percent];
