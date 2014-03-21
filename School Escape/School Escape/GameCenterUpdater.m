@@ -168,12 +168,31 @@ bool useDistanceSubmittedScore = false;
     if (numberOfScores<=1) {
         [self.gameCenterManager resetAchievements];
     }
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* allkeys = [[defaults dictionaryRepresentation] allKeys];
+    BOOL keyExists= NO;
+    for (NSString* key in allkeys) {
+        if ([key isEqualToString:@"achievments"]) {
+            keyExists = YES;
+            break;
+        }
+    }
+    NSArray* achievments = [NSArray array];
+    if (keyExists) {
+        achievments = [NSArray arrayWithArray:[defaults objectForKey:@"achievments"]];
+    }
+    keyExists = nil;
+    allkeys = nil;
+    
     // 10 plays:
-    double parcent10 = (numberOfScores/10.0)*100.0;
-    GKAchievement* runs10 = [[GKAchievement alloc]initWithIdentifier:kAchievement10Plays];
-    runs10.showsCompletionBanner = YES;
-    runs10.percentComplete = parcent10;
-    [runs10 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    if (![achievments containsObject:[NSString stringWithFormat:kAchievement10Plays]]) {
+        double parcent10 = (numberOfScores/10.0)*100.0;
+        GKAchievement* runs10 = [[GKAchievement alloc]initWithIdentifier:kAchievement10Plays];
+        runs10.showsCompletionBanner = YES;
+        runs10.percentComplete = parcent10;
+        [runs10 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    }
     
     // 20 plays:
     double parcent20 = (numberOfScores/20.0)*100.0;
@@ -188,6 +207,28 @@ bool useDistanceSubmittedScore = false;
     runs50.showsCompletionBanner = YES;
     runs50.percentComplete = parcent50;
     [runs50 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    
+    //Cinturion (100 plays)
+    double parcent100 = (numberOfScores/100.0)*100.0;
+    GKAchievement* runs100 = [[GKAchievement alloc] initWithIdentifier:k100Plays];
+    runs100.showsCompletionBanner = YES;
+    runs100.percentComplete = parcent100;
+    [runs100 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    
+    //Half a Millennium (500 plays)
+    double parcent500 = (numberOfScores/500.0)*100.0;
+    GKAchievement* runs500 = [[GKAchievement alloc] initWithIdentifier:k500Plays];
+    runs500.showsCompletionBanner = YES;
+    runs500.percentComplete = parcent500;
+    [runs500 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    
+    //Millenium (1000 plays)
+    double parcent1000 = (numberOfScores/1000.0)*100.0;
+    GKAchievement* runs1000 = [[GKAchievement alloc] initWithIdentifier:k1000Plays];
+    runs1000.showsCompletionBanner = YES;
+    runs1000.percentComplete = parcent1000;
+    [runs1000 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+
 }
 
 @end
