@@ -31,7 +31,10 @@
     CCButton *menuButton = [CCButton buttonWithTitle:@"< Back"];
     [menuButton setTarget:self selector:@selector(menuPressed)];
     [settingsLayoutBox addChild:menuButton];
-    CCButton *musicButton = [CCButton buttonWithTitle:@"Music"];
+    CCButton *resetButton = [CCButton buttonWithTitle:@"Reset Game"];
+    [resetButton setTarget:self selector:@selector(resetPressed)];
+    [settingsLayoutBox addChild:resetButton];
+    CCButton *musicButton = [CCButton buttonWithTitle:@"Music Settings"];
     [musicButton setTarget:self selector:@selector(musicPressed)];
     [settingsLayoutBox addChild:musicButton];
     
@@ -46,6 +49,14 @@
 }
 
 -(void)menuPressed{
+    [[CCDirector sharedDirector]presentScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]];
+}
+
+-(void)resetPressed{
+    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+    NSMutableArray* Scores;
+    Scores = [NSMutableArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:0],[NSDate date],[NSNumber numberWithInt:0], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
+    [Scores writeToFile:path atomically:YES];
     [[CCDirector sharedDirector]presentScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]];
 }
 

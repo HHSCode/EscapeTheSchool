@@ -31,7 +31,7 @@
         Scores = [NSArray arrayWithContentsOfFile:path];
     }else{
         NSLog(@"No access to file! Using default score");
-        Scores = [NSArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:0,0,[NSDate date],0, nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
+        Scores = [NSMutableArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:0],[NSDate date],[NSNumber numberWithInt:0], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
     }
     
     Scores=[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
