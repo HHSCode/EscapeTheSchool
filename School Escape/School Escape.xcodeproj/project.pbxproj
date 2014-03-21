@@ -26,6 +26,7 @@
 		883FB41C18D9CF0A00CA959F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */; };
 		88AF0FC318DC64FB00A0EE57 /* coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AF0FC118DC64FB00A0EE57 /* coin2.png */; };
 		88AF0FC418DC64FB00A0EE57 /* coin3.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AF0FC218DC64FB00A0EE57 /* coin3.png */; };
+		88AF0FC618DC7B8B00A0EE57 /* locker room.png in Resources */ = {isa = PBXBuildFile; fileRef = 88AF0FC518DC7B8B00A0EE57 /* locker room.png */; };
 		9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D018D62E9F00CDEFD4 /* desk.png */; };
 		9820C1D318D62EA600CDEFD4 /* white-closed-book.png in Resources */ = {isa = PBXBuildFile; fileRef = 9820C1D218D62EA600CDEFD4 /* white-closed-book.png */; };
 		98DF15DF18D52C57004E553B /* coin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DF15DE18D52C57004E553B /* coin1.png */; };
@@ -282,6 +283,7 @@
 		883FB41B18D9CF0A00CA959F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		88AF0FC118DC64FB00A0EE57 /* coin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin2.png; sourceTree = "<group>"; };
 		88AF0FC218DC64FB00A0EE57 /* coin3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin3.png; sourceTree = "<group>"; };
+		88AF0FC518DC7B8B00A0EE57 /* locker room.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locker room.png"; sourceTree = "<group>"; };
 		9820C1D018D62E9F00CDEFD4 /* desk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk.png; sourceTree = "<group>"; };
 		9820C1D218D62EA600CDEFD4 /* white-closed-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-closed-book.png"; sourceTree = "<group>"; };
 		98DF15DE18D52C57004E553B /* coin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin1.png; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 		881CA21318DB46F600574CFC /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				88AF0FC518DC7B8B00A0EE57 /* locker room.png */,
 				881CA22118DB669200574CFC /* atrium.png */,
 				881CA21A18DB4BEA00574CFC /* Hallway */,
 			);
@@ -1797,6 +1800,7 @@
 				98E145D518D507F90044BA6A /* LICENSE_Kazmath.txt in Resources */,
 				98F8992018DBC15D00F8F642 /* coincollection.mp3 in Resources */,
 				881CA21C18DB4DDC00574CFC /* door1.png in Resources */,
+				88AF0FC618DC7B8B00A0EE57 /* locker room.png in Resources */,
 				98E1452E18D507F80044BA6A /* LICENSE_cocos2d.txt in Resources */,
 				98F8991D18DBAD4200F8F642 /* hallway5.png in Resources */,
 				98E1494818D511D90044BA6A /* ground2.png in Resources */,
