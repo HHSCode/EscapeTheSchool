@@ -55,7 +55,7 @@
     NSArray* theScore;
     theScore = [NSArray arrayWithContentsOfFile:path];
     NSLog(@"%@",theScore);
-
+    
 
     // done
 	return self;

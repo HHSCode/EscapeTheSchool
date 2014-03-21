@@ -311,7 +311,7 @@ BOOL intersects=NO; //initializes no intersection
 }
 
 -(void)addCoin{
-    CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin1.png"]; //change this to change how the coin looks
+    CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin2.png"]; //change this to change how the coin looks
     [_coin setScaleY:.040];
     [_coin setScaleX:.040];
     float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
@@ -335,7 +335,7 @@ BOOL intersects=NO; //initializes no intersection
     [_physicsNode addChild:_coin]; //adds coin to physics node
     float coinNumber = (float)(arc4random() % 3)+3;
     for (int i=1; i<=coinNumber; i++) {
-        CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin1.png"]; //change this to change how the coin looks
+        CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin3.png"]; //change this to change how the coin looks
         [_coin setScaleY:.040];
         [_coin setScaleX:.040];
         //float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min

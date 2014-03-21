@@ -16,6 +16,8 @@
 @implementation AppDelegate{
 }
 
+
+
 -(void)applicationWillEnterForeground:(UIApplication *)application{
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
