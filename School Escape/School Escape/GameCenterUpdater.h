@@ -16,6 +16,7 @@
 #define kAchievement20Plays @"play20"
 #define kAchievement50Plays @"play50"
 #define k100Plays @"play100"
+#define k500Plays @"play500"
 #define k1000Plays @"play1000"
 #define k1kDistance @"run100"
 #define k5kDistance @"run500"

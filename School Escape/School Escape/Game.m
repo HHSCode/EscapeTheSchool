@@ -284,7 +284,6 @@ BOOL intersects=NO; //initializes no intersection
     CCNode *_flyingObstacle = [[CCSprite alloc]initWithImageNamed:@"white-closed-book.png"]; //change this to change how the coin looks
     [_flyingObstacle setScaleY:.015];
     [_flyingObstacle setScaleX:.015];
-    float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
     [_flyingObstacle setAnchorPoint:ccp(.5, .5)];
     
     _flyingObstacle.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_flyingObstacle.contentSize.width/2-40 andCenter:ccp(_flyingObstacle.contentSize.width/2, _flyingObstacle.contentSize.height/2)];
@@ -311,6 +310,7 @@ BOOL intersects=NO; //initializes no intersection
 }
 
 -(void)addCoin{
+<<<<<<< HEAD
     CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin2.png"]; //change this to change how the coin looks
     [_coin setScaleY:.040];
     [_coin setScaleX:.040];
@@ -323,20 +323,23 @@ BOOL intersects=NO; //initializes no intersection
     _coin.physicsBody.collisionType = @"coinType";
     
     _coin.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
+=======
+    float coinSize = 10; //this is used to calculate the coin position, or basically where it is placed on the screen, max and min
+
+>>>>>>> FETCH_HEAD
     int minY = 50; //min is above the ground slightly
     int maxY = self.contentSize.height-(coinSize/2)-50;//max is below the top but in reach ofthe character jumping
     int rangeY = maxY - minY;
     int randomY = (arc4random() % rangeY) + minY;
     
-    _coin.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY); //sets coin position off to the right at a random y location
-    [_coins addObject:_coin]; //adds coin to _coins so it can check for collisions
-    if ([_coins count]>30) { //if more than 30 coins
-        [_coins removeObjectAtIndex:0]; //delete from array
-    }
-    [_physicsNode addChild:_coin]; //adds coin to physics node
-    float coinNumber = (float)(arc4random() % 3)+3;
+    float coinNumber = (float)(arc4random() % 4)+3;
     for (int i=1; i<=coinNumber; i++) {
-        CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin3.png"]; //change this to change how the coin looks
+        CCNode *_coin;
+        if (i == 1) {
+            _coin = [[CCSprite alloc]initWithImageNamed:@"coin2.png"]; //change this to change how the coin looks
+        } else {
+            _coin = [[CCSprite alloc]initWithImageNamed:@"coin3.png"]; //change this to change how the coin looks
+        }
         [_coin setScaleY:.040];
         [_coin setScaleX:.040];
         //float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
