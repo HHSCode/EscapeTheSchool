@@ -50,13 +50,6 @@
     [menuLayoutBox setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
     [self addChild:menuLayoutBox];
 
-    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
-    
-    NSArray* theScore;
-    theScore = [NSArray arrayWithContentsOfFile:path];
-    NSLog(@"%@",theScore);
-    
-
     // done
 	return self;
 }
