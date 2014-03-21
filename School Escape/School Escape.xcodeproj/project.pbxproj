@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5256EF4418D9C7C6002B6473 /* ABGameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5256EF4318D9C7C6002B6473 /* ABGameKitHelper.m */; };
 		5256EF4718D9CCA5002B6473 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5256EF4618D9CCA5002B6473 /* Reachability.m */; };
+		8805797818DC790E00E64CD5 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8805797718DC790E00E64CD5 /* IAPHelper.m */; };
 		88143BC018D894420048A2B2 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BBF18D894420048A2B2 /* GCHelper.m */; };
 		88143BC418D8BAE80048A2B2 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC318D8BAE80048A2B2 /* GameCenterManager.m */; };
 		88143BC918D8C85D0048A2B2 /* GameCenterUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 88143BC818D8C85D0048A2B2 /* GameCenterUpdater.m */; };
@@ -257,6 +258,8 @@
 		5256EF4318D9C7C6002B6473 /* ABGameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABGameKitHelper.m; path = Classes/ABGameKitHelper.m; sourceTree = "<group>"; };
 		5256EF4518D9CCA5002B6473 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5256EF4618D9CCA5002B6473 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8805797618DC790E00E64CD5 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		8805797718DC790E00E64CD5 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		88143BBE18D894420048A2B2 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
 		88143BBF18D894420048A2B2 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHelper.m; sourceTree = "<group>"; };
 		88143BC118D8BAE80048A2B2 /* AppSpecificValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSpecificValues.h; sourceTree = "<group>"; };
@@ -1676,6 +1679,8 @@
 				BF60CBC518DBB925006C3544 /* MusicSettings.m */,
 				98E1494218D50E750044BA6A /* Store.h */,
 				98E1494318D50E750044BA6A /* Store.m */,
+				8805797618DC790E00E64CD5 /* IAPHelper.h */,
+				8805797718DC790E00E64CD5 /* IAPHelper.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1889,6 +1894,7 @@
 				98E1447A18D507F80044BA6A /* CCPhysicsJoint.m in Sources */,
 				98E1445818D507F80044BA6A /* CCMotionStreak.m in Sources */,
 				98E1493E18D50E540044BA6A /* About.m in Sources */,
+				8805797818DC790E00E64CD5 /* IAPHelper.m in Sources */,
 				88143BC018D894420048A2B2 /* GCHelper.m in Sources */,
 				98E1440818D507F70044BA6A /* CCActionInstant.m in Sources */,
 				98E1494118D50E680044BA6A /* Settings.m in Sources */,
