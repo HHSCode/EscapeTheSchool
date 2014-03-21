@@ -17,7 +17,9 @@
 
 @end
 
-@implementation GameCenterUpdater
+@implementation GameCenterUpdater{
+    NSMutableArray* achievments;
+}
 @synthesize currentLeaderBoard,currentScore,gameCenterManager;
 
 bool useDistanceSubmittedScore = false;
@@ -163,6 +165,18 @@ bool useDistanceSubmittedScore = false;
     }
 }
 
+-(void)reportAchievement:(NSString*)identifyer withPercent:(double)percent{
+    if (![achievments containsObject:identifyer]) {
+        GKAchievement* ach = [[GKAchievement alloc]initWithIdentifier:identifyer];
+        if (percent>=100.0) {
+            [achievments addObject:identifyer];
+        }
+        ach.showsCompletionBanner = YES;
+        ach.percentComplete = percent;
+        [ach reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    }
+}
+
 -(void)checkAchievements:(NSArray *)Scores{
     int numberOfScores = (int)[Scores count];
     if (numberOfScores<=1) {
@@ -178,57 +192,163 @@ bool useDistanceSubmittedScore = false;
             break;
         }
     }
-    NSArray* achievments = [NSArray array];
+    achievments = [NSMutableArray array];
     if (keyExists) {
-        achievments = [NSArray arrayWithArray:[defaults objectForKey:@"achievments"]];
+        achievments = [NSMutableArray arrayWithArray:[defaults objectForKey:@"achievments"]];
     }
     keyExists = nil;
     allkeys = nil;
     
+    /*
+     ---------------Number of Plays----------------
+     */
+    
     // 10 plays:
-    if (![achievments containsObject:[NSString stringWithFormat:kAchievement10Plays]]) {
-        double parcent10 = (numberOfScores/10.0)*100.0;
-        GKAchievement* runs10 = [[GKAchievement alloc]initWithIdentifier:kAchievement10Plays];
-        runs10.showsCompletionBanner = YES;
-        runs10.percentComplete = parcent10;
-        [runs10 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
-    }
+    double percent = (numberOfScores/10.0)*100.0;
+    [self reportAchievement:kAchievement10Plays withPercent:percent];
     
     // 20 plays:
-    double parcent20 = (numberOfScores/20.0)*100.0;
-    GKAchievement* runs20 = [[GKAchievement alloc]initWithIdentifier:kAchievement20Plays];
-    runs20.showsCompletionBanner = YES;
-    runs20.percentComplete = parcent20;
-    [runs20 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    percent = (numberOfScores/20.0)*100.0;
+    [self reportAchievement:kAchievement20Plays withPercent:percent];
     
     // 50 plays:
-    double parcent50 = (numberOfScores/50.0)*100.0;
-    GKAchievement* runs50 = [[GKAchievement alloc]initWithIdentifier:kAchievement50Plays];
-    runs50.showsCompletionBanner = YES;
-    runs50.percentComplete = parcent50;
-    [runs50 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    percent = (numberOfScores/50.0)*100.0;
+    [self reportAchievement:kAchievement50Plays withPercent:percent];
     
     //Cinturion (100 plays)
-    double parcent100 = (numberOfScores/100.0)*100.0;
-    GKAchievement* runs100 = [[GKAchievement alloc] initWithIdentifier:k100Plays];
-    runs100.showsCompletionBanner = YES;
-    runs100.percentComplete = parcent100;
-    [runs100 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    percent = (numberOfScores/100.0)*100.0;
+    [self reportAchievement:k100Plays withPercent:percent];
     
     //Half a Millennium (500 plays)
-    double parcent500 = (numberOfScores/500.0)*100.0;
-    GKAchievement* runs500 = [[GKAchievement alloc] initWithIdentifier:k500Plays];
-    runs500.showsCompletionBanner = YES;
-    runs500.percentComplete = parcent500;
-    [runs500 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    percent = (numberOfScores/500.0)*100.0;
+    [self reportAchievement:k500Plays withPercent:percent];
     
     //Millenium (1000 plays)
-    double parcent1000 = (numberOfScores/1000.0)*100.0;
-    GKAchievement* runs1000 = [[GKAchievement alloc] initWithIdentifier:k1000Plays];
-    runs1000.showsCompletionBanner = YES;
-    runs1000.percentComplete = parcent1000;
-    [runs1000 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
-
+    percent = (numberOfScores/1000.0)*100.0;
+    [self reportAchievement:k1000Plays withPercent:percent];
+    
+    /*
+     ---------------Distance----------------
+     */
+    Scores = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+    NSDictionary* mostRecentScore = [Scores objectAtIndex:0];
+    int gameTime = 60;
+    allkeys = [NSArray arrayWithArray:[mostRecentScore allKeys]];
+    if ([allkeys containsObject:@"duration"]) {
+        gameTime = [mostRecentScore objectForKey:@"duration"];
+    }
+    
+    //1k (1000 meters)
+    percent = ([[mostRecentScore objectForKey:@"distance"] doubleValue]/1000.0)*100.0;
+    [self reportAchievement:k1kDistance withPercent:percent];
+    
+    //5k (5000 meters)
+    percent = ([[mostRecentScore objectForKey:@"distance"] doubleValue]/5000.0)*100.0;
+    [self reportAchievement:k5kDistance withPercent:percent];
+    
+    //10k (10000 meters)
+    percent = ([[mostRecentScore objectForKey:@"distance"] doubleValue]/10000.0)*100.0;
+    [self reportAchievement:k10kDistance withPercent:percent];
+    
+    //100k (100000 meters)
+    percent = ([[mostRecentScore objectForKey:@"distance"] doubleValue]/100000.0)*100.0;
+    [self reportAchievement:k100kDistance withPercent:percent];
+    
+    /*
+     ------------------Time before death------------
+     */
+    
+    int numberOfFastDeaths = 0;
+    for (NSDictionary* score in Scores) {
+        allkeys = [score allKeys];
+        int duration = 60;
+        if ([allkeys containsObject:@"duration"]) {
+            duration = [[score objectForKey:@"duration"] intValue];
+        }
+        if (duration<=30) {
+            numberOfFastDeaths++;
+        }
+    }
+    
+    //Growing Potential (Die within the first 30 secs 50 time.)
+    percent = ((double)numberOfFastDeaths/50.0)*100.0;
+    [self reportAchievement:kcaught50fast withPercent:percent];
+    
+    
+    /*
+     -------------Books----------
+     */
+    
+    int booksDodged = 0;
+    NSDictionary* bestScore = [[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"booksDodged" ascending:NO], nil]] objectAtIndex:0];
+    allkeys = [bestScore allKeys];
+    if ([allkeys containsObject:@"booksDodged"]) {
+        booksDodged = [[bestScore objectForKey:@"booksDodged"] intValue]-1;
+    }
+    
+    //Book Dodger (dodge 100 books)
+    percent = ((double)booksDodged/100.0)*100.0;
+    [self reportAchievement:kbook100 withPercent:percent];
+    
+    //Master Book Dodger (500 books)
+    percent = ((double)booksDodged/500.0)*100.0;
+    [self reportAchievement:kbook500 withPercent:percent];
+    
+    /*
+     ------------Coins-----------
+     */
+    
+    bestScore = [[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"coins" ascending:NO], nil]] objectAtIndex:0];
+    
+    int numOfCoins = [[bestScore objectForKey:@"coins"] intValue];
+    
+    //Copper master (500)
+    percent = ((double)numOfCoins/500.0)*100.0;
+    [self reportAchievement:kcoin500 withPercent:percent];
+    
+    //Silver master (1000)
+    percent = ((double)numOfCoins/1000.0)*100.0;
+    [self reportAchievement:kcoin1000 withPercent:percent];
+    
+    //Gold master (10000)
+    percent = ((double)numOfCoins/10000.0)*100.0;
+    [self reportAchievement:kcoin10000 withPercent:percent];
+    
+    //Answer to the Universe, Life and Everything
+    percent = 0.0;
+    if (numOfCoins==42) {
+        percent = 100.0;
+    }
+    [self reportAchievement:k42coins withPercent:percent];
+    
+    //365
+    percent = 0.0;
+    if (numOfCoins==365) {
+        percent = 100.0;
+    }
+    [self reportAchievement:k365coins withPercent:percent];
+    
+    /*
+     -------------Total Distance------------
+     */
+    
+    int totalDistance = 0;
+    for (NSDictionary* score in Scores) {
+        totalDistance = totalDistance + [[score objectForKey:@"distance"] intValue];
+    }
+    
+    //Marathon (50,000)
+    percent = ((double)totalDistance/50000.0)*100.0;
+    [self reportAchievement:kmarathon withPercent:percent];
+    
+    //Golden (161,803,398)
+    percent = ((double)totalDistance/161803398.0)*100.0;
+    [self reportAchievement:kgolden withPercent:percent];
+    
+    
+    
+    [defaults setValue:achievments forKey:@"achievments"];
+    [defaults synchronize];
 }
 
 @end
