@@ -224,6 +224,10 @@
 		98E1494618D50FED0044BA6A /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494518D50FED0044BA6A /* background1.png */; };
 		98E1494818D511D90044BA6A /* ground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494718D511D90044BA6A /* ground2.png */; };
 		98E1494A18D51DC00044BA6A /* walking-man-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 98E1494918D51DC00044BA6A /* walking-man-black.png */; };
+		98F8991A18DBAD4200F8F642 /* hallway2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991618DBAD4200F8F642 /* hallway2.png */; };
+		98F8991B18DBAD4200F8F642 /* hallway3.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991718DBAD4200F8F642 /* hallway3.png */; };
+		98F8991C18DBAD4200F8F642 /* hallway4.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991818DBAD4200F8F642 /* hallway4.png */; };
+		98F8991D18DBAD4200F8F642 /* hallway5.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991918DBAD4200F8F642 /* hallway5.png */; };
 		B348805718D88CFB00CC5067 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805618D88CFB00CC5067 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B348805918D88D1F00CC5067 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805818D88D1F00CC5067 /* StoreKit.framework */; };
 		B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF63B018D5BCDF0062141C /* Images.xcassets */; };
@@ -695,6 +699,10 @@
 		98E1494518D50FED0044BA6A /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
 		98E1494718D511D90044BA6A /* ground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground2.png; sourceTree = "<group>"; };
 		98E1494918D51DC00044BA6A /* walking-man-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "walking-man-black.png"; sourceTree = "<group>"; };
+		98F8991618DBAD4200F8F642 /* hallway2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hallway2.png; sourceTree = "<group>"; };
+		98F8991718DBAD4200F8F642 /* hallway3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hallway3.png; sourceTree = "<group>"; };
+		98F8991818DBAD4200F8F642 /* hallway4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hallway4.png; sourceTree = "<group>"; };
+		98F8991918DBAD4200F8F642 /* hallway5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hallway5.png; sourceTree = "<group>"; };
 		B348805518D88CF500CC5067 /* School Escape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "School Escape.entitlements"; sourceTree = "<group>"; };
 		B348805618D88CFB00CC5067 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		B348805818D88D1F00CC5067 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -832,6 +840,7 @@
 				9820C1D018D62E9F00CDEFD4 /* desk.png */,
 				98DF15DE18D52C57004E553B /* coin1.png */,
 				9820C1D218D62EA600CDEFD4 /* white-closed-book.png */,
+				98F8991E18DBAD4800F8F642 /* Hallway */,
 				98E143F518D507F70044BA6A /* Info.plist */,
 				98E143F618D507F70044BA6A /* iTunesArtwork */,
 				98E143F818D507F70044BA6A /* iTunesArtwork@2x */,
@@ -1654,6 +1663,17 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		98F8991E18DBAD4800F8F642 /* Hallway */ = {
+			isa = PBXGroup;
+			children = (
+				98F8991618DBAD4200F8F642 /* hallway2.png */,
+				98F8991718DBAD4200F8F642 /* hallway3.png */,
+				98F8991818DBAD4200F8F642 /* hallway4.png */,
+				98F8991918DBAD4200F8F642 /* hallway5.png */,
+			);
+			name = Hallway;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1741,7 +1761,9 @@
 				881CA22018DB4E6900574CFC /* locker2.png in Resources */,
 				98E143D518D507F70044BA6A /* Default@2x.png in Resources */,
 				98E145EC18D507F90044BA6A /* LICENSE_CCBReader.txt in Resources */,
+				98F8991B18DBAD4200F8F642 /* hallway3.png in Resources */,
 				BF2F000318D6C583003BB0FF /* runningmansheet.plist in Resources */,
+				98F8991C18DBAD4200F8F642 /* hallway4.png in Resources */,
 				881CA21718DB4B3E00574CFC /* locker1.png in Resources */,
 				98E143D318D507F70044BA6A /* Default.png in Resources */,
 				881CA21018DB408600574CFC /* brick.png in Resources */,
@@ -1751,6 +1773,7 @@
 				98E145D518D507F90044BA6A /* LICENSE_Kazmath.txt in Resources */,
 				881CA21C18DB4DDC00574CFC /* door1.png in Resources */,
 				98E1452E18D507F80044BA6A /* LICENSE_cocos2d.txt in Resources */,
+				98F8991D18DBAD4200F8F642 /* hallway5.png in Resources */,
 				98E1494818D511D90044BA6A /* ground2.png in Resources */,
 				98E143D718D507F70044BA6A /* Default-568h@2x.png in Resources */,
 				98DF15DF18D52C57004E553B /* coin1.png in Resources */,
@@ -1759,6 +1782,7 @@
 				881CA21218DB46EC00574CFC /* brickBig.png in Resources */,
 				98E145BA18D507F90044BA6A /* ChangeLog in Resources */,
 				9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */,
+				98F8991A18DBAD4200F8F642 /* hallway2.png in Resources */,
 				881CA22218DB669200574CFC /* atrium.png in Resources */,
 				B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */,
 				98E1494618D50FED0044BA6A /* background1.png in Resources */,
