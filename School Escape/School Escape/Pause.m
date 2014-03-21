@@ -41,6 +41,16 @@
     [pauseLayoutBox addChild:gamecenterButton]; //add game center to layout box
     [pauseLayoutBox addChild:gameButton]; //add resume to layout box
     
+    if ([[OALSimpleAudio sharedInstance]bgPlaying]) {
+        CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause Music"];
+        [pauseButton setTarget:self selector:@selector(pausePressed)];
+        [pauseLayoutBox addChild:pauseButton];
+    } else {
+        CCButton *playButton = [CCButton buttonWithTitle:@"Play Music"];
+        [playButton setTarget:self selector:@selector(playPressed)];
+        [pauseLayoutBox addChild:playButton];
+    }
+    
     [pauseLayoutBox setSpacing:10.f];
     [pauseLayoutBox setDirection:CCLayoutBoxDirectionVertical];
     [pauseLayoutBox setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
@@ -69,6 +79,17 @@
 -(void)gamecenterPressed{
     ABGameKitHelper *helper = [[ABGameKitHelper alloc] init];
      [helper showAchievements];
+}
+
+-(void)pausePressed{
+    [[OALSimpleAudio sharedInstance]stopBg]; //Background music
+    [[CCDirector sharedDirector]presentScene:[Pause scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+}
+
+-(void)playPressed{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES]; //Background music
+    [[CCDirector sharedDirector]presentScene:[Pause scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
 }
 
 @end

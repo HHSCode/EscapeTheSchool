@@ -9,9 +9,8 @@
 #import "Settings.h"
 
 
-@implementation Settings{
-    BOOL stopMusic;
-}
+@implementation Settings
+
 + (Settings *)scene
 {
     return [[self alloc] init];
@@ -32,16 +31,9 @@
     CCButton *menuButton = [CCButton buttonWithTitle:@"< Back"];
     [menuButton setTarget:self selector:@selector(menuPressed)];
     [settingsLayoutBox addChild:menuButton];
-    
-    if ([[OALSimpleAudio sharedInstance]bgPlaying]) {
-        CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause Music"];
-        [pauseButton setTarget:self selector:@selector(pausePressed)];
-        [settingsLayoutBox addChild:pauseButton];
-    } else {
-        CCButton *playButton = [CCButton buttonWithTitle:@"Play Music"];
-        [playButton setTarget:self selector:@selector(playPressed)];
-        [settingsLayoutBox addChild:playButton];
-    }
+    CCButton *musicButton = [CCButton buttonWithTitle:@"Music"];
+    [musicButton setTarget:self selector:@selector(musicPressed)];
+    [settingsLayoutBox addChild:musicButton];
     
     [settingsLayoutBox setSpacing:10.f];
     [settingsLayoutBox setDirection:CCLayoutBoxDirectionVertical];
@@ -57,15 +49,8 @@
     [[CCDirector sharedDirector]presentScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]];
 }
 
--(void)pausePressed{
-    [[OALSimpleAudio sharedInstance]stopBg]; //Background music
-    [[CCDirector sharedDirector]presentScene:[Settings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
-    stopMusic = TRUE;
-}
-
--(void)playPressed{
-    [[OALSimpleAudio sharedInstance]playBg:@"backgroundMusic1.mp3" loop:YES]; //Background music
-    [[CCDirector sharedDirector]presentScene:[Settings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+-(void)musicPressed{
+    [[CCDirector sharedDirector]presentScene:[MusicSettings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:.5]];
 }
 
 @end

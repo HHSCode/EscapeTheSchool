@@ -13,8 +13,8 @@
 #import "GCHelper.h"
 #import "MKiCloudSync.h"
 
-
-@implementation AppDelegate
+@implementation AppDelegate{
+}
 
 // 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -33,7 +33,7 @@
         [alert show];
     }
     
-    [[OALSimpleAudio sharedInstance]playBg:@"backgroundMusic1.mp3" loop:YES]; //Background music
+
     
     
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
@@ -110,6 +110,10 @@
 //		CCSetupTabletScale2X: @(YES),
 	}];
 	[[GCHelper defaultHelper] authenticateLocalUser];
+
+    [defaults setValue:@"backgroundMusic1.mp3" forKey:@"music"];
+    [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES];
+    
 	return YES;
 }
 
