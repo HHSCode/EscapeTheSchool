@@ -53,11 +53,21 @@
 }
 
 -(void)resetPressed{
-    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
-    NSMutableArray* Scores;
-    Scores = [NSMutableArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:0],[NSDate date],[NSNumber numberWithInt:0], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
-    [Scores writeToFile:path atomically:YES];
-    [[CCDirector sharedDirector]presentScene:[Menu scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionRight duration:.5]];
+    UIAlertView *confirm = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"This action will reset your total distance, coins, and achievements!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Okay", nil];
+    [confirm show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+        NSMutableArray* Scores;
+        Scores = [NSMutableArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:0],[NSDate date],[NSNumber numberWithInt:0], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
+        [Scores writeToFile:path atomically:YES];
+        [GKAchievement resetAchievementsWithCompletionHandler:^(NSError *error){if (error != nil){NSLog(@"failure");}}]; //Clear all progress saved on Game Center.
+        GameCenterUpdater* gameCenterUpdater = [[GameCenterUpdater alloc] init];
+        [gameCenterUpdater sendScore:[Scores objectAtIndex:0] andScores:Scores];
+        [[CCDirector sharedDirector]presentScene:[Settings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+    }
 }
 
 -(void)musicPressed{
