@@ -7,6 +7,7 @@
 //
 
 #import "Menu.h"
+#import "ABGameKitHelper.h"
 
 
 
@@ -48,10 +49,14 @@
     
     CCLabelTTF *totalCoins = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:12];
 
+    CCButton *gamecenterButton = [CCButton buttonWithTitle:@"Game Center"]; //creates Game Center button
+    [gamecenterButton setTarget:self selector:@selector(gamecenterPressed)]; //if pressed run gamecenterPressed
+    
     CCLayoutBox *menuLayoutBox = [[CCLayoutBox alloc]init];
     [menuLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
     [menuLayoutBox addChild:aboutButton];
     [menuLayoutBox addChild:settingsButton];
+    [menuLayoutBox addChild:gamecenterButton];
     [menuLayoutBox addChild:storeButton];
     [menuLayoutBox addChild:playButton];
     
@@ -82,16 +87,19 @@
 
 -(void)settingsPressed{
     [[CCDirector sharedDirector]presentScene:[Settings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:.5]];
-
 }
 
 -(void)aboutPressed{
     [[CCDirector sharedDirector]presentScene:[About scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:.5]];
-
 }
 
 -(void)storePressed{
     [[CCDirector sharedDirector]presentScene:[Store scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:.5]];
-
 }
+
+-(void)gamecenterPressed{
+    ABGameKitHelper *helper = [[ABGameKitHelper alloc] init];
+    [helper showAchievements];
+}
+
 @end

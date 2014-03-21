@@ -95,7 +95,7 @@
 
 -(void)gamecenterPressed{
     ABGameKitHelper *helper = [[ABGameKitHelper alloc] init];
-     [helper showAchievements];
+    [helper showAchievements];
 }
 
 -(void)pausePressed{
