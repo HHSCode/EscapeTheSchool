@@ -353,7 +353,6 @@ bool useDistanceSubmittedScore = false;
     [self reportAchievement:kgolden withPercent:percent];
     
     
-    
     [defaults setValue:achievments forKey:@"achievments"];
     [defaults synchronize];
 }
