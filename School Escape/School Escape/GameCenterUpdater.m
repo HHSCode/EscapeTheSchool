@@ -254,6 +254,13 @@ bool useDistanceSubmittedScore = false;
     percent = ([[mostRecentScore objectForKey:@"distance"] doubleValue]/100000.0)*100.0;
     [self reportAchievement:k100kDistance withPercent:percent];
     
+    //Plutophobia
+    percent = 0.0;
+    if ([[mostRecentScore objectForKey:@"plutophobia"] boolValue]) {
+        percent = 100.0;
+    }
+    [self reportAchievement:kplutophobia withPercent:percent];
+    
     /*
      ------------------Time before death------------
      */

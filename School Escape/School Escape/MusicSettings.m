@@ -83,6 +83,7 @@
     [defaults setValue:@"you'retime.mp3" forKey:@"music"];
     [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES]; //Background music
     [[CCDirector sharedDirector]presentScene:[MusicSettings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+    [defaults synchronize];
 }
 
 -(void)backgroundPressed{
@@ -90,6 +91,7 @@
     [defaults setValue:@"backgroundMusic1.mp3" forKey:@"music"];
     [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES]; //Background music
     [[CCDirector sharedDirector]presentScene:[MusicSettings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+    [defaults synchronize];
 }
 
 @end

@@ -162,7 +162,7 @@
 	}];
 	[[GCHelper defaultHelper] authenticateLocalUser];
 
-    [defaults setValue:@"backgroundMusic1.mp3" forKey:@"music"];
+    //[defaults setValue:@"backgroundMusic1.mp3" forKey:@"music"];
     [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES];
     
 	return YES;
