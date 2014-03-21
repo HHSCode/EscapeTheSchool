@@ -16,6 +16,54 @@
 @implementation AppDelegate{
 }
 
+-(void)applicationWillEnterForeground:(UIApplication *)application{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+        NSMutableArray* saves = [NSMutableArray arrayWithContentsOfFile:path];
+        saves = [NSMutableArray arrayWithArray:[saves sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]]];
+        
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        NSArray* allKeys = [[defaults dictionaryRepresentation] allKeys];
+        BOOL savesExists = false;
+        for (NSString* key in allKeys) {
+            if ([key isEqualToString:@"saves"]) {
+                savesExists = true;
+                break;
+            }
+        }
+        if (!savesExists) {
+            [defaults setValue:saves forKey:@"saves"];
+        }else{
+            NSArray* icloudScores = [NSArray arrayWithArray:[defaults objectForKey:@"saves"]];
+            icloudScores = [icloudScores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+            
+            NSMutableArray* combinedArray = [NSMutableArray arrayWithArray:saves];
+            [combinedArray addObjectsFromArray:icloudScores];
+            combinedArray = [NSMutableArray arrayWithArray:[combinedArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO]]]];
+            int i = 1;
+            while (i<([combinedArray count])) {
+                NSDate* targetDate = [[combinedArray objectAtIndex:i] objectForKey:@"time"];
+                BOOL isEqualToPrevious = ([targetDate compare:[[combinedArray objectAtIndex:(i-1)] objectForKey:@"time"]]==NSOrderedSame);
+                BOOL isEqualToNext = NO;
+                if (i+1<[combinedArray count]) {
+                    isEqualToNext = ([targetDate compare:[[combinedArray objectAtIndex:i+1] objectForKey:@"time"]]==NSOrderedSame);
+                }
+                if (isEqualToNext || isEqualToPrevious) {
+                    [combinedArray removeObjectAtIndex:i];
+                    i = i - 1;
+                }
+                i++;
+            }
+            saves = [NSMutableArray arrayWithArray:combinedArray];
+            [saves writeToFile:path atomically:YES];
+            saves = nil;
+            icloudScores = [NSArray arrayWithArray:combinedArray];
+            [defaults setValue:icloudScores forKey:@"saves"];
+        }
+        [defaults synchronize];
+    });
+}
+
 // 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -58,7 +58,6 @@ bool useDistanceSubmittedScore = false;
 -(void)reportedScore:(NSError *)error{
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         if (error == NULL) {
-            NSLog(@"Score Sent");
         } else {
             NSLog(@"Score Failed, %@",[error localizedDescription]);
         }
@@ -178,7 +177,6 @@ bool useDistanceSubmittedScore = false;
 {
     
     if (error==nil && ach != NULL) {
-        NSLog(@"Achievement (%@) Submitted",ach.identifier);
         if (ach.percentComplete==100.0) {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Achievement Get!" message:[NSString stringWithFormat:@"%@",ach.identifier] delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
             [alert show];

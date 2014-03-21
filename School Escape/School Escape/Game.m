@@ -20,7 +20,15 @@ int gameTime;
     CCNode *_hero; //the hero, or the main character, or the runner
     CCNode *_ground1;
     CCNode *_ground2;
+    CCNode *_background1;
+    CCNode *_background2;
+    CCNode *_background3;
+    CCNode *_background4;
+    CCNode *_background5;
+
+
     NSArray *_grounds; //array that stores the two grounds so they can change positionand seem continuous
+    NSArray *_backgrounds;
     NSMutableArray *_coins; //array that stores all the coins and checks them to see if they collided with the hero in the update method
     NSMutableArray *_coins2;
     NSMutableArray *_obstacles;
@@ -95,13 +103,6 @@ int gameTime;
     _coins = [[NSMutableArray alloc]init];//allocate coins array
     _obstacles = [[NSMutableArray alloc]init];
     _flyingObstacles = [[NSMutableArray alloc]init];
-    //BACKGROUND
-    CCSprite *_background = [CCSprite spriteWithImageNamed:@"brickBig.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
-    [_background setPosition:ccp(0, 0)];
-    [_background setAnchorPoint:ccp(0, 0)];
-    [_background setScaleX:0.5];
-    [_background setScaleY:0.5];
-    [self addChild:_background];
     
     //GROUND 1
     _ground1 = [CCSprite spriteWithImageNamed:@"ground2.png"];
@@ -142,6 +143,8 @@ int gameTime;
     _physicsNode.gravity = ccp(0,-1500); //change this to increase or decrease gravity
     _physicsNode.debugDraw = NO; //YES to see phsyics bodies
     _physicsNode.collisionDelegate = self;
+    
+   
     
     //GROUND 1 PHYSICS
     _ground1.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero, _ground1.contentSize} cornerRadius:0];
@@ -200,6 +203,52 @@ int gameTime;
     [pauseButton setLabelColor:[CCColor blackColor] forState:CCControlStateNormal]; //set color for unpressed state
     [self addChild:pauseButton z:1]; //add button to scene
 
+    
+    //BACKGROUND
+    _background1 = [CCSprite spriteWithImageNamed:@"hallway2.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
+    [_background1 setPosition:ccp(0, _ground1.boundingBox.size.height)];
+    [_background1 setAnchorPoint:ccp(0, 0)];
+    [_background1 setScaleX:0.25];
+    [_background1 setScaleY:0.25];
+    [_background1 setZOrder:-1];
+    [_physicsNode addChild:_background1];
+    
+    _background2 = [CCSprite spriteWithImageNamed:@"hallway3.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
+    [_background2 setPosition:ccp(_background1.boundingBox.size.width, _ground1.boundingBox.size.height)];
+    [_background2 setAnchorPoint:ccp(0, 0)];
+    [_background2 setScaleX:0.25];
+    [_background2 setScaleY:0.25];
+    [_background2 setZOrder:-1];
+    [_physicsNode addChild:_background2];
+    
+    _background3 = [CCSprite spriteWithImageNamed:@"hallway3.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
+    [_background3 setPosition:ccp((_background1.boundingBox.size.width*2), _ground1.boundingBox.size.height)];
+    [_background3 setAnchorPoint:ccp(0, 0)];
+    [_background3 setScaleX:0.25];
+    [_background3 setScaleY:0.25];
+    [_background3 setZOrder:-1];
+    [_physicsNode addChild:_background3];
+    
+    _background4 = [CCSprite spriteWithImageNamed:@"hallway5.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
+    [_background4 setPosition:ccp((_background1.boundingBox.size.width*3), _ground1.boundingBox.size.height)];
+    [_background4 setAnchorPoint:ccp(0, 0)];
+    [_background4 setScaleX:0.25];
+    [_background4 setScaleY:0.25];
+    [_background4 setZOrder:-1];
+    [_physicsNode addChild:_background4];
+    
+    _background5 = [CCSprite spriteWithImageNamed:@"hallway4.png"]; //change this to change the background, make sure the size is the same as the current background of the new file when changing
+    [_background5 setPosition:ccp((_background1.boundingBox.size.width*4), _ground1.boundingBox.size.height)];
+    [_background5 setAnchorPoint:ccp(0, 0)];
+    [_background5 setScaleX:0.25];
+    [_background5 setScaleY:0.25];
+    [_background5 setZOrder:-1];
+    [_physicsNode addChild:_background5];
+    
+    _backgrounds = [[NSArray alloc]initWithObjects:_background1, _background2, _background3,_background4,_background5, nil];
+    
+
+    
     _grounds = [[NSArray alloc]initWithObjects:_ground1, _ground2, nil ];//allocate grounds array
     
     [self addChild:_physicsNode]; //add physics node to the scene
@@ -242,7 +291,7 @@ BOOL intersects=NO; //initializes no intersection
     _flyingObstacle.physicsBody.collisionGroup = @"heroGroup";
     _flyingObstacle.physicsBody.collisionType = @"flyingObstacleType";
     _flyingObstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
-    int minY = _ground1.boundingBox.size.height+10; //min is above the ground slightly
+    int minY = _ground1.boundingBox.size.height+30; //min is above the ground slightly
     int maxY = self.contentSize.height-_flyingObstacle.boundingBox.size.height-10;//max is below the top but in reach ofthe character jumping
     int rangeY = maxY - minY;
     int randomY = (arc4random() % rangeY) + minY;
@@ -308,29 +357,7 @@ BOOL intersects=NO; //initializes no intersection
     }
 }
 
-/*-(void)addObstacle{
-    CCNode *_obstacle = [[CCSprite alloc]initWithImageNamed:@"desk.png"]; //change this to change how the coin looks
-    [_obstacle setScaleY:.15];
-    [_obstacle setScaleX:.15];
-    float obstacleSize = 100; //this is used to calculate the coin position, or basically where it is placed on the screen, max and min
-    [_obstacle setAnchorPoint:ccp(0, 0)];
-    _obstacle.physicsBody.elasticity=0;
-    _obstacle.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0, 0, _obstacle.contentSize.width, _obstacle.contentSize.height) cornerRadius:0];
-    _obstacle.physicsBody.collisionGroup = @"obstacleGroup";
-    _obstacle.physicsBody.collisionType = @"obstacleType";
-    
-    _obstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
-    
-    
-    _obstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, 29); //sets coin position off to the right at a random y location
-    //[_coins addObject:_coin]; //adds coin to _coins so it can check for collisions
-    [_obstacles addObject:_obstacle];
-    if ([_obstacles count]>30) { //if more than 30 obstacles
-        [_obstacles removeObjectAtIndex:0]; //delete from array
-    }
-    [_physicsNode addChild:_obstacle]; //adds coin to physics node
-}
-*/
+
 -(void)lost{
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
     NSMutableArray* Scores;
@@ -406,6 +433,21 @@ BOOL intersects=NO; //initializes no intersection
             ground.position = ccp(ground.position.x + 2 * ground.contentSize.width/2, ground.position.y);
         }
     }
+    for (CCSprite *background in _backgrounds) {
+        // get the world position of the ground
+        CGPoint backgroundWorldPosition = [_physicsNode convertToWorldSpace:background.position];
+        // get the screen position of the ground
+        CGPoint backgroundScreenPosition = [self convertToNodeSpace:backgroundWorldPosition];
+        // if the left corner is one complete width off the screen, move it to the right
+        
+        if (backgroundScreenPosition.x <= (-1 * background.boundingBox.size.width)) { //DOES NOT WORK, NOT SURE WHY
+            background.position = ccp(background.position.x + [_backgrounds count] * background.boundingBox.size.width, background.position.y);
+            /*int from = 2;
+            int to = 5;
+            [background setSpriteFrame:[CCSpriteFrame frameWithImageNamed: [NSString stringWithFormat:@"hallway%i.png", (int)from + arc4random() % (to-from+1)]]];*/
+            
+        }
+    }
     
     _coins2 = [_coins mutableCopy]; //makes copy of coins array
     
@@ -423,7 +465,7 @@ BOOL intersects=NO; //initializes no intersection
         }
 
         CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
-        CGRect coinTempBoundingBox = CGRectInset(coin.boundingBox, coin.boundingBox.size.width/8, coin.boundingBox.size.height/8);
+        CGRect coinTempBoundingBox = CGRectInset(coin.boundingBox, coin.boundingBox.size.width/4, coin.boundingBox.size.height/4);
 
         if (CGRectIntersectsRect(heroTempBoundingBox, coinTempBoundingBox)) { //check if hero and coin collides
             
@@ -462,36 +504,12 @@ BOOL intersects=NO; //initializes no intersection
 
     }
     
-    for (CCNode *obstacle in _obstacles) {
-        BOOL shouldRemove = NO;
-        CGPoint obstacleWorldPosition = [_physicsNode convertToWorldSpace:obstacle.position];
-        // get the screen position of the ground
-        CGPoint obstacleScreenPosition = [self convertToNodeSpace:obstacleWorldPosition];
-        
-        if (obstacleScreenPosition.x<=(-1*obstacle.contentSize.width/2)) {
-            shouldRemove=YES;
-            
-        }
-        
-        if (CGRectIntersectsRect([_hero boundingBox], [obstacle boundingBox])) { //check if hero and coin collides, if so remove coin from screen. need to add a counter
-            /*NSLog(@"Hero r: %f", _hero.position.x+_hero.contentSize.width);
-            NSLog(@"Obst l: %f", obstacle.position.x);
-            NSLog(@"Hero b: %f", _hero.position.y);
-            NSLog(@"Obst t: %f\n|", obstacle.position.y+obstacle.contentSize.height);*/
-            
-            intersects=YES;
-        }
-        
-        if (shouldRemove) {
-            [obstacle removeFromParent];
-            
-        }
-        
-    }
-
+    
     
     
 }
+
+
 
 //COLLISIONS
 
