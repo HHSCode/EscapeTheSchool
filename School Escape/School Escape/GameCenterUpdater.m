@@ -204,27 +204,27 @@ bool useDistanceSubmittedScore = false;
      */
     
     // 10 plays:
-    double percent = (numberOfScores/10.0)*100.0;
+    double percent = ((double)numberOfScores/10.0)*100.0;
     [self reportAchievement:kAchievement10Plays withPercent:percent];
     
     // 20 plays:
-    percent = (numberOfScores/20.0)*100.0;
+    percent = ((double)numberOfScores/20.0)*100.0;
     [self reportAchievement:kAchievement20Plays withPercent:percent];
     
     // 50 plays:
-    percent = (numberOfScores/50.0)*100.0;
+    percent = ((double)numberOfScores/50.0)*100.0;
     [self reportAchievement:kAchievement50Plays withPercent:percent];
     
     //Cinturion (100 plays)
-    percent = (numberOfScores/100.0)*100.0;
+    percent = ((double)numberOfScores/100.0)*100.0;
     [self reportAchievement:k100Plays withPercent:percent];
     
     //Half a Millennium (500 plays)
-    percent = (numberOfScores/500.0)*100.0;
+    percent = ((double)numberOfScores/500.0)*100.0;
     [self reportAchievement:k500Plays withPercent:percent];
     
     //Millenium (1000 plays)
-    percent = (numberOfScores/1000.0)*100.0;
+    percent = ((double)numberOfScores/1000.0)*100.0;
     [self reportAchievement:k1000Plays withPercent:percent];
     
     /*
