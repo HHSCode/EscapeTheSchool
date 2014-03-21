@@ -454,7 +454,6 @@ BOOL intersects=NO; //initializes no intersection
     for (CCNode *coin in _coins2) { //run everything below for each coin in array
         
         BOOL shouldRemove = NO; //will not remove coin unless changed below
-        BOOL upScore = NO; //will not give point unless changed below
         CGPoint coinWorldPosition = [_physicsNode convertToWorldSpace:coin.position];
         // get the screen position of the ground
         CGPoint coinScreenPosition = [self convertToNodeSpace:coinWorldPosition];
@@ -470,7 +469,9 @@ BOOL intersects=NO; //initializes no intersection
         if (CGRectIntersectsRect(heroTempBoundingBox, coinTempBoundingBox)) { //check if hero and coin collides
             
             shouldRemove=YES; //tells program to remove coin below
-            upScore=YES; //tells program to add point below
+            [[OALSimpleAudio sharedInstance]playEffect:@"coincollection.mp3"];
+            score++; //adds one to score
+            [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
         }
         
        
@@ -481,10 +482,7 @@ BOOL intersects=NO; //initializes no intersection
 
         }
         
-        if (upScore) { //if above has told to add point
-            score++; //adds one to score
-            [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
-        }
+        
         
         distance = (int)_hero.position.x/10; //distance takes the negative integer of physics node position and divides it by 10 (to make it slower)
         [_distanceLabel setString:[NSString stringWithFormat:@"%i", distance]]; //sets the label to the current distance

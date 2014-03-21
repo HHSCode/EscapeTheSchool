@@ -228,6 +228,7 @@
 		98F8991B18DBAD4200F8F642 /* hallway3.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991718DBAD4200F8F642 /* hallway3.png */; };
 		98F8991C18DBAD4200F8F642 /* hallway4.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991818DBAD4200F8F642 /* hallway4.png */; };
 		98F8991D18DBAD4200F8F642 /* hallway5.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991918DBAD4200F8F642 /* hallway5.png */; };
+		98F8992018DBC15D00F8F642 /* coincollection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991F18DBC15D00F8F642 /* coincollection.mp3 */; };
 		B348805718D88CFB00CC5067 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805618D88CFB00CC5067 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B348805918D88D1F00CC5067 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805818D88D1F00CC5067 /* StoreKit.framework */; };
 		B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF63B018D5BCDF0062141C /* Images.xcassets */; };
@@ -703,6 +704,7 @@
 		98F8991718DBAD4200F8F642 /* hallway3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hallway3.png; sourceTree = "<group>"; };
 		98F8991818DBAD4200F8F642 /* hallway4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hallway4.png; sourceTree = "<group>"; };
 		98F8991918DBAD4200F8F642 /* hallway5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hallway5.png; sourceTree = "<group>"; };
+		98F8991F18DBC15D00F8F642 /* coincollection.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coincollection.mp3; sourceTree = "<group>"; };
 		B348805518D88CF500CC5067 /* School Escape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "School Escape.entitlements"; sourceTree = "<group>"; };
 		B348805618D88CFB00CC5067 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		B348805818D88D1F00CC5067 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -766,6 +768,7 @@
 			isa = PBXGroup;
 			children = (
 				883FAE8118D9D31F00A75F05 /* backgroundMusic1.mp3 */,
+				98F8991F18DBC15D00F8F642 /* coincollection.mp3 */,
 			);
 			name = Sound;
 			sourceTree = "<group>";
@@ -1771,6 +1774,7 @@
 				98E143D918D507F70044BA6A /* Default-Landscape~ipad.png in Resources */,
 				98E1494A18D51DC00044BA6A /* walking-man-black.png in Resources */,
 				98E145D518D507F90044BA6A /* LICENSE_Kazmath.txt in Resources */,
+				98F8992018DBC15D00F8F642 /* coincollection.mp3 in Resources */,
 				881CA21C18DB4DDC00574CFC /* door1.png in Resources */,
 				98E1452E18D507F80044BA6A /* LICENSE_cocos2d.txt in Resources */,
 				98F8991D18DBAD4200F8F642 /* hallway5.png in Resources */,
