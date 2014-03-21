@@ -91,9 +91,10 @@
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSArray* allKeys = [[defaults dictionaryRepresentation] allKeys];
     BOOL savesExists = false;
+    NSLog(@"AllKeys: %@", allKeys);
     for (NSString* key in allKeys) {
         if ([key isEqualToString:@"saves"]) {
-            savesExists = true;
+            savesExists = YES;
             break;
         }
     }

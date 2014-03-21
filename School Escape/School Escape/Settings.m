@@ -60,12 +60,41 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
         NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
-        NSMutableArray* Scores;
-        Scores = [NSMutableArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:0],[NSDate date],[NSNumber numberWithInt:0], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
-        [Scores writeToFile:path atomically:YES];
+        NSString* docpath = (NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSLog(@"Path: %@", path);
+        NSFileManager *fileMgr = [NSFileManager defaultManager];
+        NSError *error = nil;
+        
+        NSDirectoryEnumerator *fileEnumerator = [fileMgr enumeratorAtPath:docpath];
+        
+        for (NSString *filename in fileEnumerator) {
+    
+            NSLog(@"file: %@", filename);
+        }
+        BOOL success = [fileMgr removeItemAtPath:path error:&error];
+        if (success) {
+            //UIAlertView *removeSuccessFulAlert=[[UIAlertView alloc]initWithTitle:@"Congratulation:" message:@"Successfully removed" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
+            //[removeSuccessFulAlert show];
+        }
+        else
+        {
+            NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+        }
+        
+
+        NSArray* resetScores = [[NSArray alloc]init];
+        resetScores = [NSMutableArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:0],[NSDate date],[NSNumber numberWithInt:0], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
+        resetScores=[resetScores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
+
+        [resetScores writeToFile:path atomically:YES];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:resetScores forKey:@"saves"];
+        [defaults synchronize];
+        
         [GKAchievement resetAchievementsWithCompletionHandler:^(NSError *error){if (error != nil){NSLog(@"failure");}}]; //Clear all progress saved on Game Center.
         GameCenterUpdater* gameCenterUpdater = [[GameCenterUpdater alloc] init];
-        [gameCenterUpdater sendScore:[Scores objectAtIndex:0] andScores:Scores];
+        [gameCenterUpdater sendScore:[resetScores objectAtIndex:0] andScores:resetScores];
+        [defaults setValue:[NSNumber numberWithInt:0] forKey:@"totalCoins"];
         [[CCDirector sharedDirector]presentScene:[Settings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
     }
 }
