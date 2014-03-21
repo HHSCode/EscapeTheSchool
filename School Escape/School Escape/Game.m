@@ -69,7 +69,7 @@ int gameTime;
 //Change Scroll Speed over time
 -(void)updateScrollSpeed{
     if (scrollSpeed < 2000) { //Stop at 2000
-        scrollSpeed = scrollSpeed +10;
+        scrollSpeed = scrollSpeed +5;
     }
 }
 
@@ -317,6 +317,7 @@ BOOL intersects=NO; //initializes no intersection
     float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
     [_coin setAnchorPoint:ccp(0, 0)];
     
+    
     _coin.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_coin.contentSize.width/2-40 andCenter:ccp(_coin.contentSize.width/2, _coin.contentSize.height/2)];
     _coin.physicsBody.collisionGroup = @"heroGroup";
     _coin.physicsBody.collisionType = @"coinType";
@@ -340,6 +341,7 @@ BOOL intersects=NO; //initializes no intersection
         [_coin setScaleX:.040];
         //float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
         [_coin setAnchorPoint:ccp(0, 0)];
+        
         
         _coin.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_coin.contentSize.width/2-40 andCenter:ccp(_coin.contentSize.width/2, _coin.contentSize.height/2)];
         _coin.physicsBody.collisionGroup = @"heroGroup";
@@ -470,6 +472,7 @@ BOOL intersects=NO; //initializes no intersection
             
             shouldRemove=YES; //tells program to remove coin below
             [[OALSimpleAudio sharedInstance]playEffect:@"coincollection.mp3"];
+            
             score++; //adds one to score
             [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
         }
