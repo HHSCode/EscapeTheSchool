@@ -314,7 +314,6 @@ BOOL intersects=NO; //initializes no intersection
 }
 
 -(void)addCoin{
-<<<<<<< HEAD
     CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin2.png"]; //change this to change how the coin looks
     [_coin setScaleY:.040];
     [_coin setScaleX:.040];
@@ -327,10 +326,7 @@ BOOL intersects=NO; //initializes no intersection
     _coin.physicsBody.collisionType = @"coinType";
     
     _coin.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
-=======
-    float coinSize = 10; //this is used to calculate the coin position, or basically where it is placed on the screen, max and min
 
->>>>>>> FETCH_HEAD
     int minY = 50; //min is above the ground slightly
     int maxY = self.contentSize.height-(coinSize/2)-50;//max is below the top but in reach ofthe character jumping
     int rangeY = maxY - minY;
