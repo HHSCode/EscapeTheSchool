@@ -157,6 +157,12 @@ bool useDistanceSubmittedScore = false;
     [Scores writeToFile:path atomically:YES];
 }
 
+-(void)error:(NSError*)error{
+    if (error!=nil) {
+        NSLog(@"Error submitting acheivment: %@",error.localizedFailureReason);
+    }
+}
+
 -(void)checkAchievements:(NSArray *)Scores{
     int numberOfScores = (int)[Scores count];
     if (numberOfScores<=1) {
@@ -164,27 +170,24 @@ bool useDistanceSubmittedScore = false;
     }
     // 10 plays:
     double parcent10 = (numberOfScores/10.0)*100.0;
-    [self.gameCenterManager submitAchievement:kAchievement10Plays percentComplete:parcent10];
+    GKAchievement* runs10 = [[GKAchievement alloc]initWithIdentifier:kAchievement10Plays];
+    runs10.showsCompletionBanner = YES;
+    runs10.percentComplete = parcent10;
+    [runs10 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    
     // 20 plays:
     double parcent20 = (numberOfScores/20.0)*100.0;
-    [self.gameCenterManager submitAchievement:kAchievement20Plays percentComplete:parcent20];
+    GKAchievement* runs20 = [[GKAchievement alloc]initWithIdentifier:kAchievement20Plays];
+    runs20.showsCompletionBanner = YES;
+    runs20.percentComplete = parcent20;
+    [runs20 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
+    
     // 50 plays:
     double parcent50 = (numberOfScores/50.0)*100.0;
-    [self.gameCenterManager submitAchievement:kAchievement50Plays percentComplete:parcent50];
-}
-
-- (void) achievementSubmitted: (GKAchievement*) ach error:(NSError*) error;
-{
-    
-    if (error==nil && ach != NULL) {
-        if (ach.percentComplete==100.0) {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Achievement Get!" message:[NSString stringWithFormat:@"%@",ach.identifier] delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
-            [alert show];
-        }
-    }else{
-        NSLog(@"Achievement submission failed!");
-    }
-    return;
+    GKAchievement* runs50 = [[GKAchievement alloc]initWithIdentifier:kAchievement50Plays];
+    runs50.showsCompletionBanner = YES;
+    runs50.percentComplete = parcent50;
+    [runs50 reportAchievementWithCompletionHandler:^(NSError *error) {[self error:error];}];
 }
 
 @end

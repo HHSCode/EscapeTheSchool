@@ -25,13 +25,16 @@
 }
 
 -(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
-    NSLog(@"Request worked: \n%@",response.products);
+    NSLog(@"Request worked!");
     products = [NSArray arrayWithArray:response.products];
+}
+
+-(void)requestDidFinish:(SKRequest *)request{
+    NSLog(@"Request Over");
 }
 
 -(void)request:(SKRequest *)request didFailWithError:(NSError *)error{
     NSLog(@"Request failed with error: \n%@",error);
-    [self requestProductData];
 }
 
 @end
