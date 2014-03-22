@@ -27,27 +27,27 @@
     CCLayoutBox *musicSettingsLayoutBox = [[CCLayoutBox alloc]init];
     [musicSettingsLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
     
-    CCButton *settingsButton = [CCButton buttonWithTitle:@"< Back"];
+    CCButton *settingsButton = [CCButton buttonWithTitle:@"< Back" fontName:@"Marker Felt" fontSize:14];
     [settingsButton setTarget:self selector:@selector(settingsPressed)];
     [musicSettingsLayoutBox addChild:settingsButton];
     
     if ([[OALSimpleAudio sharedInstance]bgPlaying]) {
-        CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause Music"];
+        CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause Music" fontName:@"Marker Felt" fontSize:18];
         [pauseButton setTarget:self selector:@selector(pausePressed)];
         [musicSettingsLayoutBox addChild:pauseButton];
     } else {
-        CCButton *playButton = [CCButton buttonWithTitle:@"Play Music"];
+        CCButton *playButton = [CCButton buttonWithTitle:@"Play Music" fontName:@"Marker Felt" fontSize:18];
         [playButton setTarget:self selector:@selector(playPressed)];
         [musicSettingsLayoutBox addChild:playButton];
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![[defaults objectForKey:@"soundeffects"] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        CCButton *soundOffButton = [CCButton buttonWithTitle:@"Mute Sound Effects"];
+        CCButton *soundOffButton = [CCButton buttonWithTitle:@"Mute Sound Effects" fontName:@"Marker Felt" fontSize:18];
         [soundOffButton setTarget:self selector:@selector(soundOffPressed)];
         [musicSettingsLayoutBox addChild:soundOffButton];
     } else {
-        CCButton *soundOnButton = [CCButton buttonWithTitle:@"Play Sound Effects"];
+        CCButton *soundOnButton = [CCButton buttonWithTitle:@"Play Sound Effects" fontName:@"Marker Felt" fontSize:18];
         [soundOnButton setTarget:self selector:@selector(soundOnPressed)];
         [musicSettingsLayoutBox addChild:soundOnButton];
     }

@@ -28,13 +28,13 @@
     CCLayoutBox *settingsLayoutBox = [[CCLayoutBox alloc]init];
     [settingsLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
     
-    CCButton *menuButton = [CCButton buttonWithTitle:@"< Back"];
+    CCButton *menuButton = [CCButton buttonWithTitle:@"< Back" fontName:@"Marker Felt" fontSize:14];
     [menuButton setTarget:self selector:@selector(menuPressed)];
     [settingsLayoutBox addChild:menuButton];
-    CCButton *resetButton = [CCButton buttonWithTitle:@"Reset Game"];
+    CCButton *resetButton = [CCButton buttonWithTitle:@"Reset Game" fontName:@"Marker Felt" fontSize:18];
     [resetButton setTarget:self selector:@selector(resetPressed)];
     [settingsLayoutBox addChild:resetButton];
-    CCButton *soundButton = [CCButton buttonWithTitle:@"Sound Settings"];
+    CCButton *soundButton = [CCButton buttonWithTitle:@"Sound Settings" fontName:@"Marker Felt" fontSize:18];
     [soundButton setTarget:self selector:@selector(soundPressed)];
     [settingsLayoutBox addChild:soundButton];
     

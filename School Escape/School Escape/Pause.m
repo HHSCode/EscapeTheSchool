@@ -42,13 +42,13 @@
     [totalCoins setPosition:ccp(self.contentSize.width,self.contentSize.height)];
     [self addChild:totalCoins];
     
-    CCButton *gameButton = [CCButton buttonWithTitle:@"Resume"]; //creates resume button
+    CCButton *gameButton = [CCButton buttonWithTitle:@"Resume" fontName:@"Marker Felt" fontSize:24]; //creates resume button
     [gameButton setTarget:self selector:@selector(gamePressed)]; //if pressed run gamePressed
-    CCButton *restartButton = [CCButton buttonWithTitle:@"Restart"]; //creates restart button
+    CCButton *restartButton = [CCButton buttonWithTitle:@"Restart" fontName:@"Marker Felt" fontSize:18]; //creates restart button
     [restartButton setTarget:self selector:@selector(restartPressed)]; //if pressed run restartPressed
-    CCButton *gamecenterButton = [CCButton buttonWithTitle:@"Game Center"]; //creates Game Center button
+    CCButton *gamecenterButton = [CCButton buttonWithTitle:@"Game Center" fontName:@"Marker Felt" fontSize:18]; //creates Game Center button
     [gamecenterButton setTarget:self selector:@selector(gamecenterPressed)]; //if pressed run gamecenterPressed
-    CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
+    CCButton *menuButton = [CCButton buttonWithTitle:@"Menu" fontName:@"Marker Felt" fontSize:18]; //creates menu button
     [menuButton setTarget:self selector:@selector(menuPressed)]; //if pressed run menuPressed
     
     CCLayoutBox *pauseLayoutBox = [[CCLayoutBox alloc]init]; //create layout box
@@ -57,21 +57,21 @@
     [pauseLayoutBox addChild:gamecenterButton]; //add game center to layout box
     
     if ([[OALSimpleAudio sharedInstance]bgPlaying]) {
-        CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause Music"];
+        CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause Music" fontName:@"Marker Felt" fontSize:18];
         [pauseButton setTarget:self selector:@selector(pausePressed)];
         [pauseLayoutBox addChild:pauseButton];
     } else {
-        CCButton *playButton = [CCButton buttonWithTitle:@"Play Music"];
+        CCButton *playButton = [CCButton buttonWithTitle:@"Play Music" fontName:@"Marker Felt" fontSize:18];
         [playButton setTarget:self selector:@selector(playPressed)];
         [pauseLayoutBox addChild:playButton];
     }
     
     if (![[defaults objectForKey:@"soundeffects"] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        CCButton *soundOffButton = [CCButton buttonWithTitle:@"Mute Sound Effects"];
+        CCButton *soundOffButton = [CCButton buttonWithTitle:@"Mute Sound Effects" fontName:@"Marker Felt" fontSize:18];
         [soundOffButton setTarget:self selector:@selector(soundOffPressed)];
         [pauseLayoutBox addChild:soundOffButton];
     } else {
-        CCButton *soundOnButton = [CCButton buttonWithTitle:@"Play Sound Effects"];
+        CCButton *soundOnButton = [CCButton buttonWithTitle:@"Play Sound Effects" fontName:@"Marker Felt" fontSize:18];
         [soundOnButton setTarget:self selector:@selector(soundOnPressed)];
         [pauseLayoutBox addChild:soundOnButton];
     }

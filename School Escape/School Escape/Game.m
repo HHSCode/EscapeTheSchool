@@ -182,12 +182,12 @@ int gameTime;
     //COIN COUNTER
     score = 0;
     _coinCounterLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:20];
-    [_coinCounterLabel setPosition:ccp(self.contentSize.width-10, self.contentSize.height-10)];
+    [_coinCounterLabel setPosition:ccp(self.contentSize.width-10, self.contentSize.height-5)];
     [_coinCounterLabel setColor:[CCColor blackColor]];
     [_coinCounterLabel setAnchorPoint:ccp(1, 1)];
     [self addChild:_coinCounterLabel z:1];
     _coinCounterLabelStatic = [CCLabelTTF labelWithString:@"Coins: " fontName:@"Marker Felt" fontSize:20];
-    [_coinCounterLabelStatic setPosition:ccp(self.contentSize.width-60, self.contentSize.height-10)];
+    [_coinCounterLabelStatic setPosition:ccp(self.contentSize.width-60, self.contentSize.height-5)];
     [_coinCounterLabelStatic setColor:[CCColor blackColor]];
     [_coinCounterLabelStatic setAnchorPoint:ccp(1, 1)];
     [self addChild:_coinCounterLabelStatic z:1];
@@ -206,9 +206,9 @@ int gameTime;
     [self addChild:_distanceLabelStatic z:1];
     
     //PAUSE
-    CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause"]; //creates pause button
+    CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause" fontName:@"Marker Felt" fontSize:20]; //creates pause button
     [pauseButton setTarget:self selector:@selector(pausePressed)]; //if pressed, run pausePressed
-    [pauseButton setPosition:ccp(30,self.contentSize.height-10)]; //set position
+    [pauseButton setPosition:ccp(30,self.contentSize.height-15)]; //set position
     [pauseButton setLabelColor:[CCColor blackColor] forState:CCControlStateNormal]; //set color for unpressed state
     [self addChild:pauseButton z:1]; //add button to scene
 

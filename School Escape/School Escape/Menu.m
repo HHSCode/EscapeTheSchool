@@ -33,23 +33,23 @@
     Scores = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:NO]]];
     int bestDistance = [[[Scores objectAtIndex:0] objectForKey:@"distance"] intValue];
 
-    CCButton *playButton = [CCButton buttonWithTitle:@"Play"];
+    CCButton *playButton = [CCButton buttonWithTitle:@"Play" fontName:@"Marker Felt" fontSize:24];
     [playButton setTarget:self selector:@selector(playPressed)];
     
-    CCButton *settingsButton = [CCButton buttonWithTitle:@"Settings"];
+    CCButton *settingsButton = [CCButton buttonWithTitle:@"Settings" fontName:@"Marker Felt" fontSize:18];
     [settingsButton setTarget:self selector:@selector(settingsPressed)];
 
-    CCButton *storeButton = [CCButton buttonWithTitle:@"Store"];
+    CCButton *storeButton = [CCButton buttonWithTitle:@"Store" fontName:@"Marker Felt" fontSize:18];
     [storeButton setTarget:self selector:@selector(storePressed)];
 
-    CCButton *aboutButton = [CCButton buttonWithTitle:@"About"];
+    CCButton *aboutButton = [CCButton buttonWithTitle:@"About" fontName:@"Marker Felt" fontSize:18];
     [aboutButton setTarget:self selector:@selector(aboutPressed)];
     
     CCLabelTTF *totalDistanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Best Distance: %i",bestDistance] fontName:@"Marker Felt" fontSize:12];
     
     CCLabelTTF *totalCoins = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:12];
 
-    CCButton *gamecenterButton = [CCButton buttonWithTitle:@"Game Center"]; //creates Game Center button
+    CCButton *gamecenterButton = [CCButton buttonWithTitle:@"Game Center" fontName:@"Marker Felt" fontSize:18]; //creates Game Center button
     [gamecenterButton setTarget:self selector:@selector(gamecenterPressed)]; //if pressed run gamecenterPressed
     
     CCLayoutBox *menuLayoutBox = [[CCLayoutBox alloc]init];

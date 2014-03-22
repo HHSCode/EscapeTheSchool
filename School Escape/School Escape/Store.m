@@ -36,14 +36,14 @@
     Scores = [NSArray arrayWithContentsOfFile:path];
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
-    CCButton *menuButton = [CCButton buttonWithTitle:@"< Back"];
+    CCButton *menuButton = [CCButton buttonWithTitle:@"< Back" fontName:@"Marker Felt" fontSize:14];
     [menuButton setTarget:self selector:@selector(menuPressed)];
-    CCButton *buy10Button = [CCButton buttonWithTitle:@"Buy nothing for 10 coins"];
+    CCButton *buy10Button = [CCButton buttonWithTitle:@"Buy nothing for 10 coins" fontName:@"Marker Felt" fontSize:18];
     [buy10Button setTarget:self selector:@selector(buy10Pressed)];
-    CCButton *buy100Button = [CCButton buttonWithTitle:@"Buy \"You\'re Time\" for 100 coins"];
+    CCButton *buy100Button = [CCButton buttonWithTitle:@"Buy \"You\'re Time\" for 100 coins" fontName:@"Marker Felt" fontSize:18];
     [buy100Button setTarget:self selector:@selector(buy100Pressed)];
-    CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@""] fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@""] fontName:@"Marker Felt" fontSize:18];
+    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:24];
     
     CCLayoutBox *storeLayoutBox = [[CCLayoutBox alloc]init];
     [storeLayoutBox setAnchorPoint:ccp(0.5, 0.5)];

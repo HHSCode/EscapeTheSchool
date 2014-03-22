@@ -24,7 +24,7 @@
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
     
-    CCButton *menuButton = [CCButton buttonWithTitle:@"< Back"];
+    CCButton *menuButton = [CCButton buttonWithTitle:@"< Back" fontName:@"Marker Felt" fontSize:14];
     [menuButton setTarget:self selector:@selector(menuPressed)];
     
     CCLayoutBox *aboutLayoutBox = [[CCLayoutBox alloc]init];
