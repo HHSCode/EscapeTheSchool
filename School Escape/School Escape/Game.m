@@ -20,6 +20,7 @@ int gameTime;
     int numberOfBooksDodged;
     BOOL plutophobia;
     CCNode *_hero; //the hero, or the main character, or the runner
+    CCNode *_obstacleAlert;
     CCNode *_ground1;
     CCNode *_ground2;
     CCNode *_background1;
@@ -36,6 +37,7 @@ int gameTime;
     NSMutableArray *_flyingObstacles;
     NSMutableArray *_walkingObstacles;
 
+    NSMutableArray *_obstacleAlerts;
 
     CCLabelTTF *_coinCounterLabel;
     CCLabelTTF *_distanceLabel;
@@ -60,7 +62,6 @@ int gameTime;
 
 -(void)updateFlyingObstacleSpawnSpeed{
     float flyingObstacleInterval = ((float)(arc4random() % 4)+4);
-    NSLog(@"Flyinginterval: %f", flyingObstacleInterval);
     [self unschedule:@selector(addFlyingObstacle)];
     [self schedule:@selector(addFlyingObstacle) interval:200 repeat:0 delay:flyingObstacleInterval]; //schedules addFlyingObstacle method so a new flying obstacle is added at a random interval (this is the start interval for the schedule)
 }
@@ -100,11 +101,8 @@ int gameTime;
     
     [self schedule:@selector(addCoin) interval:2];//schedules addcoin method so a new coin is added at a random interval (this is the start interval for the schedule)
     //[self schedule:@selector(updateCoinSpawnSpeed) interval:0.5];
-    //float flyingObstacleInterval = (float)(arc4random() % 9)+1;
-    #warning must fix the flying interval to be random
-    
-    //[self schedule:@selector(addFlyingObstacle) interval:3];
-    [self schedule:@selector(updateFlyingObstacleSpawnSpeed) interval:200];
+    float flyingObstacleInterval = ((float)(arc4random() % 4)+4);
+    [self schedule:@selector(addFlyingObstacle) interval:200 repeat:0 delay:flyingObstacleInterval];
     [self schedule:@selector(updateGameTime) interval:1];
     [self schedule:@selector(updateScrollSpeed) interval:1];
     scrollSpeed=225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
@@ -112,6 +110,7 @@ int gameTime;
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
     _flyingObstacles = [[NSMutableArray alloc]init];
+    _obstacleAlerts = [[NSMutableArray alloc]init];
     
     //GROUND 1
     _ground1 = [CCSprite spriteWithImageNamed:@"ground2.png"];
@@ -289,6 +288,9 @@ BOOL intersects=NO; //initializes no intersection
     }
 }
 
+/*-(void)addObstacleAlert{
+}*/
+
 -(void)addFlyingObstacle{
     CCNode *_flyingObstacle = [[CCSprite alloc]initWithImageNamed:@"white-closed-book.png"]; //change this to change how the coin looks
     numberOfBooksDodged++;
@@ -307,7 +309,7 @@ BOOL intersects=NO; //initializes no intersection
     int rangeY = maxY - minY;
     int randomY = (arc4random() % rangeY) + minY;
     
-    _flyingObstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY); //sets coin position off to the right at a random y location
+    _flyingObstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width+1500, randomY); //sets obstalce position off to the right at a random y location
     CCActionRotateBy *rotate = [[CCActionRotateBy alloc]initWithDuration:5 angle:360];
     CCActionRepeatForever *repeatingRotation = [CCActionRepeatForever actionWithAction:rotate];
 
@@ -317,21 +319,21 @@ BOOL intersects=NO; //initializes no intersection
     if ([_flyingObstacles count]>30) { //if more than 30 coins
         [_flyingObstacles removeObjectAtIndex:0]; //delete from array
     }
-    [_physicsNode addChild:_flyingObstacle]; //adds coin to physics node
+    [_physicsNode addChild:_flyingObstacle z:1]; //adds coin to physics node
     
-    CCNode *_obstacleAlert = [[CCSprite alloc]initWithImageNamed:@"coin1.png"];
-    [_obstacleAlert setScaleY:.015];
-    [_obstacleAlert setScaleX:.015];
+    _obstacleAlert = [[CCSprite alloc]initWithImageNamed:@"coin1.png"];
+    [_obstacleAlert setScaleY:.05];
+    [_obstacleAlert setScaleX:.05];
     [_obstacleAlert setAnchorPoint:ccp(.5, .5)];
     _obstacleAlert.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero,_obstacleAlert.contentSize} cornerRadius:0];
-    _obstacleAlert.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY);
+    _obstacleAlert.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width-20, randomY);
     _obstacleAlert.physicsBody.collisionGroup = @"heroGroup";
     _obstacleAlert.physicsBody.collisionType = @"obstacleAlertType";
     _obstacleAlert.physicsBody.type=CCPhysicsBodyTypeStatic;
-    [_physicsNode addChild:_obstacleAlert];
+    [_physicsNode addChild:_obstacleAlert z:2];
+    [_obstacleAlerts addObject:_obstacleAlert];
     
-    [self unschedule:@selector(updateFlyingObstacleSpawnSpeed)];
-    [self schedule:@selector(updateFlyingObstacleSpawnSpeed) interval:200];
+    [self updateFlyingObstacleSpawnSpeed];
 }
 
 -(void)addWalkingObstacle{
@@ -364,7 +366,7 @@ BOOL intersects=NO; //initializes no intersection
     }
     [_physicsNode addChild:_flyingObstacle]; //adds coin to physics node
     
-    CCNode *_obstacleAlert = [[CCSprite alloc]initWithImageNamed:@"coin1.png"];
+    _obstacleAlert = [[CCSprite alloc]initWithImageNamed:@"coin1.png"];
     [_obstacleAlert setScaleY:.015];
     [_obstacleAlert setScaleX:.015];
     [_obstacleAlert setAnchorPoint:ccp(.5, .5)];
@@ -567,18 +569,28 @@ BOOL intersects=NO; //initializes no intersection
     //Obstacle Collisions
     
     for (CCNode *flyingObstacle in _flyingObstacles) {
-        flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed), flyingObstacle.position.y); //keeps hero in line with the moving physics node
+        flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed), flyingObstacle.position.y); //keeps obstacle in line with the moving physics node
         CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
         CGRect flyingObstacleTempBoundingBox = CGRectInset(flyingObstacle.boundingBox, flyingObstacle.boundingBox.size.width/4, flyingObstacle.boundingBox.size.height/4);
-
+        NSMutableArray *_obstacleAlerts2 = [_obstacleAlerts mutableCopy];
+        for (CCNode *obstacleAlert in _obstacleAlerts2){
+            if (flyingObstacle.position.x <= obstacleAlert.position.x) {
+                [obstacleAlert removeFromParent];
+                [_obstacleAlerts removeObject:obstacleAlert];
+            } else {
+                obstacleAlert.position = ccp(obstacleAlert.position.x + delta * scrollSpeed, obstacleAlert.position.y); //keeps obstacle alert in line with the moving physics node
+            }
+            NSLog(@"1: %@",_obstacleAlerts);
+            NSLog(@"2: %@",_obstacleAlerts2);
+        }
+        [_obstacleAlerts2 removeAllObjects];
+        
         if (CGRectIntersectsRect(heroTempBoundingBox, flyingObstacleTempBoundingBox)) { //check if hero and coin collides
-            
             [self lost];
         }
 
     }
-    
-    
+
     
     
 }
