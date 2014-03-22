@@ -27,11 +27,11 @@
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
     
     NSArray* Scores;
-    if ([[NSFileManager defaultManager]fileExistsAtPath:path isDirectory:NO]) {
+    if ([[NSFileManager defaultManager]fileExistsAtPath:path]) {
         Scores = [NSArray arrayWithContentsOfFile:path];
     }else{
         NSLog(@"No access to file! Using default score");
-        Scores = [NSMutableArray arrayWithObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:0],[NSDate date],[NSNumber numberWithInt:0], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
+        Scores = [NSArray arrayWithObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],[NSNumber numberWithInt:0],[NSDate date],[NSNumber numberWithInt:0], nil] forKeys:[NSArray arrayWithObjects:@"distance",@"coins",@"time",@"totalcoins", nil]]];
     }
     
     Scores=[Scores sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]];
@@ -51,10 +51,10 @@
     CCButton *menuButton = [CCButton buttonWithTitle:@"Menu"]; //creates menu button
     [menuButton setTarget:self selector:@selector(menuPressed)]; //if pressed run menuPressed
     CCLabelTTF *spacingLabel = [CCLabelTTF labelWithString:@" " fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Longest Run: %@",[highScore valueForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"coins"]] fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Distance: %@",[[Scores objectAtIndex:0] objectForKey:@"distance"]] fontName:@"Marker Felt" fontSize:20];
-    CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:20];
+    CCLabelTTF *highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Longest Run: %@",[highScore valueForKey:@"distance"]] fontName:@"Marker Felt" fontSize:11];
+    CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[[Scores objectAtIndex:0] objectForKey:@"coins"]] fontName:@"Marker Felt" fontSize:15];
+    CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@ m",[[Scores objectAtIndex:0] objectForKey:@"distance"]] fontName:@"Marker Felt" fontSize:30];
+    //CCLabelTTF *totalCoinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Total Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:9];
     
     [Scores writeToFile:path atomically:YES];
     
@@ -63,7 +63,7 @@
     [loseLayoutBox addChild:menuButton]; //add menu to layout box
     [loseLayoutBox addChild:restartButton]; //add restart to layout box
     [loseLayoutBox addChild:spacingLabel]; //add spacing to layout box
-    [loseLayoutBox addChild:totalCoinLabel]; //add coin score to layout box
+    //[loseLayoutBox addChild:totalCoinLabel]; //add coin score to layout box
     [loseLayoutBox addChild:coinLabel]; //add coin score to layout box
     [loseLayoutBox addChild:distanceLabel]; //add distance score to layout box
     [loseLayoutBox addChild:highScoreLabel]; //add high score label to layout box

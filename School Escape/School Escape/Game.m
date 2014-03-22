@@ -17,6 +17,8 @@ int gameTime;
     CCPhysicsNode *_physicsNode; //main physics node
     int score;
     int distance;
+    int numberOfBooksDodged;
+    BOOL plutophobia;
     CCNode *_hero; //the hero, or the main character, or the runner
     CCNode *_ground1;
     CCNode *_ground2;
@@ -77,7 +79,8 @@ int gameTime;
 {
     gameTime = 0;
     scrollSpeed = 150;
-    
+    numberOfBooksDodged = 0;
+    plutophobia = NO;
     
     // Apple recommend assigning self with supers return value
     self = [super init];
@@ -282,6 +285,9 @@ BOOL intersects=NO; //initializes no intersection
 
 -(void)addFlyingObstacle{
     CCNode *_flyingObstacle = [[CCSprite alloc]initWithImageNamed:@"white-closed-book.png"]; //change this to change how the coin looks
+    numberOfBooksDodged++;
+    
+    
     [_flyingObstacle setScaleY:.015];
     [_flyingObstacle setScaleX:.015];
     [_flyingObstacle setAnchorPoint:ccp(.5, .5)];
@@ -378,6 +384,9 @@ BOOL intersects=NO; //initializes no intersection
     [thisRun setValue:[NSNumber numberWithInt:distance] forKey:@"distance"];
     [thisRun setValue:[NSNumber numberWithInt:score] forKey:@"coins"];
     [thisRun setValue:[NSDate date] forKey:@"time"];
+    [thisRun setValue:[NSNumber numberWithInt:gameTime] forKeyPath:@"duration"];
+    [thisRun setValue:[NSNumber numberWithInt:numberOfBooksDodged] forKeyPath:@"booksDodged"];
+    [thisRun setValue:[NSNumber numberWithBool:plutophobia] forKeyPath:@"plutophobia"];
     
     
     NSArray* allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
@@ -421,6 +430,9 @@ BOOL intersects=NO; //initializes no intersection
     if (_hero.position.y<30) {
         hasDoubleJumped=NO;
         intersects=NO;
+    }
+    if (!plutophobia && score == 0 && distance>=1000) {
+        plutophobia = YES;
     }
     
     for (CCNode *ground in _grounds) {
@@ -481,7 +493,6 @@ BOOL intersects=NO; //initializes no intersection
         if (shouldRemove) { //if above has told to remove
             [coin removeFromParent]; //removes from physics node
             [_coins removeObject:coin]; //removes from original coins array
-
         }
         
         

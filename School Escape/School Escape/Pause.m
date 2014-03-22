@@ -25,6 +25,23 @@
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
     
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
+    
+    NSArray* Scores = [NSArray arrayWithContentsOfFile:path];
+    Scores = [Scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:NO]]];
+    int bestDistance = [[[Scores objectAtIndex:0] objectForKey:@"distance"] intValue];
+    
+    CCLabelTTF *totalDistanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Best Distance: %i",bestDistance] fontName:@"Marker Felt" fontSize:12];
+    [totalDistanceLabel setAnchorPoint:ccp(0,1)];
+    [totalDistanceLabel setPosition:ccp(0, self.contentSize.height)];
+    [self addChild:totalDistanceLabel];
+    
+    CCLabelTTF *totalCoins = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %@",[defaults objectForKey:@"totalCoins"]] fontName:@"Marker Felt" fontSize:12];
+    [totalCoins setAnchorPoint:ccp(1, 1)];
+    [totalCoins setPosition:ccp(self.contentSize.width,self.contentSize.height)];
+    [self addChild:totalCoins];
+    
     CCButton *gameButton = [CCButton buttonWithTitle:@"Resume"]; //creates resume button
     [gameButton setTarget:self selector:@selector(gamePressed)]; //if pressed run gamePressed
     CCButton *restartButton = [CCButton buttonWithTitle:@"Restart"]; //creates restart button
@@ -78,7 +95,7 @@
 
 -(void)gamecenterPressed{
     ABGameKitHelper *helper = [[ABGameKitHelper alloc] init];
-     [helper showAchievements];
+    [helper showAchievements];
 }
 
 -(void)pausePressed{
