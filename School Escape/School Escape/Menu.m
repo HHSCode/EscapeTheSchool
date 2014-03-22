@@ -8,8 +8,7 @@
 
 #import "Menu.h"
 #import "ABGameKitHelper.h"
-
-
+#import "CCAnimation.h"
 
 @implementation Menu
 + (Menu *)scene
@@ -25,6 +24,34 @@
     
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
+    
+    NSMutableArray *runFrames = [NSMutableArray array]; //initialize runFrames array
+    CCSpriteFrameCache *cache = [CCSpriteFrameCache sharedSpriteFrameCache]; //initialize cache
+    [cache addSpriteFramesWithFile:@"runningmansheet.plist"]; //add spritesheet to cache
+    
+    for(int i = 1; i <= 3; ++i) //forloop uses 3 frames
+    {
+        [runFrames addObject:[cache spriteFrameByName: [NSString stringWithFormat:@"runningman%i.png", i]]]; //adds sprite image to array based on i in loop
+    }
+    CCAnimation *runAnimation = [CCAnimation animationWithSpriteFrames:runFrames delay:0.1f]; //creates animation with runFrames with delay between of 0.1
+    CCActionAnimate *animationAction = [CCActionAnimate actionWithAnimation:runAnimation]; //creates action with animation
+    CCActionAnimate *animationAction2 = [CCActionAnimate actionWithAnimation:runAnimation]; //creates action with animation
+    CCActionRepeatForever *repeatingAnimation = [CCActionRepeatForever actionWithAction:animationAction]; //repeats action forever
+    CCActionRepeatForever *repeatingAnimation2 = [CCActionRepeatForever actionWithAction:animationAction2]; //repeats action forever
+    CCNode *_hero = [CCSprite spriteWithImageNamed:@"runningman1.png"]; //initializes hero with first image
+    [_hero runAction:repeatingAnimation]; //assigns animation to hero
+    [_hero setAnchorPoint:ccp(1, .5)];
+    [_hero setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
+    [_hero setScaleX:.75];
+    [_hero setScaleY:.75];
+    [self addChild:_hero];
+    CCNode *_hero2 = [CCSprite spriteWithImageNamed:@"runningman1.png"]; //initializes hero with first image
+    [_hero2 runAction:repeatingAnimation2]; //assigns animation to hero
+    [_hero2 setAnchorPoint:ccp(0, .5)];
+    [_hero2 setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
+    [_hero2 setScaleX:.75];
+    [_hero2 setScaleY:.75];
+    [self addChild:_hero2];
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString* path = [(NSString *) [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"scoreSaves.plist"];
