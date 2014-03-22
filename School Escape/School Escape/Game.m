@@ -58,10 +58,10 @@ int gameTime;
 }
 
 -(void)updateFlyingObstacleSpawnSpeed{
-    float flyingObstacleInterval = ((float)(arc4random() % 9)+1)*2;
+    float flyingObstacleInterval = ((float)(arc4random() % 4)+4);
     NSLog(@"Flyinginterval: %f", flyingObstacleInterval);
     [self unschedule:@selector(addFlyingObstacle)];
-    [self schedule:@selector(addFlyingObstacle) interval:flyingObstacleInterval];//schedules addFlyingObstacle method so a new flying obstacle is added at a random interval (this is the start interval for the schedule)
+    [self schedule:@selector(addFlyingObstacle) interval:200 repeat:0 delay:flyingObstacleInterval]; //schedules addFlyingObstacle method so a new flying obstacle is added at a random interval (this is the start interval for the schedule)
 }
 
 //Track GameTime
@@ -95,9 +95,8 @@ int gameTime;
     //float flyingObstacleInterval = (float)(arc4random() % 9)+1;
     #warning must fix the flying interval to be random
     
-    [self schedule:@selector(addFlyingObstacle) interval:3];
-    
-    //[self schedule:@selector(updateFlyingObstacleSpawnSpeed) interval:0.5];
+    //[self schedule:@selector(addFlyingObstacle) interval:3];
+    [self schedule:@selector(updateFlyingObstacleSpawnSpeed) interval:200];
     [self schedule:@selector(updateGameTime) interval:1];
     [self schedule:@selector(updateScrollSpeed) interval:1];
     scrollSpeed=225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
@@ -313,6 +312,8 @@ BOOL intersects=NO; //initializes no intersection
     }
     [_physicsNode addChild:_flyingObstacle]; //adds coin to physics node
     
+    [self unschedule:@selector(updateFlyingObstacleSpawnSpeed)];
+    [self schedule:@selector(updateFlyingObstacleSpawnSpeed) interval:200];
 }
 
 -(void)addCoin{
@@ -507,7 +508,7 @@ BOOL intersects=NO; //initializes no intersection
     //Obstacle Collisions
     
     for (CCNode *flyingObstacle in _flyingObstacles) {
-        flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed/5), flyingObstacle.position.y); //keeps hero in line with the moving physics node
+        flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed), flyingObstacle.position.y); //keeps hero in line with the moving physics node
         CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
         CGRect flyingObstacleTempBoundingBox = CGRectInset(flyingObstacle.boundingBox, flyingObstacle.boundingBox.size.width/4, flyingObstacle.boundingBox.size.height/4);
 
