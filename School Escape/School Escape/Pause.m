@@ -54,9 +54,7 @@
     CCLayoutBox *pauseLayoutBox = [[CCLayoutBox alloc]init]; //create layout box
     [pauseLayoutBox setAnchorPoint:ccp(0.5, 0.5)];
     [pauseLayoutBox addChild:menuButton]; //add menu to layout box
-    [pauseLayoutBox addChild:restartButton]; //add restart to layout box
     [pauseLayoutBox addChild:gamecenterButton]; //add game center to layout box
-    [pauseLayoutBox addChild:gameButton]; //add resume to layout box
     
     if ([[OALSimpleAudio sharedInstance]bgPlaying]) {
         CCButton *pauseButton = [CCButton buttonWithTitle:@"Pause Music"];
@@ -77,6 +75,11 @@
         [soundOnButton setTarget:self selector:@selector(soundOnPressed)];
         [pauseLayoutBox addChild:soundOnButton];
     }
+    
+    [pauseLayoutBox addChild:restartButton]; //add restart to layout box
+
+    [pauseLayoutBox addChild:gameButton]; //add resume to layout box
+
     
     [pauseLayoutBox setSpacing:10.f];
     [pauseLayoutBox setDirection:CCLayoutBoxDirectionVertical];
