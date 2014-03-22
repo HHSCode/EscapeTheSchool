@@ -313,7 +313,6 @@ BOOL intersects=NO; //initializes no intersection
     _flyingObstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width+1500, randomY); //sets obstalce position off to the right at a random y location
     CCActionRotateBy *rotate = [[CCActionRotateBy alloc]initWithDuration:5 angle:360];
     CCActionRepeatForever *repeatingRotation = [CCActionRepeatForever actionWithAction:rotate];
-
     [_flyingObstacle runAction:repeatingRotation];
 
     [_flyingObstacles insertObject:_flyingObstacle atIndex:0]; //adds coin to _coins so it can check for collisions
@@ -462,7 +461,18 @@ BOOL intersects=NO; //initializes no intersection
     [defaults synchronize];
     [Scores writeToFile:path atomically:YES];
     
-    [[CCDirector sharedDirector]presentScene:[Lose scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]]; //go to lose scene
+    CCLabelTTF *gameOver = [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Marker Felt" fontSize:48];
+    [gameOver setAnchorPoint:ccp(0.5, 0.5)];
+    [gameOver setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
+    [self addChild:gameOver];
+    for (CCNode *flyingObstacle in _flyingObstacles) {
+        [flyingObstacle removeFromParent];
+    }
+    for (CCNode *walkingObstacle in _walkingObstacles) {
+        [walkingObstacle removeFromParent];
+    }
+    [_hero removeFromParent];
+    [[CCDirector sharedDirector]presentScene:[Lose scene] withTransition:[CCTransition transitionFadeWithDuration:5]]; //go to lose scene
 }
 
 - (void)update:(CCTime)delta {
