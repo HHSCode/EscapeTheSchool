@@ -328,18 +328,8 @@ BOOL intersects=NO; //initializes no intersection
 }
 
 -(void)addCoin{
-    CCNode *_coin = [[CCSprite alloc]initWithImageNamed:@"coin2.png"]; //change this to change how the coin looks
-    [_coin setScaleY:.040];
-    [_coin setScaleX:.040];
+
     float coinSize = 10; //this is uesed to calculate the coin position, or basically where it is placed on the screen, max and min
-    [_coin setAnchorPoint:ccp(0, 0)];
-    
-    
-    _coin.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_coin.contentSize.width/2-40 andCenter:ccp(_coin.contentSize.width/2, _coin.contentSize.height/2)];
-    _coin.physicsBody.collisionGroup = @"heroGroup";
-    _coin.physicsBody.collisionType = @"coinType";
-    
-    _coin.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
 
     int minY = 50; //min is above the ground slightly
     int maxY = self.contentSize.height-(coinSize/2)-50;//max is below the top but in reach ofthe character jumping
@@ -350,9 +340,12 @@ BOOL intersects=NO; //initializes no intersection
     for (int i=1; i<=coinNumber; i++) {
         CCNode *_coin;
         if (i == 1) {
-            _coin = [[CCSprite alloc]initWithImageNamed:@"coin2.png"]; //change this to change how the coin looks
+            _coin = [[CCSprite alloc]initWithImageNamed:@"coin2.png"]; //change this to change how the coin looks - 5 coin
+            [_coin setUserObject:[NSNumber numberWithInt:5]];
         } else {
-            _coin = [[CCSprite alloc]initWithImageNamed:@"coin3.png"]; //change this to change how the coin looks
+            _coin = [[CCSprite alloc]initWithImageNamed:@"coin3.png"]; //change this to change how the coin looks - 1 coin
+            [_coin setUserObject:[NSNumber numberWithInt:1]];
+
         }
         [_coin setScaleY:.040];
         [_coin setScaleX:.040];
@@ -499,7 +492,8 @@ BOOL intersects=NO; //initializes no intersection
                 [[OALSimpleAudio sharedInstance]playEffect:@"coincollection.mp3"];
             }
             
-            score++; //adds one to score
+            score=score+[[coin userObject]intValue]; //adds the value of the coin to score
+            
             [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
         }
         
