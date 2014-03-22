@@ -419,6 +419,7 @@ BOOL intersects=NO; //initializes no intersection
     _hero.position = ccp(_hero.position.x + delta * scrollSpeed, _hero.position.y); //keeps hero in line with the moving physics node
     _physicsNode.position = ccp(_physicsNode.position.x - (scrollSpeed *delta), _physicsNode.position.y); //moves the physics node to the left
     // loop the ground
+    NSLog(@"a word");
     
     //Check if hero is off screen
     CGPoint heroWorldPosition = [_physicsNode convertToWorldSpace:_hero.position];
