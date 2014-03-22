@@ -481,7 +481,8 @@ BOOL intersects=NO; //initializes no intersection
                 [[OALSimpleAudio sharedInstance]playEffect:@"coincollection.mp3"];
             }
             
-            score++; //adds one to score
+            score=score+[[coin userObject]intValue]; //adds the value of the coin to score
+            
             [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
         }
         
