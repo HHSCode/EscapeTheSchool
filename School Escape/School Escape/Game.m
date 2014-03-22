@@ -482,7 +482,10 @@ BOOL intersects=NO; //initializes no intersection
         if (CGRectIntersectsRect(heroTempBoundingBox, coinTempBoundingBox)) { //check if hero and coin collides
             
             shouldRemove=YES; //tells program to remove coin below
-            [[OALSimpleAudio sharedInstance]playEffect:@"coincollection.mp3"];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if (![[defaults objectForKey:@"soundeffects"] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+                [[OALSimpleAudio sharedInstance]playEffect:@"coincollection.mp3"];
+            }
             
             score++; //adds one to score
             [_coinCounterLabel setString:[NSString stringWithFormat:@"%i", score]]; //sets the label to cuurent score
@@ -497,14 +500,14 @@ BOOL intersects=NO; //initializes no intersection
         
         
         
-        distance = (int)_hero.position.x/10; //distance takes the negative integer of physics node position and divides it by 10 (to make it slower)
+        distance = (int)_hero.position.x/10; //distance takes the hero position and divides it by 10 (to make it slower)
         [_distanceLabel setString:[NSString stringWithFormat:@"%i", distance]]; //sets the label to the current distance
     }
     
     //Obstacle Collisions
     
     for (CCNode *flyingObstacle in _flyingObstacles) {
-        flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed/6), flyingObstacle.position.y); //keeps hero in line with the moving physics node
+        flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed/5), flyingObstacle.position.y); //keeps hero in line with the moving physics node
         CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
         CGRect flyingObstacleTempBoundingBox = CGRectInset(flyingObstacle.boundingBox, flyingObstacle.boundingBox.size.width/4, flyingObstacle.boundingBox.size.height/4);
 

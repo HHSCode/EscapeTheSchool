@@ -25,6 +25,9 @@
         saves = [NSMutableArray arrayWithArray:[saves sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO], nil]]];
         
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        BOOL *sound = NO;
+        [defaults setObject:[NSNumber numberWithBool:sound] forKey:@"soundeffects"];
+        
         NSArray* allKeys = [[defaults dictionaryRepresentation] allKeys];
         BOOL savesExists = false;
         for (NSString* key in allKeys) {

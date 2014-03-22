@@ -68,6 +68,16 @@
         [pauseLayoutBox addChild:playButton];
     }
     
+    if (![[defaults objectForKey:@"soundeffects"] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        CCButton *soundOffButton = [CCButton buttonWithTitle:@"Mute Sound Effects"];
+        [soundOffButton setTarget:self selector:@selector(soundOffPressed)];
+        [pauseLayoutBox addChild:soundOffButton];
+    } else {
+        CCButton *soundOnButton = [CCButton buttonWithTitle:@"Play Sound Effects"];
+        [soundOnButton setTarget:self selector:@selector(soundOnPressed)];
+        [pauseLayoutBox addChild:soundOnButton];
+    }
+    
     [pauseLayoutBox setSpacing:10.f];
     [pauseLayoutBox setDirection:CCLayoutBoxDirectionVertical];
     [pauseLayoutBox setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
@@ -106,6 +116,20 @@
 -(void)playPressed{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES]; //Background music
+    [[CCDirector sharedDirector]presentScene:[Pause scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+}
+
+-(void)soundOnPressed{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL *sound = NO;
+    [defaults setObject:[NSNumber numberWithBool:sound] forKey:@"soundeffects"];
+    [[CCDirector sharedDirector]presentScene:[Pause scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+}
+
+-(void)soundOffPressed{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL *sound = YES;
+    [defaults setObject:[NSNumber numberWithBool:sound] forKey:@"soundeffects"];
     [[CCDirector sharedDirector]presentScene:[Pause scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
 }
 

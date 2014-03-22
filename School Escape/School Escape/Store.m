@@ -102,8 +102,7 @@
         UIAlertView *buyAlert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"Bought \"You\'re Time\" for 100 coins!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [buyAlert show];
         [defaults setValue:[NSNumber numberWithInt:([[defaults objectForKey:@"totalCoins"] intValue]-100)] forKey:@"totalCoins"];
-        [defaults setValue:@"you'retime.mp3" forKey:@"music"];
-        [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES];
+        [[OALSimpleAudio sharedInstance]playBg:@"you'retime.mp3" loop:YES];
         [[CCDirector sharedDirector]presentScene:[Store scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
         
     } else {

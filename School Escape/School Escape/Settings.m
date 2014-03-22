@@ -34,9 +34,9 @@
     CCButton *resetButton = [CCButton buttonWithTitle:@"Reset Game"];
     [resetButton setTarget:self selector:@selector(resetPressed)];
     [settingsLayoutBox addChild:resetButton];
-    CCButton *musicButton = [CCButton buttonWithTitle:@"Music Settings"];
-    [musicButton setTarget:self selector:@selector(musicPressed)];
-    [settingsLayoutBox addChild:musicButton];
+    CCButton *soundButton = [CCButton buttonWithTitle:@"Sound Settings"];
+    [soundButton setTarget:self selector:@selector(soundPressed)];
+    [settingsLayoutBox addChild:soundButton];
     
     [settingsLayoutBox setSpacing:10.f];
     [settingsLayoutBox setDirection:CCLayoutBoxDirectionVertical];
@@ -99,8 +99,8 @@
     }
 }
 
--(void)musicPressed{
-    [[CCDirector sharedDirector]presentScene:[MusicSettings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:.5]];
+-(void)soundPressed{
+    [[CCDirector sharedDirector]presentScene:[SoundSettings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:.5]];
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Menu.h"
 #import "Store.h"
-#import "MusicSettings.h"
+#import "SoundSettings.h"
 #import "Classes/AppDelegate.h"
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
