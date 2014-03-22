@@ -41,6 +41,7 @@ int gameTime;
     CCLabelTTF *_coinCounterLabelStatic;
     CCLabelTTF *_distanceLabelStatic;
     BOOL hasDoubleJumped;
+    BOOL intersects;
 }
 + (Game *)scene //DONT TOUCH THIS
 {
@@ -432,8 +433,10 @@ BOOL intersects=NO; //initializes no intersection
     if (heroScreenPosition.x <= 0) { //IF HERO IS OFFSCREEN - AKA YOU LOST
         [self lost];
     }
-    
-    
+    if (_hero.position.y<30) {
+        hasDoubleJumped=NO;
+        intersects=NO;
+    }
     if (!plutophobia && score == 0 && distance>=1000) {
         plutophobia = YES;
     }
