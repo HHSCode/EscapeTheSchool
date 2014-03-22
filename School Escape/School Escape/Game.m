@@ -110,6 +110,8 @@ int gameTime;
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
     _flyingObstacles = [[NSMutableArray alloc]init];
+    _walkingObstacles = [[NSMutableArray alloc]init];
+
     _obstacleAlerts = [[NSMutableArray alloc]init];
     
     //GROUND 1
@@ -337,48 +339,38 @@ BOOL intersects=NO; //initializes no intersection
 }
 
 -(void)addWalkingObstacle{
-    CCNode *_flyingObstacle = [[CCSprite alloc]initWithImageNamed:@"white-closed-book.png"]; //change this to change how the coin looks
-    numberOfBooksDodged++;
+    CCNode *_walkingObstacle = [[CCSprite alloc]initWithImageNamed:@"white-closed-book.png"]; //change this to change how the coin looks
     
     
-    [_flyingObstacle setScaleY:.015];
-    [_flyingObstacle setScaleX:.015];
-    [_flyingObstacle setAnchorPoint:ccp(.5, .5)];
+    [_walkingObstacle setScaleY:.015];
+    [_walkingObstacle setScaleX:.015];
+    [_walkingObstacle setAnchorPoint:ccp(.5, .5)];
     
-    _flyingObstacle.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_flyingObstacle.contentSize.width/2-40 andCenter:ccp(_flyingObstacle.contentSize.width/2, _flyingObstacle.contentSize.height/2)];
-    _flyingObstacle.physicsBody.collisionGroup = @"heroGroup";
-    _flyingObstacle.physicsBody.collisionType = @"flyingObstacleType";
-    _flyingObstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //obstacles are static
+    _walkingObstacle.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_walkingObstacle.contentSize.width/2-40 andCenter:ccp(_walkingObstacle.contentSize.width/2, _walkingObstacle.contentSize.height/2)];
+    _walkingObstacle.physicsBody.collisionGroup = @"heroGroup";
+    _walkingObstacle.physicsBody.collisionType = @"walkingObstacleType";
+    _walkingObstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //obstacles are static
     int minY = _ground1.boundingBox.size.height+30; //min is above the ground slightly
-    int maxY = self.contentSize.height-_flyingObstacle.boundingBox.size.height-10;//max is below the top but in reach ofthe character jumping
+    int maxY = self.contentSize.height-_walkingObstacle.boundingBox.size.height-10;//max is below the top but in reach ofthe character jumping
     int rangeY = maxY - minY;
     int randomY = (arc4random() % rangeY) + minY;
     
-    _flyingObstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY); //sets coin position off to the right at a random y location
+    _walkingObstacle.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY); //sets coin position off to the right at a random y location
     CCActionRotateBy *rotate = [[CCActionRotateBy alloc]initWithDuration:5 angle:360];
     CCActionRepeatForever *repeatingRotation = [CCActionRepeatForever actionWithAction:rotate];
     
-    [_flyingObstacle runAction:repeatingRotation];
+    [_walkingObstacle runAction:repeatingRotation];
     
-    [_flyingObstacles addObject:_flyingObstacle]; //adds coin to _coins so it can check for collisions
-    if ([_flyingObstacles count]>30) { //if more than 30 coins
-        [_flyingObstacles removeObjectAtIndex:0]; //delete from array
+    [_walkingObstacles addObject:_walkingObstacle]; //adds coin to _coins so it can check for collisions
+    if ([_walkingObstacles count]>30) { //if more than 30 coins
+        [_walkingObstacles removeObjectAtIndex:0]; //delete from array
     }
-    [_physicsNode addChild:_flyingObstacle]; //adds coin to physics node
+    [_physicsNode addChild:_walkingObstacle]; //adds coin to physics node
     
-    _obstacleAlert = [[CCSprite alloc]initWithImageNamed:@"coin1.png"];
-    [_obstacleAlert setScaleY:.015];
-    [_obstacleAlert setScaleX:.015];
-    [_obstacleAlert setAnchorPoint:ccp(.5, .5)];
-    _obstacleAlert.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero,_obstacleAlert.contentSize} cornerRadius:0];
-    _obstacleAlert.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY);
-    _obstacleAlert.physicsBody.collisionGroup = @"heroGroup";
-    _obstacleAlert.physicsBody.collisionType = @"obstacleAlertType";
-    _obstacleAlert.physicsBody.type=CCPhysicsBodyTypeStatic;
-    [_physicsNode addChild:_obstacleAlert];
     
-    [self unschedule:@selector(updateFlyingObstacleSpawnSpeed)];
-    [self schedule:@selector(updateFlyingObstacleSpawnSpeed) interval:200];
+    
+    [self unschedule:@selector(updateWalkingObstacleSpawnSpeed)];
+    [self schedule:@selector(updateWalkingObstacleSpawnSpeed) interval:200];
 }
 
 
