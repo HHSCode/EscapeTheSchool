@@ -36,7 +36,6 @@ int gameTime;
     NSMutableArray *_coins2;
     NSMutableArray *_flyingObstacles;
     NSMutableArray *_walkingObstacles;
-
     NSMutableArray *_obstacleAlerts;
 
     CCLabelTTF *_coinCounterLabel;
@@ -317,7 +316,7 @@ BOOL intersects=NO; //initializes no intersection
 
     [_flyingObstacle runAction:repeatingRotation];
 
-    [_flyingObstacles addObject:_flyingObstacle]; //adds coin to _coins so it can check for collisions
+    [_flyingObstacles insertObject:_flyingObstacle atIndex:0]; //adds coin to _coins so it can check for collisions
     if ([_flyingObstacles count]>30) { //if more than 30 coins
         [_flyingObstacles removeObjectAtIndex:0]; //delete from array
     }
@@ -564,18 +563,20 @@ BOOL intersects=NO; //initializes no intersection
         flyingObstacle.position = ccp(flyingObstacle.position.x - delta * (scrollSpeed), flyingObstacle.position.y); //keeps obstacle in line with the moving physics node
         CGRect heroTempBoundingBox = CGRectInset(_hero.boundingBox, _hero.boundingBox.size.width/8, _hero.boundingBox.size.height/8);
         CGRect flyingObstacleTempBoundingBox = CGRectInset(flyingObstacle.boundingBox, flyingObstacle.boundingBox.size.width/4, flyingObstacle.boundingBox.size.height/4);
-        NSMutableArray *_obstacleAlerts2 = [_obstacleAlerts mutableCopy];
-        for (CCNode *obstacleAlert in _obstacleAlerts2){
-            if (flyingObstacle.position.x <= obstacleAlert.position.x) {
-                [obstacleAlert removeFromParent];
-                [_obstacleAlerts removeObject:obstacleAlert];
-            } else {
-                obstacleAlert.position = ccp(obstacleAlert.position.x + delta * scrollSpeed, obstacleAlert.position.y); //keeps obstacle alert in line with the moving physics node
+        
+        if ([flyingObstacle isEqual:[_flyingObstacles objectAtIndex:0]]) {
+            NSMutableArray *_obstacleAlerts2 = [_obstacleAlerts mutableCopy];
+            for (CCNode *obstacleAlert in _obstacleAlerts2){
+                if (flyingObstacle.position.x <= obstacleAlert.position.x) {
+                    [obstacleAlert removeFromParent];
+                    [_obstacleAlerts removeObject:obstacleAlert];
+                } else {
+                    obstacleAlert.position = ccp(obstacleAlert.position.x + delta * scrollSpeed, obstacleAlert.position.y); //keeps obstacle alert in line with the moving physics node
+                }
             }
-            NSLog(@"1: %@",_obstacleAlerts);
-            NSLog(@"2: %@",_obstacleAlerts2);
+            [_obstacleAlerts2 removeAllObjects];
         }
-        [_obstacleAlerts2 removeAllObjects];
+       
         
         if (CGRectIntersectsRect(heroTempBoundingBox, flyingObstacleTempBoundingBox)) { //check if hero and coin collides
             [self lost];
