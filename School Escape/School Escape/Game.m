@@ -294,7 +294,7 @@ BOOL intersects=NO; //initializes no intersection
     _flyingObstacle.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:_flyingObstacle.contentSize.width/2-40 andCenter:ccp(_flyingObstacle.contentSize.width/2, _flyingObstacle.contentSize.height/2)];
     _flyingObstacle.physicsBody.collisionGroup = @"heroGroup";
     _flyingObstacle.physicsBody.collisionType = @"flyingObstacleType";
-    _flyingObstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //coins are static
+    _flyingObstacle.physicsBody.type=CCPhysicsBodyTypeStatic; //obstacles are static
     int minY = _ground1.boundingBox.size.height+30; //min is above the ground slightly
     int maxY = self.contentSize.height-_flyingObstacle.boundingBox.size.height-10;//max is below the top but in reach ofthe character jumping
     int rangeY = maxY - minY;
@@ -311,6 +311,17 @@ BOOL intersects=NO; //initializes no intersection
         [_flyingObstacles removeObjectAtIndex:0]; //delete from array
     }
     [_physicsNode addChild:_flyingObstacle]; //adds coin to physics node
+    
+    CCNode *_obstacleAlert = [[CCSprite alloc]initWithImageNamed:@"coin1.png"];
+    [_obstacleAlert setScaleY:.015];
+    [_obstacleAlert setScaleX:.015];
+    [_obstacleAlert setAnchorPoint:ccp(.5, .5)];
+    _obstacleAlert.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect){CGPointZero,_obstacleAlert.contentSize} cornerRadius:0];
+    _obstacleAlert.position = CGPointMake(-1*_physicsNode.position.x+self.contentSize.width, randomY);
+    _obstacleAlert.physicsBody.collisionGroup = @"heroGroup";
+    _obstacleAlert.physicsBody.collisionType = @"obstacleAlertType";
+    _obstacleAlert.physicsBody.type=CCPhysicsBodyTypeStatic;
+    [_physicsNode addChild:_obstacleAlert];
     
     [self unschedule:@selector(updateFlyingObstacleSpawnSpeed)];
     [self schedule:@selector(updateFlyingObstacleSpawnSpeed) interval:200];
@@ -419,7 +430,6 @@ BOOL intersects=NO; //initializes no intersection
     _hero.position = ccp(_hero.position.x + delta * scrollSpeed, _hero.position.y); //keeps hero in line with the moving physics node
     _physicsNode.position = ccp(_physicsNode.position.x - (scrollSpeed *delta), _physicsNode.position.y); //moves the physics node to the left
     // loop the ground
-    NSLog(@"a word");
     
     //Check if hero is off screen
     CGPoint heroWorldPosition = [_physicsNode convertToWorldSpace:_hero.position];
