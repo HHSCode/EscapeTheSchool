@@ -9,6 +9,8 @@
 
 #import "AppDelegate.h"
 #import "Menu.h"
+#import "Game.h"
+#import "Pause.h"
 #import "chipmunk.h"
 #import "GCHelper.h"
 #import "MKiCloudSync.h"
@@ -169,6 +171,12 @@
     [[OALSimpleAudio sharedInstance]playBg:[defaults valueForKey:@"music"] loop:YES];
     
 	return YES;
+}
+
+-(void)applicationDidEnterBackground:(UIApplication *)application{
+    if ([[[CCDirector sharedDirector]runningScene] isKindOfClass:[Game class]]) {
+        [[CCDirector sharedDirector]presentScene:[Pause scene]];
+    }
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
