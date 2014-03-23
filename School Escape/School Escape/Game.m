@@ -104,8 +104,6 @@ int gameTime;
     [self schedule:@selector(addFlyingObstacle) interval:200 repeat:0 delay:flyingObstacleInterval];
     [self schedule:@selector(updateGameTime) interval:1];
     [self schedule:@selector(updateScrollSpeed) interval:1];
-    scrollSpeed=225; //scroll speed, change this to make it go faster or slower. this could possibly be dynamic
-    gameTime=0;
     
     _coins = [[NSMutableArray alloc]init];//allocate coins array
     _flyingObstacles = [[NSMutableArray alloc]init];
@@ -472,7 +470,7 @@ BOOL intersects=NO; //initializes no intersection
         [walkingObstacle removeFromParent];
     }
     [_hero removeFromParent];
-    [[CCDirector sharedDirector]presentScene:[Lose scene] withTransition:[CCTransition transitionFadeWithDuration:5]]; //go to lose scene
+    [[CCDirector sharedDirector]presentScene:[Lose scene] withTransition:[CCTransition transitionFadeWithDuration:2]]; //go to lose scene
 }
 
 - (void)update:(CCTime)delta {
