@@ -235,8 +235,6 @@
 		98F8992018DBC15D00F8F642 /* coincollection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 98F8991F18DBC15D00F8F642 /* coincollection.mp3 */; };
 		B348805718D88CFB00CC5067 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805618D88CFB00CC5067 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B348805918D88D1F00CC5067 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B348805818D88D1F00CC5067 /* StoreKit.framework */; };
-		B3DC209518DC976900D130AE /* hero-man.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3DC209318DC976900D130AE /* hero-man.plist */; };
-		B3DC209618DC976900D130AE /* hero-man.png in Resources */ = {isa = PBXBuildFile; fileRef = B3DC209418DC976900D130AE /* hero-man.png */; };
 		B3DF63B118D5BCDF0062141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DF63B018D5BCDF0062141C /* Images.xcassets */; };
 		BF1C5ACA18DD171600A9036A /* SoundSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1C5AC918DD171600A9036A /* SoundSettings.m */; };
 		BF2B4B9E18D81277004724EC /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2B4B9D18D81277004724EC /* Pause.m */; };
@@ -721,8 +719,6 @@
 		B348805518D88CF500CC5067 /* School Escape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "School Escape.entitlements"; sourceTree = "<group>"; };
 		B348805618D88CFB00CC5067 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		B348805818D88D1F00CC5067 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		B3DC209318DC976900D130AE /* hero-man.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "hero-man.plist"; path = "Resources/hero-man.plist"; sourceTree = "<group>"; };
-		B3DC209418DC976900D130AE /* hero-man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hero-man.png"; path = "Resources/hero-man.png"; sourceTree = "<group>"; };
 		B3DF63B018D5BCDF0062141C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF1C5AC818DD171600A9036A /* SoundSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSettings.h; sourceTree = "<group>"; };
 		BF1C5AC918DD171600A9036A /* SoundSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSettings.m; sourceTree = "<group>"; };
@@ -847,8 +843,6 @@
 		98E143D118D507F70044BA6A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B3DC209318DC976900D130AE /* hero-man.plist */,
-				B3DC209418DC976900D130AE /* hero-man.png */,
 				881CA21318DB46F600574CFC /* Backgrounds */,
 				883FAE8318D9D32200A75F05 /* Sound */,
 				88143BC118D8BAE80048A2B2 /* AppSpecificValues.h */,
@@ -1809,13 +1803,11 @@
 				88AF0FC618DC7B8B00A0EE57 /* locker room.png in Resources */,
 				98E1452E18D507F80044BA6A /* LICENSE_cocos2d.txt in Resources */,
 				98F8991D18DBAD4200F8F642 /* hallway5.png in Resources */,
-				B3DC209518DC976900D130AE /* hero-man.plist in Resources */,
 				98E1494818D511D90044BA6A /* ground2.png in Resources */,
 				98E143D718D507F70044BA6A /* Default-568h@2x.png in Resources */,
 				98DF15DF18D52C57004E553B /* coin1.png in Resources */,
 				98E143F718D507F70044BA6A /* iTunesArtwork in Resources */,
 				98E1465A18D507F90044BA6A /* LICENSE_Chipmunk.txt in Resources */,
-				B3DC209618DC976900D130AE /* hero-man.png in Resources */,
 				881CA21218DB46EC00574CFC /* brickBig.png in Resources */,
 				98E145BA18D507F90044BA6A /* ChangeLog in Resources */,
 				9820C1D118D62E9F00CDEFD4 /* desk.png in Resources */,
