@@ -49,13 +49,13 @@
 		<key>format</key>
 		<integer>2</integer>
 		<key>realTextureFileName</key>
-		<string>hero-man.png</string>
+		<string>runningmansheet.png</string>
 		<key>size</key>
 		<string>{1024,1024}</string>
 		<key>smartupdate</key>
-		<string>$TexturePacker:SmartUpdate:b0ce9f4da29e5f0bffdb6e321bce4f00:8ad8c7c8f4ef7f42de8fda6cb62bf409:583d57231a11c2e020da82b58ad94ada$</string>
+		<string>$TexturePacker:SmartUpdate:bac7e6e8321bf0995aecfe2bae3a1e7c:8ad8c7c8f4ef7f42de8fda6cb62bf409:5a7232f1436db98126bdeb04210063c1$</string>
 		<key>textureFileName</key>
-		<string>hero-man.png</string>
+		<string>runningmansheet.png</string>
 	</dict>
 </dict>
 </plist>
