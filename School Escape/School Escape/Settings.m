@@ -89,13 +89,13 @@
         [resetScores writeToFile:path atomically:YES];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:resetScores forKey:@"saves"];
-        [defaults synchronize];
         
         [GKAchievement resetAchievementsWithCompletionHandler:^(NSError *error){if (error != nil){NSLog(@"failure");}}]; //Clear all progress saved on Game Center.
         GameCenterUpdater* gameCenterUpdater = [[GameCenterUpdater alloc] init];
         [gameCenterUpdater sendScore:[resetScores objectAtIndex:0] andScores:resetScores];
         [defaults setValue:[NSNumber numberWithInt:0] forKey:@"totalCoins"];
         [[CCDirector sharedDirector]presentScene:[Settings scene] withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionInvalid duration:.5]];
+        [defaults synchronize];
     }
 }
 
