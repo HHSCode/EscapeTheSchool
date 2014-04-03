@@ -7,41 +7,41 @@
 		<key>runningman1.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{2,516},{359,440}}</string>
+			<string>{{334,2},{245,293}}</string>
 			<key>offset</key>
-			<string>{0,-35}</string>
+			<string>{44,-27}</string>
 			<key>rotated</key>
 			<false/>
 			<key>sourceColorRect</key>
-			<string>{{0,70},{359,440}}</string>
+			<string>{{101,69},{245,293}}</string>
 			<key>sourceSize</key>
-			<string>{359,510}</string>
+			<string>{359,377}</string>
 		</dict>
 		<key>runningman2.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{2,2},{362,512}}</string>
+			<string>{{2,2},{330,356}}</string>
 			<key>offset</key>
-			<string>{0,0}</string>
+			<string>{16,0}</string>
 			<key>rotated</key>
 			<false/>
 			<key>sourceColorRect</key>
-			<string>{{0,0},{362,512}}</string>
+			<string>{{32,0},{330,356}}</string>
 			<key>sourceSize</key>
-			<string>{362,512}</string>
+			<string>{362,356}</string>
 		</dict>
 		<key>runningman3.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{363,516},{295,244}}</string>
+			<string>{{581,2},{295,244}}</string>
 			<key>offset</key>
-			<string>{-12,29}</string>
+			<string>{-12,-42}</string>
 			<key>rotated</key>
 			<false/>
 			<key>sourceColorRect</key>
 			<string>{{20,104},{295,244}}</string>
 			<key>sourceSize</key>
-			<string>{359,510}</string>
+			<string>{359,368}</string>
 		</dict>
 	</dict>
 	<key>metadata</key>
@@ -51,9 +51,9 @@
 		<key>realTextureFileName</key>
 		<string>runningmansheet.png</string>
 		<key>size</key>
-		<string>{1024,1024}</string>
+		<string>{878,360}</string>
 		<key>smartupdate</key>
-		<string>$TexturePacker:SmartUpdate:bac7e6e8321bf0995aecfe2bae3a1e7c:8ad8c7c8f4ef7f42de8fda6cb62bf409:5a7232f1436db98126bdeb04210063c1$</string>
+		<string>$TexturePacker:SmartUpdate:ab9ba7eba7a3ae6be94bc84c71d464d9:ae9050be9e500cfa1cad6ed63fac911e:5a7232f1436db98126bdeb04210063c1$</string>
 		<key>textureFileName</key>
 		<string>runningmansheet.png</string>
 	</dict>
