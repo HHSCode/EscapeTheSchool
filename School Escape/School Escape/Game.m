@@ -141,8 +141,8 @@ int gameTime;
     [_hero runAction:repeatingAnimation]; //assigns animation to hero
     [_hero setAnchorPoint:ccp(0, 0)];
     [_hero setPosition:ccp(60, 100)];
-    [_hero setScaleX:.2];
-    [_hero setScaleY:.2];
+    [_hero setScaleX:.4];
+    [_hero setScaleY:.4];
     
     
     //PHYSICS NODE
